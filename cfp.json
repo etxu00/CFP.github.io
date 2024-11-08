@@ -1,5 +1,5 @@
 {
-  "objetivos" : {
+  "objetivos": {
     "resumen": {
       "monto total de objetivos": 10000.00,
       "porcentaje de objetivos cumplidos": "50%",
@@ -20,7 +20,11 @@
         "descripcion": "Laptop Surface Studio 2",
         "imagen": "https://images-na.ssl-images-amazon.com/images/I/61hu8z%2BVHoL._AC_SL1470_.jpg",
         "categoria": "Setup",
-        "etiquetas": ["pc", "tecnologia", "laptop"],
+        "etiquetas": [
+          "pc",
+          "tecnologia",
+          "laptop"
+        ],
         "padre": "Setup",
         "monto min": 100.00,
         "max": 200.00,
@@ -45,8 +49,8 @@
       }
     ]
   },
-  "tarjetas de crédito": [
-    "resumen" : {
+  "tarjetas de crédito": {
+    "resumen": {
       "total de tarjetas": 2,
       "total del monto de crédito": 20000.00,
       "total del monto de crédito disponible": 10000.00,
@@ -57,66 +61,68 @@
       "monto de crédito sugerido": 3000.00,
       "porcentaje de crédito sugerido": "30%",
       "monto de crédito excedido": 2000.00,
-      "porcentaje de crédito excedido": "20%",
       "saldo al corte": 5000.00,
       "proxima fecha de corte": "2024-01-10",
-      "proxima fecha de pago": "2024-01-10",
-    }
-    {
-      "credito": {
-        "limite": 10000.00,
-        "saldo": 5000.00,
-        "porcentaje_uso": "50%",
-        "sugerencia": {
-          "porcentaje_uso": "30%",
-          "monto": 3000.00,
-          "excedente": 2000.00,
-          "porcentaje_excedente": "20%"
+      "proxima fecha de pago": "2024-01-10"
+    },
+    "tarjetas": [
+      {
+        "nombre": "likeU",
+        "banco": "Santander",
+        "icono": "",
+        "fecha de corte": "",
+        "fecha de pago": "",
+        "dia_corte": 10,
+        "anualidad": 0.00,
+        "beneficios": [],
+        "msi": [
+          {
+            "nombre": "Hidro aspiradora",
+            "numero_meses": "6",
+            "fecha_compra": "15/10/2024",
+            "objetivo": 0,
+            "fechas_pago": [
+              {
+                "fecha": "16/11/2024",
+                "pagado": true
+              },
+              {
+                "fecha": "16/12/2024",
+                "pagado": true
+              },
+              {
+                "fecha": "16/01/2025",
+                "pagado": true
+              },
+              {
+                "fecha": "16/02/2025",
+                "pagado": true
+              },
+              {
+                "fecha": "16/03/2025",
+                "pagado": true
+              },
+              {
+                "fecha": "16/04/2025",
+                "pagado": true
+              }
+            ]
+          }
+        ],
+        "credito": {
+          "limite": 10000.00,
+          "saldo": 5000.00,
+          "porcentaje_uso": "50%",
+          "sugerencia": {
+            "porcentaje_uso": "30%",
+            "monto": 3000.00,
+            "excedente": 2000.00,
+            "porcentaje_excedente": "20%"
+          }
         }
-      },
-      "nombre": "likeU",
-      "banco": "Santander",
-      "icono": "",
-      "fecha_limite_pago": "",
-      "dia_corte": 10,
-      "anualidad": 0.00,
-      "beneficios": [],
-      "msi": [
-        {
-          "nombre": "Hidro aspiradora",
-          "numero_meses": "6",
-          "fecha_compra": "15/10/2024",
-          "objetivo": 0,
-          "fechas_pago": [
-            {
-              "fecha": "16/11/2024",
-              "pagado": true
-            },
-            {
-              "fecha": "16/12/2024",
-              "pagado": true
-            },
-            {
-              "fecha": "16/01/2025",
-              "pagado": true
-            },
-            {
-              "fecha": "16/02/2025",
-              "pagado": true
-            },
-            {
-              "fecha": "16/03/2025",
-              "pagado": true
-            },
-            {
-              "fecha": "16/04/2025",
-              "pagado": true
-            }
-          ]
-        }
-      ]
-    }
-  ],
+      }
+    ]
+  },
   "movimientos": [
     {
       "monto": 100.00,
@@ -263,7 +269,7 @@
     "resumen": {
       "total de ingresos": 0,
       "total de ingresos mensuales": 0.00,
-      "total de ingresos anuales": 0.00,
+      "total de ingresos anuales": 0.00
     },
     "ingresos": [
       {
@@ -276,7 +282,7 @@
         "monto": 0.00,
         "forma de pago": "Depósito",
         "ingreso por ahorro de objetivos": false,
-        "ingreso recurrente": true,
+        "ingreso recurrente": true
       }
     ],
     "historial": [
@@ -290,7 +296,7 @@
         "monto": 0.00,
         "forma de pago": "Depósito",
         "ingreso por ahorro de objetivos": false,
-        "ingreso recurrente": true,
+        "ingreso recurrente": true
       }
     ]
   },
@@ -306,7 +312,7 @@
       "porcentaje de ahorro faltante": "0%",
       "porcentaje de ahorro completado": "100%",
       "porcentaje de ahorro en proceso": "0%",
-      "porcentaje de ahorro en espera": "0%",
+      "porcentaje de ahorro en espera": "0%"
     },
     "objetivos": [
       {
@@ -320,9 +326,9 @@
         "Mensual": 50.00,
         "Utilizado": 0.00,
         "Indefinido": false,
-        "Notas": "Ahorro para la compra de la laptop",
+        "Notas": "Ahorro para la compra de la laptop"
       }
-    ]
+    ],
     "movimientos": [
       {
         "fecha": "2024-01-01",
@@ -333,7 +339,7 @@
         "comentario": "Ahorro para la compra de la laptop",
         "utilizado": false,
         "ubicacion": "Cuenta congelada NU",
-        "forma_pago": "Depósito",
+        "forma_pago": "Depósito"
       }
     ]
   },
@@ -347,7 +353,16 @@
       "año": 2024,
       "dia": 1,
       "Forma de pago": "Tarjeta de crédito",
-      "Pagado": true,
+      "Pagado": true
+    }
+  ],
+  "conceptos": [
+    {
+      "fecha de corte": {
+        "video": "https://www.youtube.com/watch?v=pwbtGCQjB0Y",
+        "ubicación": "['tarjetas de crédito']['tarjetas'][0]",
+        "descipción": "La fecha de corte es el día en que se cierra el ciclo de facturación"
+      }
     }
   ]
 }
