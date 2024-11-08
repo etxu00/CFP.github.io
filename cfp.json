@@ -1,0 +1,353 @@
+{
+  "objetivos" : {
+    "resumen": {
+      "monto total de objetivos": 10000.00,
+      "porcentaje de objetivos cumplidos": "50%",
+      "porcentaje de objetivos en espera": "0%",
+      "porcentaje de objetivos en proceso": "0%",
+      "porcentaje de objetivos no cumplidos": "50%",
+      "total de objetivos cumplidos": 5,
+      "total de objetivos en espera": 0,
+      "total de objetivos en proceso": 0,
+      "total de objetivos no cumplidos": 5,
+      "total de objetivos": 10,
+    },
+    "objetivos": [
+      {
+        "id": 0,
+        "nombre": "Laptop Surface Studio 2",
+        "alias": "Laptop",
+        "descripcion": "Laptop Surface Studio 2",
+        "imagen": "https://images-na.ssl-images-amazon.com/images/I/61hu8z%2BVHoL._AC_SL1470_.jpg",
+        "categoria": "Setup",
+        "etiquetas": ["pc", "tecnologia", "laptop"],
+        "padre": "Setup",
+        "monto min": 100.00,
+        "max": 200.00,
+        "completado": true,
+        "ahorrado": 200.00,
+        "historico": [
+          {
+            "fecha": "2024-01-01",
+            "link": "https://www.amazon.com.mx/",
+            "tienda": "AmazonMx",
+            "monto": 100.00,
+            "oferta": true,
+            "comentario": "...",
+            "detalles_oferta": {
+              "motivo": "Black Friday",
+              "descuento_porcentaje": "-50%",
+              "descuento_monto": -50.00,
+              "fecha del fin de la oferta": "2024-01-01"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "tarjetas de crédito": [
+    "resumen" : {
+      "total de tarjetas": 2,
+      "total del monto de crédito": 20000.00,
+      "total del monto de crédito disponible": 10000.00,
+      "total del monto de crédito utilizado": 10000.00,
+      "porcentaje de crédito utilizado": "50%",
+      "porcentaje de crédito disponible": "50%",
+      "porcentaje de crédito excedido": "0%",
+      "monto de crédito sugerido": 3000.00,
+      "porcentaje de crédito sugerido": "30%",
+      "monto de crédito excedido": 2000.00,
+      "porcentaje de crédito excedido": "20%",
+      "saldo al corte": 5000.00,
+      "proxima fecha de corte": "2024-01-10",
+      "proxima fecha de pago": "2024-01-10",
+    }
+    {
+      "credito": {
+        "limite": 10000.00,
+        "saldo": 5000.00,
+        "porcentaje_uso": "50%",
+        "sugerencia": {
+          "porcentaje_uso": "30%",
+          "monto": 3000.00,
+          "excedente": 2000.00,
+          "porcentaje_excedente": "20%"
+        }
+      },
+      "nombre": "likeU",
+      "banco": "Santander",
+      "icono": "",
+      "fecha_limite_pago": "",
+      "dia_corte": 10,
+      "anualidad": 0.00,
+      "beneficios": [],
+      "msi": [
+        {
+          "nombre": "Hidro aspiradora",
+          "numero_meses": "6",
+          "fecha_compra": "15/10/2024",
+          "objetivo": 0,
+          "fechas_pago": [
+            {
+              "fecha": "16/11/2024",
+              "pagado": true
+            },
+            {
+              "fecha": "16/12/2024",
+              "pagado": true
+            },
+            {
+              "fecha": "16/01/2025",
+              "pagado": true
+            },
+            {
+              "fecha": "16/02/2025",
+              "pagado": true
+            },
+            {
+              "fecha": "16/03/2025",
+              "pagado": true
+            },
+            {
+              "fecha": "16/04/2025",
+              "pagado": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "movimientos": [
+    {
+      "monto": 100.00,
+      "fecha_movimiento": "2024-01-01",
+      "descripcion": "Compra de Hidro aspiradora",
+      "categoria": "Hogar",
+      "metodo_pago": "Tarjeta de crédito",
+      "fecha": "2024-01-01",
+      "fecha_cargo": "2024-01-01",
+      "tienda": "AmazonMx",
+      "url": "https://www.amazon.com.mx/",
+      "identificador": "oxxo itesm cuf"
+    }
+  ],
+  "tiendas": [
+    {
+      "nombre": "Oxxo",
+      "tienda_fisica": true,
+      "tienda_online": false,
+      "url": "https://www.amazon.com.mx/",
+      "logo": "",
+      "rfc": "",
+      "referencia": "",
+      "identificador": "oxxo itesm cuf",
+      "historico": [
+        {
+          "compras": 1,
+          "monto": 100.00,
+          "historial": [
+            {
+              "año": 2024,
+              "historial": [
+                {
+                  "mes": "enero",
+                  "compras": 1,
+                  "monto": 100.00
+                },
+                {
+                  "mes": "febrero",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "marzo",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "abril",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "mayo",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "junio",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "julio",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "agosto",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "septiembre",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "octubre",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "noviembre",
+                  "compras": 0,
+                  "monto": 0.00
+                },
+                {
+                  "mes": "diciembre",
+                  "compras": 0,
+                  "monto": 0.00
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "egresos": {
+    "monto": 300.00,
+    "porcentaje": "100%",
+    "pagado": 300.00,
+    "porcentaje_pagado": "100%",
+    "faltante": 0.00,
+    "porcentaje_faltante": "0%",
+    "total": 1,
+    "monto_mensual": 100.00,
+    "egresos": [
+      {
+        "nombre": "",
+        "monto": 300.00,
+        "fecha_inicio": "",
+        "fecha_fin": "",
+        "pagado": 300.00,
+        "porcentaje_pagado": "100%",
+        "faltante": 0.00,
+        "porcentaje_faltante": "0%",
+        "msi": 3,
+        "forma_pago": "Tarjeta de crédito",
+        "nombre_tienda": "AmazonMx",
+        "nombre_tarjeta": "likeU",
+        "pagos": [
+          {
+            "fecha": "2024-01-01",
+            "monto": 100.00,
+            "pagado": true
+          },
+          {
+            "fecha": "2024-02-01",
+            "monto": 100.00,
+            "pagado": true
+          },
+          {
+            "fecha": "2024-03-01",
+            "monto": 100.00,
+            "pagado": true
+          }
+        ]
+      }
+    ]
+  },
+  "ingresos": {
+    "resumen": {
+      "total de ingresos": 0,
+      "total de ingresos mensuales": 0.00,
+      "total de ingresos anuales": 0.00,
+    },
+    "ingresos": [
+      {
+        "año": 2024,
+        "descripcion": "Nómina",
+        "dia": 11,
+        "fecha": "2024-10-11",
+        "mes": "octubre",
+        "mes numero": 10,
+        "monto": 0.00,
+        "forma de pago": "Depósito",
+        "ingreso por ahorro de objetivos": false,
+        "ingreso recurrente": true,
+      }
+    ],
+    "historial": [
+      {
+        "año": 2024,
+        "descripcion": "Nómina",
+        "dia": 11,
+        "fecha": "2024-10-11",
+        "mes": "octubre",
+        "mes numero": 10,
+        "monto": 0.00,
+        "forma de pago": "Depósito",
+        "ingreso por ahorro de objetivos": false,
+        "ingreso recurrente": true,
+      }
+    ]
+  },
+  "ahorros": {
+    "resumen": {
+      "objetivos": 1,
+      "completados": 1,
+      "en proceso": 0,
+      "en espera": 0,
+      "total de ahorros": 100.00,
+      "monto faltante": 0,
+      "porcentaje de ahorro": "100%",
+      "porcentaje de ahorro faltante": "0%",
+      "porcentaje de ahorro completado": "100%",
+      "porcentaje de ahorro en proceso": "0%",
+      "porcentaje de ahorro en espera": "0%",
+    },
+    "objetivos": [
+      {
+        "Objetivo id": 1,
+        "Objetivo": "Laptop",
+        "Descripción": "Laptop Surface Studio 2",
+        "Monto": 100.00,
+        "Avance": "50%",
+        "Ahorrado": 50.00,
+        "Faltante": 50.00,
+        "Mensual": 50.00,
+        "Utilizado": 0.00,
+        "Indefinido": false,
+        "Notas": "Ahorro para la compra de la laptop",
+      }
+    ]
+    "movimientos": [
+      {
+        "fecha": "2024-01-01",
+        "año": 2024,
+        "mes": "enero",
+        "monto": 50.00,
+        "objetivo": 1,
+        "comentario": "Ahorro para la compra de la laptop",
+        "utilizado": false,
+        "ubicacion": "Cuenta congelada NU",
+        "forma_pago": "Depósito",
+      }
+    ]
+  },
+  "pagos programados": [
+    {
+      "Concepto": "Internet",
+      "Monto": 500.00,
+      "Fecha": "2024-01-01",
+      "mes": "enero",
+      "mes numero": 1,
+      "año": 2024,
+      "dia": 1,
+      "Forma de pago": "Tarjeta de crédito",
+      "Pagado": true,
+    }
+  ]
+}
