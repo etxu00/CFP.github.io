@@ -1,9 +1,12 @@
 {
-  "name": "CFP",
-  "short_name": "Mi PWA",
-  "start_url": "index.html",
-  "display": "standalone",
   "background_color": "#ffffff",
+  "display": "standalone",
+  "name": "CFP",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "App de Control de Finanzas Personales",
+  "description": "Progress Web App de Control de Finanzas Personales",
+  "start_url": "/",
   "theme_color": "#007bff",
   "icons": [
     {
