@@ -2,5 +2,5 @@
 App de Control de Finanzas Personales
 
 
-[DEMO](https://etxu00.github.io/cfp.github.io/)
+[DEMO](https://etxu00.github.io/CFP.github.io/)
 
