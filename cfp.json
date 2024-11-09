@@ -1,77 +1,31 @@
 {
-  "objetivos": {
-    "resumen": {
-      "monto total de objetivos": 10000.00,
-      "porcentaje de objetivos cumplidos": "50%",
-      "porcentaje de objetivos en espera": "0%",
-      "porcentaje de objetivos en proceso": "0%",
-      "porcentaje de objetivos no cumplidos": "50%",
-      "total de objetivos cumplidos": 5,
-      "total de objetivos en espera": 0,
-      "total de objetivos en proceso": 0,
-      "total de objetivos no cumplidos": 5,
-      "total de objetivos": 10,
-    },
-    "objetivos": [
+  "MOVIMIENTOS": {
+    "movimientos": [
       {
-        "id": 0,
-        "nombre": "Laptop Surface Studio 2",
-        "alias": "Laptop",
-        "descripcion": "Laptop Surface Studio 2",
-        "imagen": "https://images-na.ssl-images-amazon.com/images/I/61hu8z%2BVHoL._AC_SL1470_.jpg",
-        "categoria": "Setup",
-        "etiquetas": [
-          "pc",
-          "tecnologia",
-          "laptop"
-        ],
-        "padre": "Setup",
-        "monto min": 100.00,
-        "max": 200.00,
-        "completado": true,
-        "ahorrado": 200.00,
-        "historico": [
-          {
-            "fecha": "2024-01-01",
-            "link": "https://www.amazon.com.mx/",
-            "tienda": "AmazonMx",
-            "monto": 100.00,
-            "oferta": true,
-            "comentario": "...",
-            "detalles_oferta": {
-              "motivo": "Black Friday",
-              "descuento_porcentaje": "-50%",
-              "descuento_monto": -50.00,
-              "fecha del fin de la oferta": "2024-01-01"
-            }
-          }
-        ]
+        "_año": 2024,
+        "_dia": 1,
+        "_mes": 1,
+        "categoria": "Hogar",
+        "descripcion": "Compra de Hidro aspiradora",
+        "fecha_de_cargo": "2024-01-01",
+        "fecha_de_creación": "2024-01-01",
+        "fecha_del_movimiento": "2024-01-01",
+        "forma_de_pago": "Tarjeta de crédito",
+        "id": 1,
+        "monto": 100.00,
+        "tienda": "AmazonMx",
+        "url": "https://www.amazon.com.mx/"
       }
     ]
   },
-  "tarjetas de crédito": {
-    "resumen": {
-      "total de tarjetas": 2,
-      "total del monto de crédito": 20000.00,
-      "total del monto de crédito disponible": 10000.00,
-      "total del monto de crédito utilizado": 10000.00,
-      "porcentaje de crédito utilizado": "50%",
-      "porcentaje de crédito disponible": "50%",
-      "porcentaje de crédito excedido": "0%",
-      "monto de crédito sugerido": 3000.00,
-      "porcentaje de crédito sugerido": "30%",
-      "monto de crédito excedido": 2000.00,
-      "saldo al corte": 5000.00,
-      "proxima fecha de corte": "2024-01-10",
-      "proxima fecha de pago": "2024-01-10"
-    },
+  "TARJETAS_DE_CRÉDITO": {
     "tarjetas": [
       {
         "nombre": "likeU",
         "banco": "Santander",
-        "icono": "",
-        "fecha de corte": "",
-        "fecha de pago": "",
+        "imagen": "",
+        "fecha_de_corte": "",
+        "fecha_de_pago": "",
         "dia_corte": 10,
         "anualidad": 0.00,
         "beneficios": [],
@@ -123,22 +77,54 @@
       }
     ]
   },
-  "MOVIMIENTOS": {
-    "movimientos" : [
+
+  "objetivos": {
+    "resumen": {
+      "monto total de objetivos": 10000.00,
+      "porcentaje de objetivos cumplidos": "50%",
+      "porcentaje de objetivos en espera": "0%",
+      "porcentaje de objetivos en proceso": "0%",
+      "porcentaje de objetivos no cumplidos": "50%",
+      "total de objetivos cumplidos": 5,
+      "total de objetivos en espera": 0,
+      "total de objetivos en proceso": 0,
+      "total de objetivos no cumplidos": 5,
+      "total de objetivos": 10,
+    },
+    "objetivos": [
       {
-        "_año": 2024,
-        "_dia": 1,
-        "_mes": 1,
-        "categoria": "Hogar",
-        "descripcion": "Compra de Hidro aspiradora",
-        "fecha_de_cargo": "2024-01-01",
-        "fecha_de_creación": "2024-01-01",
-        "fecha_del_movimiento": "2024-01-01",
-        "forma_de_pago": "Tarjeta de crédito",
-        "id": 1,
-        "monto": 100.00,
-        "tienda": "AmazonMx",
-        "url": "https://www.amazon.com.mx/"
+        "id": 0,
+        "nombre": "Laptop Surface Studio 2",
+        "alias": "Laptop",
+        "descripcion": "Laptop Surface Studio 2",
+        "imagen": "https://images-na.ssl-images-amazon.com/images/I/61hu8z%2BVHoL._AC_SL1470_.jpg",
+        "categoria": "Setup",
+        "etiquetas": [
+          "pc",
+          "tecnologia",
+          "laptop"
+        ],
+        "padre": "Setup",
+        "monto min": 100.00,
+        "max": 200.00,
+        "completado": true,
+        "ahorrado": 200.00,
+        "historico": [
+          {
+            "fecha": "2024-01-01",
+            "link": "https://www.amazon.com.mx/",
+            "tienda": "AmazonMx",
+            "monto": 100.00,
+            "oferta": true,
+            "comentario": "...",
+            "detalles_oferta": {
+              "motivo": "Black Friday",
+              "descuento_porcentaje": "-50%",
+              "descuento_monto": -50.00,
+              "fecha del fin de la oferta": "2024-01-01"
+            }
+          }
+        ]
       }
     ]
   },
@@ -363,80 +349,199 @@
   ],
   "CONCEPTOS": [
     {
-      "fecha de corte": {
-        "video": "https://www.youtube.com/watch?v=pwbtGCQjB0Y",
-        "ubicación": "['tarjetas de crédito']['tarjetas'][0]",
-        "descipción": "La fecha de corte es el día en que se cierra el ciclo de facturación"
-      }
-    },
-    {
       "monto": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Monto del movimiento, si el movimiento no fue una compra a meses sin intereses (MSI)."
       }
     },
     {
       "fecha_del_movimiento": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Fecha en que se realizó el movimiento."
       }
     },
     {
       "descripcion": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Que se compró o se pagó. Si fue una compra en una tienda de conveniencia puedes identificarlo como 'comida', 'snack', etc."
       }
     },
     {
       "categoria": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Categoría a la que pertenece el movimiento. Ejemplo: 'Hogar', 'Comida', 'Transporte', etc. La categoría pueden ser personalizadas. Las categorias son de gran utilidad para clasificar los multiples movimientos de una forma más sencilla."
       }
     },
     {
       "forma_de_pago": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Forma de pago del movimiento. Ejemplo: 'Tarjeta de crédito', 'Efectivo', 'Transferencia', etc."
       }
     },
     {
       "fecha_de_creación": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Fecha en la que se registró el movimiento. Esta fecha es diferente a la fecha del movimiento. La fecha del movimiento es la fecha en la que se realizó la compra o el pago y la fecha de creación es la fecha en la que se registró el movimiento en la aplicación."
       }
     },
     {
       "fecha_de_cargo": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Fecha en la que se tu banco registro el movimiento. Si el pago es con tarjeta de crédito, la fecha de cargo es la fecha en la que se realizó el cargo a la tarjeta. Puede ser diferente a la fecha del movimiento."
       }
     },
     {
       "tienda": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Tienda en la que se realizó la compra o el pago."
       }
     },
     {
       "url": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "URL de la tienda en la que se realizó la compra o el pago. O URL de la tienda en la que se puede encontrar más información sobre el movimiento."
       }
     },
     {
       "id": {
         "video" : "",
-        "ubicación": "['movimientos']['movimientos'][0]",
+        "ubicación": "['MOVIMIENTOS']['movimientos'][0]",
         "descripcion": "Identificador único del movimiento."
+      }
+    },
+    {
+      "fecha_de_corte": {
+        "video": "https://www.youtube.com/watch?v=pwbtGCQjB0Y",
+        "ubicación": "['TARJETAS_DE_CRÉDITO']['tarjetas'][0]",
+        "descipción": "La fecha de corte es el día en que se cierra el ciclo de facturación"
+      }
+    },
+    {
+      "nombre": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][0]",
+        "descripción": "Nombre comercial de la tarjeta de crédito, para que sea más fácil identificarla."
+      }
+    },
+    {
+      "banco": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][0]",
+        "descripción": "Banco emisor de la tarjeta de crédito."
+      }
+    },
+    {
+      "imagen": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][0]",
+        "descripción": "Imagen de la tarjeta de crédito."
+      }
+    },
+    {
+      "fecha_de_corte": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][0]",
+        "descripción": "Fecha en la que se cierra el ciclo de facturación."
+      }
+    },
+    {
+      "fecha_de_pago": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][0]",
+        "descripción": "Fecha limite para realizar el pago de la tarjeta de crédito. Después de esta fecha se generan intereses. Si debes $100.00 y tu CAT es del 50% anual, al día siguiente de la fecha de pago debes $100.00 + $50.00 = $150.00."
+      }
+    },
+    {
+      "dia_corte": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][0]",
+        "descripción": "Día del mes en el que se cierra el ciclo de facturación. Si el día de corte cae en fin de semana o día festivo, el día de corte se recorre al siguiente día hábil."
+      }
+    },
+    {
+      "anualidad": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][0]",
+        "descripción": "Monto anual que se cobra por tener la tarjeta de crédito. Este monto se cobra una vez al año por lo general en el mes en que se activó la tarjeta."
+      }
+    },
+    {
+      "beneficios": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][0]",
+        "descripción": "Lista de beneficios que ofrece la tarjeta de crédito. Ejemplo: Seguro de viaje, seguro de auto, seguro de compra, etc."
+      }
+    },
+    {
+      "credito": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas']",
+        "descripción": "Información de tu línea de crédito con esta tarjeta."
+      }
+    },
+    {
+      "limite": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito]",
+        "descripción": "Monto máximo que puedes gastar con esta tarjeta de crédito."
+      }
+    },
+    {
+      "saldo": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito]",
+        "descripción": "Monto que debes a la tarjeta de crédito."
+      }
+    },
+    {
+      "porcentaje_uso": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito]",
+        "descripción": "Porcentaje de uso de tu línea de crédito. Si tu límite es de $10,000.00 y debes $5,000.00, tu porcentaje de uso es del 50%."
+      }
+    },
+    {
+      "sugerencia": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito]",
+        "descripción": "Sugerencia de uso de tu línea de crédito para lograr un buen historial crediticio."
+      }
+    },
+    {
+      "porcentaje_uso": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
+        "descripción": "Porcentaje de uso de tu línea de crédito que NO debes exceder."
+      }
+    },
+    {
+      "monto": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
+        "descripción": "Monto que NO debes exceder de tu línea de crédito, según tu limite y el porcentaje de uso sugerido."
+      }
+    },
+    {
+      "excedente": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
+        "descripción": "Monto que excedes de tu línea de crédito, en base al porcentaje de uso sugerido."
+      }
+    },
+    {
+      "porcentaje_excedente": {
+        "video": "",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
+        "descripción": "Porcentaje de excedente de tu línea de crédito, en base al porcentaje de uso sugerido."
       }
     }
   ]
