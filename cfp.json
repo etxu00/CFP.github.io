@@ -123,20 +123,25 @@
       }
     ]
   },
-  "movimientos": [
-    {
-      "monto": 100.00,
-      "fecha_movimiento": "2024-01-01",
-      "descripcion": "Compra de Hidro aspiradora",
-      "categoria": "Hogar",
-      "metodo_pago": "Tarjeta de crédito",
-      "fecha": "2024-01-01",
-      "fecha_cargo": "2024-01-01",
-      "tienda": "AmazonMx",
-      "url": "https://www.amazon.com.mx/",
-      "identificador": "oxxo itesm cuf"
-    }
-  ],
+  "MOVIMIENTOS": {
+    "movimientos" : [
+      {
+        "_año": 2024,
+        "_dia": 1,
+        "_mes": 1,
+        "categoria": "Hogar",
+        "descripcion": "Compra de Hidro aspiradora",
+        "fecha_de_cargo": "2024-01-01",
+        "fecha_de_creación": "2024-01-01",
+        "fecha_del_movimiento": "2024-01-01",
+        "forma_de_pago": "Tarjeta de crédito",
+        "id": 1,
+        "monto": 100.00,
+        "tienda": "AmazonMx",
+        "url": "https://www.amazon.com.mx/"
+      }
+    ]
+  },
   "tiendas": [
     {
       "nombre": "Oxxo",
@@ -356,12 +361,82 @@
       "Pagado": true
     }
   ],
-  "conceptos": [
+  "CONCEPTOS": [
     {
       "fecha de corte": {
         "video": "https://www.youtube.com/watch?v=pwbtGCQjB0Y",
         "ubicación": "['tarjetas de crédito']['tarjetas'][0]",
         "descipción": "La fecha de corte es el día en que se cierra el ciclo de facturación"
+      }
+    },
+    {
+      "monto": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Monto del movimiento, si el movimiento no fue una compra a meses sin intereses (MSI)."
+      }
+    },
+    {
+      "fecha_del_movimiento": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Fecha en que se realizó el movimiento."
+      }
+    },
+    {
+      "descripcion": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Que se compró o se pagó. Si fue una compra en una tienda de conveniencia puedes identificarlo como 'comida', 'snack', etc."
+      }
+    },
+    {
+      "categoria": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Categoría a la que pertenece el movimiento. Ejemplo: 'Hogar', 'Comida', 'Transporte', etc. La categoría pueden ser personalizadas. Las categorias son de gran utilidad para clasificar los multiples movimientos de una forma más sencilla."
+      }
+    },
+    {
+      "forma_de_pago": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Forma de pago del movimiento. Ejemplo: 'Tarjeta de crédito', 'Efectivo', 'Transferencia', etc."
+      }
+    },
+    {
+      "fecha_de_creación": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Fecha en la que se registró el movimiento. Esta fecha es diferente a la fecha del movimiento. La fecha del movimiento es la fecha en la que se realizó la compra o el pago y la fecha de creación es la fecha en la que se registró el movimiento en la aplicación."
+      }
+    },
+    {
+      "fecha_de_cargo": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Fecha en la que se tu banco registro el movimiento. Si el pago es con tarjeta de crédito, la fecha de cargo es la fecha en la que se realizó el cargo a la tarjeta. Puede ser diferente a la fecha del movimiento."
+      }
+    },
+    {
+      "tienda": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Tienda en la que se realizó la compra o el pago."
+      }
+    },
+    {
+      "url": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "URL de la tienda en la que se realizó la compra o el pago. O URL de la tienda en la que se puede encontrar más información sobre el movimiento."
+      }
+    },
+    {
+      "id": {
+        "video" : "",
+        "ubicación": "['movimientos']['movimientos'][0]",
+        "descripcion": "Identificador único del movimiento."
       }
     }
   ]
