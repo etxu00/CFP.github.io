@@ -77,6 +77,18 @@
       }
     ]
   },
+  "TIENDAS": [
+    {
+      "id": 0,
+      "nombre": "Oxxo",
+      "tienda_fisica": true,
+      "tienda_online": false,
+      "url": "https://www.amazon.com.mx/",
+      "imagen": "",
+      "rfc": "",
+      "referencia": "",
+    }
+  ],
 
   "objetivos": {
     "resumen": {
@@ -128,91 +140,6 @@
       }
     ]
   },
-  "tiendas": [
-    {
-      "nombre": "Oxxo",
-      "tienda_fisica": true,
-      "tienda_online": false,
-      "url": "https://www.amazon.com.mx/",
-      "logo": "",
-      "rfc": "",
-      "referencia": "",
-      "identificador": "oxxo itesm cuf",
-      "historico": [
-        {
-          "compras": 1,
-          "monto": 100.00,
-          "historial": [
-            {
-              "año": 2024,
-              "historial": [
-                {
-                  "mes": "enero",
-                  "compras": 1,
-                  "monto": 100.00
-                },
-                {
-                  "mes": "febrero",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "marzo",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "abril",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "mayo",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "junio",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "julio",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "agosto",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "septiembre",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "octubre",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "noviembre",
-                  "compras": 0,
-                  "monto": 0.00
-                },
-                {
-                  "mes": "diciembre",
-                  "compras": 0,
-                  "monto": 0.00
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
   "egresos": {
     "monto": 300.00,
     "porcentaje": "100%",
@@ -347,6 +274,7 @@
       "Pagado": true
     }
   ],
+
   "CONCEPTOS": [
     {
       "monto": {
@@ -542,6 +470,55 @@
         "video": "",
         "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
         "descripción": "Porcentaje de excedente de tu línea de crédito, en base al porcentaje de uso sugerido."
+      }
+    },
+    {
+      "nombre" : {
+        "video": "",
+        "ubicación": "[TIENDAS][0]",
+        "descripción": "Nombre comercial de la tienda."
+      }
+    },
+    {
+      "tienda_fisica" : {
+        "video": "",
+        "ubicación": "[TIENDAS][0]",
+        "descripción": "Si la compra se realizó en una tienda física."
+      }
+    },
+    {
+      "tienda_online" : {
+        "video": "",
+        "ubicación": "[TIENDAS][0]",
+        "descripción": "Si la compra se realizó en una tienda en línea."
+      }
+    },
+    {
+      "url" : {
+        "video": "",
+        "ubicación": "[TIENDAS][0]",
+        "descripción": "Agrega el link del artículo o de la tienda en la que se realizó la compra."
+      }
+    },
+    {
+      "imagen" : {
+        "video": "",
+        "ubicación": "[TIENDAS][0]",
+        "descripción": "Logotipo de la tienda."
+      }
+    },
+    {
+      "rfc" : {
+        "video": "",
+        "ubicación": "[TIENDAS][0]",
+        "descripción": "Clave del Registro Federal de Contribuyentes de la tienda."
+      }
+    },
+    {
+      "referencia" : {
+        "video": "",
+        "ubicación": "[TIENDAS][0]",
+        "descripción": "En las aplicaciones bancarias no suele aparecer el nombre de la tienda, por lo que es importante agregar una referencia para identificar la tienda."
       }
     }
   ]
