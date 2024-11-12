@@ -89,6 +89,52 @@
       "referencia": "",
     }
   ],
+  "AHORROS": {
+    "resumen": {
+      "completados": 1,
+      "en_espera": 0,
+      "en_proceso": 0,
+      "monto_faltante": 0,
+      "objetivos": 1,
+      "porcentaje_de_ahorro_completado": "100%",
+      "porcentaje_de_ahorro_en_espera": "0%",
+      "porcentaje_de_ahorro_en_proceso": "0%",
+      "porcentaje_de_ahorro_faltante": "0%",
+      "porcentaje_de_ahorro": "100%",
+      "total_de_ahorros": 100.00
+    },
+    "objetivos": [
+      {
+        "aporte_mensual": 50.00,
+        "descripción": "Laptop Surface Studio 2",
+        "id": 1,
+        "indefinido": false,
+        "monto_ahorrado": 50.00,
+        "monto_faltante": 50.00,
+        "monto": 100.00,
+        "nombre": "Laptop",
+        "notas": ["Ahorro para la compra de la laptop"],
+        "porcentaje_de_avance": "50%",
+        "utilizado": false
+      }
+    ],
+    "movimientos": [
+      {
+        "_año": 2024,
+        "_dia": 1,
+        "_mes": "enero",
+        "comentarios": "Ahorro para la compra de la laptop",
+        "fecha_de_creación": "2024-01-01",
+        "fecha_del_movimiento": "2024-01-01",
+        "forma_pago": "Depósito",
+        "id": 1,
+        "monto": 50.00,
+        "objetivo": 1,
+        "ubicación": "Cuenta congelada NU",
+        "utilizado": false
+      }
+    ]
+  },
 
   "objetivos": {
     "resumen": {
@@ -215,49 +261,6 @@
         "forma de pago": "Depósito",
         "ingreso por ahorro de objetivos": false,
         "ingreso recurrente": true
-      }
-    ]
-  },
-  "ahorros": {
-    "resumen": {
-      "objetivos": 1,
-      "completados": 1,
-      "en proceso": 0,
-      "en espera": 0,
-      "total de ahorros": 100.00,
-      "monto faltante": 0,
-      "porcentaje de ahorro": "100%",
-      "porcentaje de ahorro faltante": "0%",
-      "porcentaje de ahorro completado": "100%",
-      "porcentaje de ahorro en proceso": "0%",
-      "porcentaje de ahorro en espera": "0%"
-    },
-    "objetivos": [
-      {
-        "Objetivo id": 1,
-        "Objetivo": "Laptop",
-        "Descripción": "Laptop Surface Studio 2",
-        "Monto": 100.00,
-        "Avance": "50%",
-        "Ahorrado": 50.00,
-        "Faltante": 50.00,
-        "Mensual": 50.00,
-        "Utilizado": 0.00,
-        "Indefinido": false,
-        "Notas": "Ahorro para la compra de la laptop"
-      }
-    ],
-    "movimientos": [
-      {
-        "fecha": "2024-01-01",
-        "año": 2024,
-        "mes": "enero",
-        "monto": 50.00,
-        "objetivo": 1,
-        "comentario": "Ahorro para la compra de la laptop",
-        "utilizado": false,
-        "ubicacion": "Cuenta congelada NU",
-        "forma_pago": "Depósito"
       }
     ]
   },
@@ -519,6 +522,209 @@
         "video": "",
         "ubicación": "[TIENDAS][0]",
         "descripción": "En las aplicaciones bancarias no suele aparecer el nombre de la tienda, por lo que es importante agregar una referencia para identificar la tienda."
+      }
+    },
+    {
+      "completados" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Total de objetivos completados. Los objetivos de ahorros son independientes de los objetivos de compras."
+      }
+    },
+    {
+      "en_espera" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Total de objetivos que aun no se han empezado a ahorrar. Si un objetivo tiene un monto de ahorrado de más de $0.00, ya no se considera en espera."
+      }
+    },
+    {
+      "en_proceso" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Total de objetivos que se están ahorrando actualmente. Si un objetivo tiene un monto de ahorrado de más de $0.00, es considerado en proceso."
+      }
+    },
+    {
+      "monto_faltante" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Monto total que falta para completar todos los objetivos que no estén en espera. Es la suma de los montos faltantes de todos los objetivos."
+      }
+    },
+    {
+      "objetivos" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Total de objetivos de ahorro. Los objetivos de ahorros son independientes de los objetivos de compras."
+      }
+    },
+    {
+      "porcentaje_de_ahorro_completado" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Porcentaje de objetivos completados. Se calcula dividiendo el total de objetivos completados entre el total de objetivos."
+      }
+    },
+    {
+      "porcentaje_de_ahorro_en_espera" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Porcentaje de objetivos en espera. Se calcula dividiendo el total de objetivos en espera entre el total de objetivos."
+      }
+    },
+    {
+      "porcentaje_de_ahorro_en_proceso" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Porcentaje de objetivos en proceso. Se calcula dividiendo el total de objetivos en proceso entre el total de objetivos."
+      }
+    },
+    {
+      "porcentaje_de_ahorro_faltante" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Porcentaje de objetivos faltantes. Se calcula dividiendo el monto faltante entre el total de objetivos."
+      }
+    },
+    {
+      "porcentaje_de_ahorro" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Porcentaje de objetivos completados, en espera y en proceso. Se calcula dividiendo el total de objetivos completados, en espera y en proceso entre el total de objetivos."
+      }
+    },
+    {
+      "total_de_ahorros" : {
+        "video": "",
+        "ubicación": "[AHORROS][resumen]",
+        "descripción": "Monto total de ahorros. Es la suma de los montos ahorrados de todos los objetivos."
+      }
+    },
+    {
+      "aporte_mensual" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Monto que se debe ahorrar mensualmente para cumplir el objetivo."
+      }
+    },
+    {
+      "descripción" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Descripción del objetivo de ahorro. Especifica algunos detalles del objetivo, como la marca, modelo, color, etc."
+      }
+    },
+    {
+      "indefinido" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Si el objetivo no tiene un monto definido, se considera indefinido. Ejemplo: Ahorrar para emergencias."
+      }
+    },
+    {
+      "monto" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Monto total del objetivo de ahorro."
+      }
+    },
+    {
+      "monto_ahorrado" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Monto que se ha ahorrado hasta el momento."
+      }
+    },
+    {
+      "monto_faltante" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Monto que falta para completar el objetivo de ahorro."
+      }
+    },
+    {
+      "nombre" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Nombre del objetivo de ahorro."
+      }
+    },
+    {
+      "notas" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Notas adicionales sobre el objetivo de ahorro. Tomas notas como recordatorios, detalles, etc."
+      }
+    },
+    {
+      "porcentaje_de_avance" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Porcentaje de avance del objetivo de ahorro. Se calcula dividiendo el monto ahorrado entre el monto total del objetivo."
+      }
+    },
+    {
+      "utilizado" : {
+        "video": "",
+        "ubicación": "[AHORROS][objetivos][0]",
+        "descripción": "Si el objetivo de ahorro se ha utilizado para realizar una compra."
+      }
+    },
+    {
+      "comentario" : {
+        "video": "",
+        "ubicación": "[AHORROS][movimientos][0]",
+        "descipción": "Comentario sobre el movimiento. Puedes agregar detalles sobre la compra o el pago."
+      }
+    },
+    {
+      "fecha_de_creación" : {
+        "video": "",
+        "ubicación": "[AHORROS][movimientos][0]",
+        "descipción": "Fecha en la que se registró el movimiento. Esta fecha es diferente a la fecha del movimiento. La fecha del movimiento es la fecha en la que se realizó la compra o el pago y la fecha de creación es la fecha en la que se registró el movimiento en la aplicación."
+      }
+    },
+    {
+      "fecha_del_movimiento" : {
+        "video": "",
+        "ubicación": "[AHORROS][movimientos][0]",
+        "descipción": "Fecha en la que se realizó el movimiento."
+      }
+    },
+    {
+      "forma_pago" : {
+        "video": "",
+        "ubicación": "[AHORROS][movimientos][0]",
+        "descipción": "Forma de pago del movimiento. Ejemplo: 'Depósito', 'Transferencia', 'Retiro', etc."
+      }
+    },
+    {
+      "monto" : {
+        "video": "",
+        "ubicación": "[AHORROS][movimientos][0]",
+        "descipción": "Monto del movimiento. Si el movimiento no fue una compra a meses sin intereses (MSI)."
+      }
+    },
+    {
+      "objetivo" : {
+        "video": "",
+        "ubicación": "[AHORROS][movimientos][0]",
+        "descipción": "Objetivo de ahorro al que se destina el movimiento."
+      }
+    },
+    {
+      "ubicación" : {
+        "video": "",
+        "ubicación": "[AHORROS][movimientos][0]",
+        "descipción": "Ubicación del movimiento. Ejemplo: 'Cuenta congelada NU', 'Cuenta de ahorro BBVA', etc."
+      }
+    },
+    {
+      "utilizado" : {
+        "video": "",
+        "ubicación": "[AHORROS][movimientos][0]",
+        "descipción": "Si el movimiento se ha utilizado para realizar una compra."
       }
     }
   ]
