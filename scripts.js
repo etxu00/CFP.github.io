@@ -40,7 +40,7 @@ function getData(concept) {
 
 /**
  * AGREGAR ELEMENTO.   
- * Agrega un nuevo elemento a _DATA según el concepto
+ * Agrega o actualiza un nuevo elemento a _DATA según el concepto
  * @param {string} concept - Concepto que se va a agregar a _DATA
  * @param {*} values - Objeto a insertar en _DATA[concept]
  */
@@ -78,4 +78,8 @@ function createItem(concept, values) {
 function updateItem(concept, values) {
   _DATA[concept] = _DATA[concept].map(item => item.id === values.id ? values : item)
   getData(concept)
+}
+
+function generateInput(leyend) {
+  return `<label><span>${leyend}</span><input type="text"></label>`
 }
