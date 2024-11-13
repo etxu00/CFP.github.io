@@ -63,7 +63,7 @@
             ]
           }
         ],
-        "credito": {
+        "crédito": {
           "limite": 10000.00,
           "saldo": 5000.00,
           "porcentaje_uso": "50%",
@@ -81,7 +81,7 @@
     {
       "id": 0,
       "nombre": "Oxxo",
-      "tienda_fisica": true,
+      "tienda_física": true,
       "tienda_online": false,
       "url": "https://www.amazon.com.mx/",
       "imagen": "",
@@ -135,39 +135,34 @@
       }
     ]
   },
-
-  "objetivos": {
+  "OBJETIVOS": {
     "resumen": {
-      "monto total de objetivos": 10000.00,
-      "porcentaje de objetivos cumplidos": "50%",
-      "porcentaje de objetivos en espera": "0%",
-      "porcentaje de objetivos en proceso": "0%",
-      "porcentaje de objetivos no cumplidos": "50%",
-      "total de objetivos cumplidos": 5,
-      "total de objetivos en espera": 0,
-      "total de objetivos en proceso": 0,
-      "total de objetivos no cumplidos": 5,
-      "total de objetivos": 10,
+      "total": 10000.00,
+      "porcentaje_de_objetivos_cumplidos": "50%",
+      "porcentaje_de_objetivos_en_espera": "0%",
+      "porcentaje_de_objetivos_en_proceso": "0%",
+      "porcentaje_de_objetivos_no_cumplidos": "50%",
+      "total_de_objetivos_cumplidos": 5,
+      "total_de_objetivos_en_espera": 0,
+      "total_de_objetivos_en_proceso": 0,
+      "total_de_objetivos_no_cumplidos": 5,
+      "total_de_objetivos": 10
     },
     "objetivos": [
       {
         "id": 0,
         "nombre": "Laptop Surface Studio 2",
         "alias": "Laptop",
-        "descripcion": "Laptop Surface Studio 2",
+        "descripción": "Laptop Surface Studio 2",
         "imagen": "https://images-na.ssl-images-amazon.com/images/I/61hu8z%2BVHoL._AC_SL1470_.jpg",
-        "categoria": "Setup",
-        "etiquetas": [
-          "pc",
-          "tecnologia",
-          "laptop"
-        ],
+        "categoría": "Setup",
+        "etiquetas": ["pc", "tecnología", "laptop"],
         "padre": "Setup",
-        "monto min": 100.00,
+        "monto_mínimo": 100.00,
         "max": 200.00,
         "completado": true,
         "ahorrado": 200.00,
-        "historico": [
+        "histórico": [
           {
             "fecha": "2024-01-01",
             "link": "https://www.amazon.com.mx/",
@@ -179,13 +174,14 @@
               "motivo": "Black Friday",
               "descuento_porcentaje": "-50%",
               "descuento_monto": -50.00,
-              "fecha del fin de la oferta": "2024-01-01"
+              "fecha_del_fin_de_la_oferta": "2024-01-01"
             }
           }
         ]
       }
     ]
   },
+
   "egresos": {
     "monto": 300.00,
     "porcentaje": "100%",
@@ -353,7 +349,7 @@
       "fecha_de_corte": {
         "video": "https://www.youtube.com/watch?v=pwbtGCQjB0Y",
         "ubicación": "['TARJETAS_DE_CRÉDITO']['tarjetas'][0]",
-        "descipción": "La fecha de corte es el día en que se cierra el ciclo de facturación"
+        "descripción": "La fecha de corte es el día en que se cierra el ciclo de facturación"
       }
     },
     {
@@ -413,7 +409,7 @@
       }
     },
     {
-      "credito": {
+      "crédito": {
         "video": "",
         "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas']",
         "descripción": "Información de tu línea de crédito con esta tarjeta."
@@ -422,56 +418,56 @@
     {
       "limite": {
         "video": "",
-        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito]",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][crédito]",
         "descripción": "Monto máximo que puedes gastar con esta tarjeta de crédito."
       }
     },
     {
       "saldo": {
         "video": "",
-        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito]",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][crédito]",
         "descripción": "Monto que debes a la tarjeta de crédito."
       }
     },
     {
       "porcentaje_uso": {
         "video": "",
-        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito]",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][crédito]",
         "descripción": "Porcentaje de uso de tu línea de crédito. Si tu límite es de $10,000.00 y debes $5,000.00, tu porcentaje de uso es del 50%."
       }
     },
     {
       "sugerencia": {
         "video": "",
-        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito]",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][crédito]",
         "descripción": "Sugerencia de uso de tu línea de crédito para lograr un buen historial crediticio."
       }
     },
     {
       "porcentaje_uso": {
         "video": "",
-        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][crédito][sugerencia]",
         "descripción": "Porcentaje de uso de tu línea de crédito que NO debes exceder."
       }
     },
     {
       "monto": {
         "video": "",
-        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][crédito][sugerencia]",
         "descripción": "Monto que NO debes exceder de tu línea de crédito, según tu limite y el porcentaje de uso sugerido."
       }
     },
     {
       "excedente": {
         "video": "",
-        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][crédito][sugerencia]",
         "descripción": "Monto que excedes de tu línea de crédito, en base al porcentaje de uso sugerido."
       }
     },
     {
       "porcentaje_excedente": {
         "video": "",
-        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][credito][sugerencia]",
+        "ubicación": "[TARJETAS_DE_CRÉDITO]['tarjetas'][crédito][sugerencia]",
         "descripción": "Porcentaje de excedente de tu línea de crédito, en base al porcentaje de uso sugerido."
       }
     },
@@ -483,7 +479,7 @@
       }
     },
     {
-      "tienda_fisica" : {
+      "tienda_física" : {
         "video": "",
         "ubicación": "[TIENDAS][0]",
         "descripción": "Si la compra se realizó en una tienda física."
@@ -675,56 +671,287 @@
       "comentario" : {
         "video": "",
         "ubicación": "[AHORROS][movimientos][0]",
-        "descipción": "Comentario sobre el movimiento. Puedes agregar detalles sobre la compra o el pago."
+        "descripción": "Comentario sobre el movimiento. Puedes agregar detalles sobre la compra o el pago."
       }
     },
     {
       "fecha_de_creación" : {
         "video": "",
         "ubicación": "[AHORROS][movimientos][0]",
-        "descipción": "Fecha en la que se registró el movimiento. Esta fecha es diferente a la fecha del movimiento. La fecha del movimiento es la fecha en la que se realizó la compra o el pago y la fecha de creación es la fecha en la que se registró el movimiento en la aplicación."
+        "descripción": "Fecha en la que se registró el movimiento. Esta fecha es diferente a la fecha del movimiento. La fecha del movimiento es la fecha en la que se realizó la compra o el pago y la fecha de creación es la fecha en la que se registró el movimiento en la aplicación."
       }
     },
     {
       "fecha_del_movimiento" : {
         "video": "",
         "ubicación": "[AHORROS][movimientos][0]",
-        "descipción": "Fecha en la que se realizó el movimiento."
+        "descripción": "Fecha en la que se realizó el movimiento."
       }
     },
     {
       "forma_pago" : {
         "video": "",
         "ubicación": "[AHORROS][movimientos][0]",
-        "descipción": "Forma de pago del movimiento. Ejemplo: 'Depósito', 'Transferencia', 'Retiro', etc."
+        "descripción": "Forma de pago del movimiento. Ejemplo: 'Depósito', 'Transferencia', 'Retiro', etc."
       }
     },
     {
       "monto" : {
         "video": "",
         "ubicación": "[AHORROS][movimientos][0]",
-        "descipción": "Monto del movimiento. Si el movimiento no fue una compra a meses sin intereses (MSI)."
+        "descripción": "Monto del movimiento. Si el movimiento no fue una compra a meses sin intereses (MSI)."
       }
     },
     {
       "objetivo" : {
         "video": "",
         "ubicación": "[AHORROS][movimientos][0]",
-        "descipción": "Objetivo de ahorro al que se destina el movimiento."
+        "descripción": "Objetivo de ahorro al que se destina el movimiento."
       }
     },
     {
       "ubicación" : {
         "video": "",
         "ubicación": "[AHORROS][movimientos][0]",
-        "descipción": "Ubicación del movimiento. Ejemplo: 'Cuenta congelada NU', 'Cuenta de ahorro BBVA', etc."
+        "descripción": "Ubicación del movimiento. Ejemplo: 'Cuenta congelada NU', 'Cuenta de ahorro BBVA', etc."
       }
     },
     {
       "utilizado" : {
         "video": "",
         "ubicación": "[AHORROS][movimientos][0]",
-        "descipción": "Si el movimiento se ha utilizado para realizar una compra."
+        "descripción": "Si el movimiento se ha utilizado para realizar una compra."
+      }
+    },
+    {
+      "total" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Monto total de los objetivos de compras."
+      }
+    },
+    {
+      "porcentaje_de_objetivos_cumplidos" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Porcentaje de objetivos cumplidos. Se calcula dividiendo el total de objetivos cumplidos entre el total de objetivos."
+      }
+    },
+    {
+      "porcentaje_de_objetivos_en_espera" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Porcentaje de objetivos en espera. Se calcula dividiendo el total de objetivos en espera entre el total de objetivos."
+      }
+    },
+    {
+      "porcentaje_de_objetivos_en_proceso" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Porcentaje de objetivos en proceso. Se calcula dividiendo el total de objetivos en proceso entre el total de objetivos."
+      }
+    },
+    {
+      "porcentaje_de_objetivos_no_cumplidos" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Porcentaje de objetivos no cumplidos. Se calcula dividiendo el total de objetivos no cumplidos entre el total de objetivos."
+      }
+    },
+    {
+      "total_de_objetivos_cumplidos" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Total de objetivos cumplidos."
+      }
+    },
+    {
+      "total_de_objetivos_en_espera" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Total de objetivos en espera."
+      }
+    },
+    {
+      "total_de_objetivos_en_proceso" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Total de objetivos en proceso."
+      }
+    },
+    {
+      "total_de_objetivos_no_cumplidos" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Total de objetivos no cumplidos."
+      }
+    },
+    {
+      "total_de_objetivos" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][resumen]",
+        "descripción": "Total de objetivos."
+      }
+    },
+    {
+      "ahorrado": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Monto ahorrado para el objetivo de compra."
+      }
+    },
+    {
+      "alias": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Nombre corto del objetivo de compra."
+      }
+    },
+    {
+      "categoría": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Categoría a la que pertenece el objetivo de compra. Ejemplo: 'Hogar', 'Comida', 'Transporte', etc."
+      }
+    },
+    {
+      "completado": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Si el objetivo de compra se ha completado."
+      }
+    },
+    {
+      "descripción": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Descripción del objetivo de compra. Especifica algunos detalles del objetivo, como la marca, modelo, color, etc."
+      }
+    },
+    {
+      "etiquetas": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Etiquetas que describen el objetivo de compra. Ejemplo: 'pc', 'tecnología', 'laptop', etc."
+      }
+    },
+    {
+      "histórico": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Historial de compras del objetivo de compra."
+      }
+    },
+    {
+      "imagen": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Imagen del objetivo de compra."
+      }
+    },
+    {
+      "max": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Monto máximo que se puede gastar en el objetivo de compra."
+      }
+    },
+    {
+      "monto_mínimo": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Monto mínimo que se puede gastar en el objetivo de compra."
+      }
+    },
+    {
+      "nombre": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Nombre del objetivo de compra."
+      }
+    },
+    {
+      "padre": {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0]",
+        "descripción": "Objetivo de compra al que pertenece el objetivo de compra. Ejemplo: 'Setup', 'Viaje', 'Hogar', etc."
+      }
+    },
+    {
+      "comentario" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico]",
+        "descripción": "Comentario sobre la compra. Puedes agregar detalles sobre la oferta, la tienda, etc."
+      }
+    },
+    {
+      "detalles_oferta" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico]",
+        "descripción": "Detalles de la oferta. Si la compra fue en oferta, agrega los detalles de la oferta."
+      }
+    },
+    {
+      "fecha" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico]",
+        "descripción": "Fecha en la que se realizó la compra."
+      }
+    },
+    {
+      "link" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico]",
+        "descripción": "Link de la tienda en la que se realizó la compra."
+      }
+    },
+    {
+      "monto" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico]",
+        "descripción": "Precio actual del objetivo de compra."
+      }
+    },
+    {
+      "oferta" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico]",
+        "descripción": "Si la compra fue en oferta."
+      }
+    },
+    {
+      "tienda" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico]",
+        "descripción": "Tienda en la que se realizó la compra."
+      }
+    },
+    {
+      "motivo" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico][detalles_oferta]",
+        "descripción": "Motivo de la oferta. Ejemplo: 'Black Friday', 'Cyber Monday', '"
+      }
+    },
+    {
+      "descuento_porcentaje" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico][detalles_oferta]",
+        "descripción": "Porcentaje de descuento de la oferta."
+      }
+    },
+    {
+      "descuento_monto" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico][detalles_oferta]",
+        "descripción": "Monto de descuento de la oferta."
+      }
+    },
+    {
+      "fecha_del_fin_de_la_oferta" : {
+        "video": "",
+        "ubicación": "[OBJETIVOS][objetivos][0][histórico][detalles_oferta]",
+        "descripción": "Fecha en la que termina la oferta o promoción."
       }
     }
   ]
