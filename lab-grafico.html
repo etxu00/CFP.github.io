@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo gráficos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      align-items: center;
+      background: #212121;
+      display: grid;
+      margin: 0;
+      min-height: 100dvh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: azure;
+    }
+    svg {
+      height: 100px;
+      width: 100px;
+      margin: 0 auto;
+      transform: rotate(-90deg); /* TODO: ELIMINAR */
+    }
+    section:not([hidden]) {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: auto 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+      article {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <style>
+    circle {
+      --coords: 50;
+      --color: #424242; /* Color por defecto de la circunferencia */
+      --deg: calc(360 / ((360 * var(--start)) / 100)); /* 360 ÷ ((360 × [origin]) ÷ 100)) */
+      /* Tamaño del perimetro de la circunferencia */
+      --longitud: calc(3.1416 * (var(--ratio) * 2)); /* 𝛑 (r × 2) */
+      --percentage: 100;
+      --ratio: 47.5;
+      --width: 5px;
+      --start: 0; /* Punto de origen para empezar a pintar la linea */
+      /* Tamaño final de la circunferencia según el porcentaje que se desea mostrar*/
+      --size: calc(var(--longitud) - (var(--longitud) * (var(--percentage) / 100))); /* long - ( long * [porcentaje] ) */
+      cx: var(--coords);
+      cy: var(--coords);
+      fill: none;
+      r: var(--ratio);
+      stroke-dasharray: var(--longitud);
+      stroke-dashoffset: var(--size);
+      /* stroke-linecap: round; */
+      stroke-width: var(--width);
+      stroke: var(--color);
+      transform-origin: center center;
+      opacity: 0;
+      transform: rotate(calc(360deg / var(--deg)));
+      &:nth-child(2) {
+        animation: show_line_1 .25s linear 1s forwards;
+      }
+      &:nth-child(3) {
+        animation: show_line_2 .25s linear 1.25s forwards;
+      }
+      &:nth-child(4) {
+        animation: show_line_3 .25s linear 1.5s forwards;
+      }
+      &:nth-child(5) {
+        animation: show_line_4 .25s linear 1.75s forwards;
+      }
+    }
+
+    @keyframes show_line_1 {
+      0% {
+        stroke-dashoffset: 298.452; /* longitud */
+        opacity: 1;
+      }
+      100% {
+        stroke-dashoffset: 149.226; /* size */
+        opacity: 1;
+      }
+    }
+
+    @keyframes show_line_2 {
+      0% {
+        stroke-dashoffset: 298.452;
+        opacity: 1;
+      }
+      100% {
+        stroke-dashoffset: 223.839;
+        opacity: 1;
+      }
+    }
+
+    @keyframes show_line_3 {
+      0% {
+        stroke-dashoffset: 298.452;
+        opacity: 1;
+      }
+      100% {
+        stroke-dashoffset: 253.607;
+        opacity: 1;
+      }
+    }
+
+    @keyframes show_line_4 {
+      0% {
+        stroke-dashoffset: 298.452;
+        opacity: 1;
+      }
+      100% {
+        stroke-dashoffset: 268.291;
+        opacity: 1;
+      }
+    }
+
+    @keyframes init {
+      0% {
+        box-shadow: 0 0 0 120px black inset;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+      }
+      100% {
+        box-shadow: 0 0 0 15px black inset;
+        transform: translate(-50%, -50%) scale(1);
+        opacity: .5;
+      }
+    }
+    
+    .svg-container {
+      height: 100px;
+      position: relative;
+      width: 100px;
+      &:hover:before {
+        opacity: 1 !important;
+      }
+      &:before {
+        --size: 110px;
+        animation: init 1s cubic-bezier(0.42, 0, 0.53, 1.4) forwards;
+        border-radius: 50%;
+        box-shadow: 0 0 0 15px black inset;
+        content: '';
+        display: block;
+        height: var(--size);
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: all .25s ease-in-out;
+        width: var(--size);
+      }
+    }
+  </style>
+  <section>
+    <div class="svg-container">
+      <svg viewBox="0 0 100 100">
+        <circle></circle>
+        <circle style="--color: #009688; --percentage: 50;"></circle>
+        <circle style="--color: #3f51b5; --percentage: 25; --start: 50;"></circle>
+        <circle style="--color: #ffeb3b; --percentage: 15; --start: 75"></circle>
+        <circle style="--color: #f44336; --percentage: 10; --start: 90"></circle>
+      </svg>
+      <!--
+      -->
+    </div>
+    <article>
+      <span>
+        <span style="color: #009688">■</span>
+        <span>50% Opción 1</span>
+      </span>
+      <span>
+        <span style="color: #3f51b5">■</span>
+        <span>25% Opción 2</span>
+      </span>
+      <span>
+        <span style="color: #ffeb3b">■</span>
+        <span>15% Opción 3</span>
+      </span>
+      <span>
+        <span style="color: #f44336">■</span>
+        <span>10% Opción 4</span>
+      </span>
+    </article>
+  </section>
+
+  <!-- <style>
+    nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: blue;
+      padding: 10px;
+      background-color: #DDD;
+    }
+  </style> -->
+  
+  <!-- <nav>
+    <a href="/home">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </nav> -->
+  
+  <!-- <main>
+    <section id="home">Welcome to the Home page!</section>
+    <section id="about" hidden>Learn more About us!</section>
+    <section id="contact" hidden>Get in touch with us via Contact page!</section>
+  </main> -->
+
+  <!-- <script>
+    // Function to update the visibility of sections based on the current path
+      function showSection(path) {
+        document.querySelectorAll('section').forEach(sec => sec.hidden = true);
+        if (path === '/about') {
+          document.getElementById('about').hidden = false;
+        } else if (path === '/contact') {
+          document.getElementById('contact').hidden = false;
+        } else {
+          document.getElementById('home').hidden = false;
+        }
+      }
+
+      // Initial load: Show section based on the current URL
+      showSection(window.location.pathname);
+
+      // Event listener for navigation
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault(); // Prevent default link behavior
+          const path = this.getAttribute('href');
+          history.pushState({}, '', path); // Update the URL without reloading
+          showSection(path); // Update visible section
+        });
+      });
+
+      // Handle browser back/forward navigation
+      window.addEventListener('popstate', function () {
+        showSection(window.location.pathname);
+      });
+
+  </script> -->
+</body>
+</html>
