@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="App para el control de finanzas personales">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de finanzas personales</title>
+  <link rel="stylesheet" href="http://127.0.0.1:3002/style.css?v=1">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <!--link rel="manifest" href="./manifest.json">
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+    }
+  </script-->
+  <style>
+    label:has([required]) span::after {
+      content: " *";
+      color: red;
+    }
+    
+    label:has(input:invalid) {
+      color: red;
+
+      input {
+        border-color: red;
+      }
+    }
+
+    label:has(input:not(:invalid)) .invalid {
+      display: none;
+    }
+
+    img {
+      max-width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="">
+      <a class="btn" href="#"><span>Inicio</span></a>
+      <a href="objetivos.html"><span>Objetivos</span></a>
+      <a href="#"><span>Nuevo</span></a>
+    </nav>
+    <button type="button" onclick="submitForm(event)">
+      <svg viewBox="0 0 24 24"><use href="#icon_save"></svg>
+      <span>Guardar</span>
+    </button>
+    <details>
+      <summary class="min">
+        <svg viewBox="0 0 24 24"><use href="#icon_dots_vertical"></svg>
+      </summary>
+      <section class="dropdown">
+        <button>
+          <svg viewBox="0 0 24 24"><use href="#icon_setting"></svg>
+          <span>Preferencias</span>
+        </button>
+      </section>
+    </details>
+  </header>
+  <main>
+    <form id="form">
+      <input
+        name="id"
+        type="hidden"
+      >
+      <input
+        id="input_image"
+        name="image"
+        type="hidden"
+      >
+      <input
+        id="active"
+        name="active"
+        type="hidden"
+        value="true"
+      >
+      <!-- GENERAL -->
+      <details open>
+        <summary>General</summary>
+        <section>
+          <label>
+            <span>Nombre</span>
+            <input
+              autocomplete="off"
+              autofocus
+              name="name"
+              placeholder="Nombre del objetivo"
+              required
+            >
+          </label>
+          <label>
+            <span>Alias</span>
+            <input
+              autocomplete="off"
+              name="alias"
+              placeholder="Nombre corto"
+            >
+          </label>
+          <style>
+            .input_image {
+              display: grid;
+              grid-template-columns: auto 1fr auto;
+              grid-template-rows: auto auto;
+
+              &:not(:hover) {
+                button {
+                  display: none;
+                }
+              }
+
+              button {
+                grid-column: 3 / -1;
+                grid-row: 1 / 2;
+              }
+
+              label[for] {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+              }
+
+              label:not([for]) {
+                grid-column: 3 / -1;
+                grid-row: 2 / 3;
+              }
+
+              img {
+                grid-column: 2 / -1;
+                grid-row: 1 / 2;
+              }
+
+              input[type="link"] {
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+              }
+
+              input[type="file"] {
+                display: none;
+              }
+            }
+          </style>
+          <div class="input_image">
+            <label for="input_image_link">Imagen</label>
+            <img
+              alt="Imagen del objetivo"
+              id="preview_image"
+              src="https://img.icons8.com/forma-bold-filled/24/no-image.png"
+            >
+            <label>
+              <span>Subir imagen</span>
+              <input
+                autocomplete="off"
+                accept="image/*"
+                id="input_preview"
+                type="file"
+              >
+            </label>
+            <input
+              autocomplete="off"
+              id="input_image_link"
+              placeholder="Imagen desde enlace"
+              type="link"
+            >
+            <button type="button">
+              <svg viewBox="0 0 24 24"><use href="#icon_trash"></svg>
+              <span>Limpiar</span>
+            </button>
+          </div>
+          <label>
+            <span>Enlace de referencia</span>
+            <input
+              autocomplete="off"
+              name="link"
+              pattern="https?://.*"
+              type="link"
+            >
+            <small class="invalid">Formato invalido</small>
+          </label>
+        </section>
+      </details>
+      <!-- ORGANIZACIÓN -->
+      <details open>
+        <summary>Organización</summary>
+        <section>
+          <label>
+            <span>Categoría</span>
+            <select
+              autocomplete="off"
+              name="category"
+              required
+            >
+              <option value="">Seleccione una opción...</option>
+              <option>Nuevo...</option>
+            </select>
+          </label>
+          <label>
+            <span>Padre</span>
+            <select
+              autocomplete="off"
+              name="parent"
+            >
+              <option value="">Seleccione una opción...</option>
+            </select>
+          </label>
+        </section>
+      </details>
+    </form>
+  </main>
+  <nav class="">
+    <a class="btn" href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_home"></svg>
+      <span>Inicio</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_register"></svg>
+      <span>Registro de movimientos</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_calendar_money"></svg>
+      <span>Presupuestos</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_dashboard"></svg>
+      <span>Panel de control</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_credit_card"></svg>
+      <span>Tarjetas de crédito</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_cash"></svg>
+      <span>Ingresos</span>
+    </a>
+    <a href="objetivos.html">
+      <svg viewBox="0 0 24 24"><use href="#icon_list"></svg>
+      <span>Objetivos</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_research"></svg>
+      <span>Investigaciones</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_resumen"></svg>
+      <span>Resumen</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_pig"></svg>
+      <span>Ahorros</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_register"></svg>
+      <span>Registro de movimientos</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_resumen"></svg>
+      <span>Resumen</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_investments"></svg>
+      <span>Inversiones</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_calendar_money"></svg>
+      <span>Egresos</span>
+    </a>
+    <a href="#">
+      <svg viewBox="0 0 24 24"><use href="#icon_no-cash"></svg>
+      <span>Deudas</span>
+    </a>
+  </nav>
+  <svg viewBox="0 0 24 24" style="display: none">
+    <g id="icon_home">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
+      <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+      <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+    </g>
+    <g id="icon_register">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18"></path>
+      <path d="M13 8l2 0"></path>
+      <path d="M13 12l2 0"></path>
+    </g>
+    <g id="icon_calendar_money">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M13 21h-7a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3"></path>
+      <path d="M16 3v4"></path>
+      <path d="M8 3v4"></path>
+      <path d="M4 11h12.5"></path>
+      <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
+      <path d="M19 21v1m0 -8v1"></path>
+    </g>
+    <g id="icon_dashboard">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M7 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+      <path d="M7 3v4h4"></path>
+      <path d="M9 17l0 4"></path>
+      <path d="M17 14l0 7"></path>
+      <path d="M13 13l0 8"></path>
+      <path d="M21 12l0 9"></path>
+    </g>
+    <g id="icon_credit_card">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"></path>
+      <path d="M3 10l18 0"></path>
+      <path d="M7 15l.01 0"></path>
+      <path d="M11 15l2 0"></path>
+    </g>
+    <g id="icon_cash">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+      <path d="M3 8a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+      <path d="M18 12h.01"></path>
+      <path d="M6 12h.01"></path>
+    </g>
+    <g id="icon_list">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M3.5 5.5l1.5 1.5l2.5 -2.5"></path>
+      <path d="M3.5 11.5l1.5 1.5l2.5 -2.5"></path>
+      <path d="M3.5 17.5l1.5 1.5l2.5 -2.5"></path>
+      <path d="M11 6l9 0"></path>
+      <path d="M11 12l9 0"></path>
+      <path d="M11 18l9 0"></path>
+    </g>
+    <g id="icon_research">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 16l6 -7l5 5l5 -6"></path>
+      <path d="M15 14m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+      <path d="M10 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+      <path d="M4 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+      <path d="M20 8m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+      <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+      <path d="M18 16.496v1.504l1 1"></path>
+    </g>
+    <g id="icon_resumen">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M3 4l18 0"></path>
+      <path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10"></path>
+      <path d="M12 16l0 4"></path>
+      <path d="M9 20l6 0"></path>
+      <path d="M8 12l3 -3l2 2l3 -3"></path>
+    </g>
+    <g id="icon_pig">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M15 11v.01"></path>
+      <path
+        d="M16 3l0 3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342a6.008 6.008 0 0 1 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3z">
+      </path>
+    </g>
+    <g id="icon_investments">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 19l16 0"></path>
+      <path d="M4 15l4 -6l4 2l4 -5l4 4"></path>
+    </g>
+    <g id="icon_calendar_money">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M13 21h-7a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3"></path>
+      <path d="M16 3v4"></path>
+      <path d="M8 3v4"></path>
+      <path d="M4 11h12.5"></path>
+      <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
+      <path d="M19 21v1m0 -8v1"></path>
+    </g>
+    <g id="icon_no-cash">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M9.88 9.878a3 3 0 1 0 4.242 4.243m.58 -3.425a3.012 3.012 0 0 0 -1.412 -1.405"></path>
+      <path d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1">
+      </path>
+      <path d="M18 12l.01 0"></path>
+      <path d="M6 12l.01 0"></path>
+      <path d="M3 3l18 18"></path>
+    </g>
+    <g id="icon_new">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 5l0 14"></path>
+      <path d="M5 12l14 0"></path>
+    </g>
+    <g id="icon_setting">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 6l8 0"></path>
+      <path d="M16 6l4 0"></path>
+      <path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 12l2 0"></path>
+      <path d="M10 12l10 0"></path>
+      <path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M4 18l11 0"></path>
+      <path d="M19 18l1 0"></path>
+    </g>
+    <g id="icon_dots_vertical">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+      <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+      <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+    </g>
+    <g id="icon_close">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M18 6l-12 12"></path>
+      <path d="M6 6l12 12"></path>
+    </g>
+    <g id="icon_save">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+      <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+      <path d="M14 4l0 4l-6 0l0 -4"></path>
+    </g>
+    <g id="icon_external_link">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+      <path d="M11 13l9 -9" />
+      <path d="M15 4h5v5" />
+    </g>
+    <g id="icon_trash">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 7l16 0"></path>
+      <path d="M10 11l0 6"></path>
+      <path d="M14 11l0 6"></path>
+      <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+    </g>
+  </svg>
+  <dialog open></dialog>
+  <script src="./scripts.js"></script>
+  <script>
+    const $form = document.querySelector('form')
+    const $previewImage = document.querySelector('#preview_image')
+    const $inputPreview = document.querySelector('#input_preview')
+    const $inputImage = document.querySelector('#input_image')
+    const $inputImageLink = document.querySelector('#input_image_link')
+
+    $inputImageLink.addEventListener('input', event => {
+      previewImageLink(event.target.value)
+    })
+
+    $form.addEventListener('submit', event => submitForm(event), false)
+
+    $inputPreview.addEventListener('change', event => {
+      const file = event.target.files[0]
+      const reader = new FileReader()
+      reader.onload = event => {
+        $previewImage.src = event.target.result
+        $inputImage.value = event.target.result
+      }
+      reader.readAsDataURL(file)
+    })
+
+    function submitForm(event) {
+      event.preventDefault()
+      const formData = new FormData($form)
+      const id = formData.get('id')
+      if (!$form.checkValidity()) {
+        focusFirstInputInvalid()
+      }
+      if (id) {
+        updateObjective(id)
+      } else {
+        createObjective(formData, 'OBJETIVOS')
+      }
+    }
+
+    function focusFirstInputInvalid() {
+      // Buscamos el primer input, select o textarea que esté inválido
+      const $firstInvalid = $form.querySelectorAll('input:invalid, select:invalid, textarea:invalid')
+      if ($firstInvalid.length) {
+        // Si el campo es <input> y tiene un valor lo seleccionamos
+        if ($firstInvalid[0].tagName === 'INPUT' && $firstInvalid[0].value) {
+          $firstInvalid[0].select()
+          return
+        }
+        $firstInvalid[0].focus()
+      }
+    }
+
+    function updateObjective(id) {
+      // TODO: Actualizar el objetivo
+    }
+
+    function createObjective(formData, collectionName) {
+      const info = {}
+      // Busca el ultimo id de la colección
+      const data = JSON.parse(localStorage.getItem('DATA'))
+      const lastId = data ? data[collectionName].length + 1 : 1
+      for (const [key, value] of formData.entries()) {
+        info[key] = value
+        info[key.toLowerCase()] = value
+      }
+      info.id = lastId
+      const DATA = { [collectionName]: [info] }
+      localStorage.setItem('DATA', JSON.stringify(DATA))
+    }
+    
+    function previewImageLink(url) {
+      const imgError = 'https://img.icons8.com/forma-bold-filled/24/no-image.png'
+      if (!url) {
+        $previewImage.src = imgError
+      } else {
+        // Validamos con un fetch que el enlace sea una imagen .jpg, .png, .gif, .webp
+        fetch(url)
+          .then(response => {
+            if (response.ok) {
+              $previewImage.src = url
+            } else {
+              $previewImage.src = imgError
+            }
+          })
+          .catch(error => {
+            $previewImage.src = imgError
+          })
+      }
+      // Convierte la imagen en base64 y la pinta en el input hidden
+      const canvas = document.createElement('canvas')
+      const ctx = canvas.getContext('2d')
+      const img = new Image()
+      img.onload = () => {
+        canvas.width = img.width
+        canvas.height = img.height
+        ctx.drawImage(img, 0, 0)
+        $inputImage.value = canvas.toDataURL('image/png')
+      }
+      img.src = url
+    }
+  </script>
+</body>
+</html>
+
+<!-- AGREDECIMIENTOS A -->
+<!-- https://realfavicongenerator.net/ -->
+<!-- https://www.favicon-generator.org/ -->
+<!-- https://www.favicon-generator.org/ -->
