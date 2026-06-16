@@ -14,6 +14,26 @@
       navigator.serviceWorker.register('sw.js')
     }
   </script-->
+  <style>
+    tbody:has(tr:not(.empty)) .empty td {
+      display: none;
+    }
+    
+    tbody .empty td {
+      padding: 1lh;
+      text-align: center;
+      width: 100%;
+
+      a {
+        margin: 0 auto;
+      }
+    }
+
+    div {
+      align-items: center;
+      display: flex;
+    }
+  </style>
 </head>
 <body>
   <footer>footer</footer>
@@ -45,24 +65,22 @@
     <table>
       <thead>
         <tr>
-          <th scope="col">
-            <input type="checkbox" id="select_all_rows" name="select_all_rows">
-          </th>
+          <th scope="col"><input type="checkbox" id="select_all_rows" name="select_all_rows"></th>
           <th scope="col">Icono</th>
           <th scope="col">Nombre</th>
           <th scope="col">Alias</th>
           <th scope="col">Enlace de referencia</th>
           <th scope="col">Categoria</th>
-          <th scope="col" data-name="Usuario creación">Usuario creación</th>
+          <th scope="col">Creado por</th>
           <th scope="col">Etiquetas</th>
-          <th scope="col">Creado</th>
           <th scope="col">Fecha de creación</th>
           <th scope="col">Estatus</th>
+          <th scope="col">Activo</th>
           <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <!--tr>
           <td><input type="checkbox" name="select-1"></td>
           <td>🎯</td>
           <td>Monitor SOTSU Portátil Touch</td>
@@ -131,6 +149,15 @@
                 </button>
               </section>
             </details>
+          </td>
+        </tr-->
+        <tr class="empty">
+          <td colspan="12">
+            <p>Sin resultados</p>
+            <a href="#">
+              <svg viewBox="0 0 24 24"><use href="#icon_new"></svg>
+              <span>Crear nuevo objetivo</span>
+            </a>
           </td>
         </tr>
       </tbody>
@@ -363,6 +390,10 @@
       <path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
       <path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
     </g>
+    <g id="icon_play">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M7 4v16l13 -8l-13 -8" />
+    </g>
     <g id="icon_start">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
@@ -446,10 +477,135 @@
       </button>
     </footer>
   </dialog>
+  <template id="template_tag">
+    <a href="" class="btn tag"></a>
+  </template>
+  <template id="template_tr">
+    <tr data-id="">
+      <td>
+        <input type="checkbox" name="select-1">
+      </td>
+      <td>
+        <span class="_emoji">🎯</span>
+        <img
+          alt="Imagen del objetivo"
+          class="_imagen"
+          width="100"
+        >
+      </td>
+      <td class="_nombre"></td>
+      <td class="_alias"></td>
+      <td>
+        <a
+          class="_enlace"
+          href=""
+          target="_blank"
+        >
+          <svg viewBox="0 0 24 24"><use href="#icon_link"></svg>
+          <span>Ver</span>
+        </a>
+      </td>
+      <td class="_categoria"></td>
+      <td class="_creador"></td>
+      <td class="_etiquetas"></td>
+      <td class="_fecha"></td>
+      <td class="_estado"></td>
+      <td class="_activo"></td>
+      <td>
+        <div>
+          <div class="toolbar min">
+            <button type="button">
+              <svg viewBox="0 0 24 24"><use href="#icon_pencil"></svg>
+              <span>Editar</span>
+            </button>
+            <button type="button">
+              <svg viewBox="0 0 24 24"><use href="#icon_start"></svg>
+              <span>Favoritos</span>
+            </button>
+            <button type="button">
+              <svg viewBox="0 0 24 24"><use href="#icon_pause"></svg>
+              <span>Desactivar</span>
+            </button>
+          </div>
+          <details>
+            <summary class="min">
+              <svg viewBox="0 0 24 24"><use href="#icon_dots_vertical"></svg>
+            </summary>
+            <section class="dropdown">
+              <section data-title="Otros">
+                <button type="button">
+                  <svg viewBox="0 0 24 24"><use href="#icon_research"></svg>
+                  <span>Historial de precios</span>
+                </button>
+              </section>
+              <section data-title="Utiles">
+                <button type="button">
+                  <svg viewBox="0 0 24 24"><use href="#icon_clone"></svg>
+                  <span>Duplicar</span>
+                </button>
+                <button type="button">
+                  <svg viewBox="0 0 24 24"><use href="#icon_play"></svg>
+                  <span>Activar</span>
+                </button>
+              </section>
+              <button type="button">
+                <svg viewBox="0 0 24 24"><use href="#icon_trash"></svg>
+                <span>Eliminar</span>
+              </button>
+            </section>
+          </details>
+        </div>
+      </td>
+    </tr>
+  </template>
   <script src="./scripts.js"></script>
+  <script>
+    const $ = selector => document.querySelector(selector) ? document.querySelector(selector) : null
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const tmpData = localStorage.getItem('DATA') 
+      const _DATA = tmpData ? JSON.parse(tmpData) : []
+      const data = _DATA?.OBJETIVOS?.objetivos || []
+      debugger
+
+      if (data) {
+        renderTable(data)
+      }
+    })
+
+    function renderTable(data) {
+      const $tbody = $('tbody')
+      const $template = $('#template_tr')
+      data.forEach(item => {
+        const $tr = $template.content.cloneNode(true)
+        const tr = selector => $tr.querySelector(selector)
+        tr('[data-id]').dataset.id = item.id
+        tr('._nombre').textContent = item.nombre
+        tr('._alias').textContent = item.alias
+        tr('._enlace').href = item.enlace
+        tr('._imagen').src = item.imagen
+        tr('._imagen').alt = item.nombre
+        tr('._categoria').textContent = item.categoria
+        tr('._creador').textContent = item.creador
+        tr('._fecha').textContent = item.fecha_creacion
+        /* item.etiquetas.forEach(etiqueta => {
+          const $etiqueta = $('#template_tag').content.cloneNode(true)
+          const tag = selector => $etiqueta.querySelector(selector)
+          tag('a').href = `/etiquetas/${etiqueta}`
+          tag('a').textContent = etiqueta
+          tr('._etiquetas').appendChild($etiqueta)
+        }) */
+        tr('._activo').textContent = item.activo === 'true' ? 'Sí' : 'No'
+        tr('._estado').textContent = item.estatus ? item.estatus : ''
+        $tbody.appendChild($tr)
+      })
+    }
+  </script>
 </body>
 </html>
 
 <!-- AGREDECIMIENTOS A -->
+<!-- https://realfavicongenerator.net/ -->
+<!-- https://www.favicon-generator.org/ -->
 <!-- https://realfavicongenerator.net/ -->
 <!-- https://www.favicon-generator.org/ -->

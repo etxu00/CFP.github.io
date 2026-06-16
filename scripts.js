@@ -1,30 +1,5 @@
 const $body = document.querySelector('body');
-const _DATA = {
-  "movimientos" : [
-    {
-      "concepto" : "Comida",
-      "fecha_de_movimiento" : "2021-01-01",
-      "fecha" : "2021-01-01",
-      "forma_de_pago" : "Efectivo",
-      "id" : 1,
-      "monto" : 1100.50,
-      "tienda": "Oxxo"
-    }
-  ],
-  "tiendas"  : [
-    {
-      "id" : 1,
-      "nombre" : "Oxxo",
-      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk8Kna7ypx-hRHawKp6WagkJ8pYzOJhqFVTg&s"
-    }
-  ]
-}
-
-console.log(`
-  getData() : Obtiene los movimientos
-  addItem(concept, values) : Agrega un nuevo elemento a _DATA según el concepto
-  renderTable(concept) : Renderiza una tabla con los elementos de _DATA según el concepto
-`)
+const _DATA = localStorage.getItem('DATA') ? JSON.parse(localStorage.getItem('DATA')) : {};
 
 /**
  * OBETENER ELEMENTO.    

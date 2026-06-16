@@ -68,14 +68,19 @@
       >
       <input
         id="input_image"
-        name="image"
+        name="imagen"
         type="hidden"
       >
       <input
         id="active"
-        name="active"
+        name="activo"
         type="hidden"
         value="true"
+      >
+      <input
+        name="creador"
+        type="hidden"
+        value="etxu00"
       >
       <!-- GENERAL -->
       <details open>
@@ -86,7 +91,7 @@
             <input
               autocomplete="off"
               autofocus
-              name="name"
+              name="nombre"
               placeholder="Nombre del objetivo"
               required
             >
@@ -172,7 +177,7 @@
             <span>Enlace de referencia</span>
             <input
               autocomplete="off"
-              name="link"
+              name="enlace"
               pattern="https?://.*"
               type="link"
             >
@@ -188,10 +193,10 @@
             <span>Categoría</span>
             <select
               autocomplete="off"
-              name="category"
-              required
+              name="categoria"
             >
               <option value="">Seleccione una opción...</option>
+              <option>Setup</option>
               <option>Nuevo...</option>
             </select>
           </label>
@@ -424,11 +429,12 @@
   <dialog open></dialog>
   <script src="./scripts.js"></script>
   <script>
-    const $form = document.querySelector('form')
-    const $previewImage = document.querySelector('#preview_image')
-    const $inputPreview = document.querySelector('#input_preview')
-    const $inputImage = document.querySelector('#input_image')
-    const $inputImageLink = document.querySelector('#input_image_link')
+    const $ = selector => document.querySelector(selector)
+    const $form = $('form')
+    const $previewImage = $('#preview_image')
+    const $inputPreview = $('#input_preview')
+    const $inputImage = $('#input_image')
+    const $inputImageLink = $('#input_image_link')
 
     $inputImageLink.addEventListener('input', event => {
       previewImageLink(event.target.value)
@@ -479,18 +485,22 @@
 
     function createObjective(formData, collectionName) {
       const info = {}
-      // Busca el ultimo id de la colección
-      const data = JSON.parse(localStorage.getItem('DATA'))
-      const lastId = data ? data[collectionName].length + 1 : 1
       for (const [key, value] of formData.entries()) {
         info[key] = value
         info[key.toLowerCase()] = value
       }
-      info.id = lastId
-      const DATA = { [collectionName]: [info] }
+      info.fecha_creacion = getDate()
+      info.id = 1
+      const DATA = { OBJETIVOS: { objetivos: [info] } }
       localStorage.setItem('DATA', JSON.stringify(DATA))
+      window.location.href = '/objetivos.html'
     }
-    
+
+    function getDate() {
+      const date = new Date()
+      return date.toISOString()
+    }
+
     function previewImageLink(url) {
       const imgError = 'https://img.icons8.com/forma-bold-filled/24/no-image.png'
       if (!url) {
