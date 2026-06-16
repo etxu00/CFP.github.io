@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-419">
+
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="App para el control de finanzas personales">
@@ -19,7 +20,7 @@
       content: " *";
       color: red;
     }
-    
+
     label:has(input:invalid) {
       color: red;
 
@@ -37,6 +38,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <nav class="">
@@ -45,16 +47,22 @@
       <a href="#"><span>Nuevo</span></a>
     </nav>
     <button type="button" onclick="submitForm(event)">
-      <svg viewBox="0 0 24 24"><use href="#icon_save"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_save">
+      </svg>
       <span>Guardar</span>
     </button>
     <details>
       <summary class="min">
-        <svg viewBox="0 0 24 24"><use href="#icon_dots_vertical"></svg>
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_dots_vertical">
+        </svg>
       </summary>
       <section class="dropdown">
         <button>
-          <svg viewBox="0 0 24 24"><use href="#icon_setting"></svg>
+          <svg viewBox="0 0 24 24">
+            <use href="#icon_setting">
+          </svg>
           <span>Preferencias</span>
         </button>
       </section>
@@ -62,47 +70,21 @@
   </header>
   <main>
     <form id="form">
-      <input
-        name="id"
-        type="hidden"
-      >
-      <input
-        id="input_image"
-        name="imagen"
-        type="hidden"
-      >
-      <input
-        id="active"
-        name="activo"
-        type="hidden"
-        value="true"
-      >
-      <input
-        name="creador"
-        type="hidden"
-        value="etxu00"
-      >
+      <input name="id" type="hidden">
+      <input id="input_image" name="imagen" type="hidden">
+      <input id="active" name="activo" type="hidden" value="true">
+      <input name="creador" type="hidden" value="etxu00">
       <!-- GENERAL -->
       <details open>
         <summary>General</summary>
         <section>
           <label>
             <span>Nombre</span>
-            <input
-              autocomplete="off"
-              autofocus
-              name="nombre"
-              placeholder="Nombre del objetivo"
-              required
-            >
+            <input autocomplete="off" autofocus name="nombre" placeholder="Nombre del objetivo" required>
           </label>
           <label>
             <span>Alias</span>
-            <input
-              autocomplete="off"
-              name="alias"
-              placeholder="Nombre corto"
-            >
+            <input autocomplete="off" name="alias" placeholder="Nombre corto">
           </label>
           <style>
             .input_image {
@@ -148,39 +130,23 @@
           </style>
           <div class="input_image">
             <label for="input_image_link">Imagen</label>
-            <img
-              alt="Imagen del objetivo"
-              id="preview_image"
-              src="https://img.icons8.com/forma-bold-filled/24/no-image.png"
-            >
+            <img alt="Imagen del objetivo" id="preview_image"
+              src="https://img.icons8.com/forma-bold-filled/24/no-image.png">
             <label>
               <span>Subir imagen</span>
-              <input
-                autocomplete="off"
-                accept="image/*"
-                id="input_preview"
-                type="file"
-              >
+              <input autocomplete="off" accept="image/*" id="input_preview" type="file">
             </label>
-            <input
-              autocomplete="off"
-              id="input_image_link"
-              placeholder="Imagen desde enlace"
-              type="link"
-            >
+            <input autocomplete="off" id="input_image_link" placeholder="Imagen desde enlace" type="link">
             <button type="button">
-              <svg viewBox="0 0 24 24"><use href="#icon_trash"></svg>
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_trash">
+              </svg>
               <span>Limpiar</span>
             </button>
           </div>
           <label>
             <span>Enlace de referencia</span>
-            <input
-              autocomplete="off"
-              name="enlace"
-              pattern="https?://.*"
-              type="link"
-            >
+            <input autocomplete="off" name="enlace" pattern="https?://.*" type="link">
             <small class="invalid">Formato invalido</small>
           </label>
         </section>
@@ -191,10 +157,7 @@
         <section>
           <label>
             <span>Categoría</span>
-            <select
-              autocomplete="off"
-              name="categoria"
-            >
+            <select autocomplete="off" name="categoria">
               <option value="">Seleccione una opción...</option>
               <option>Setup</option>
               <option>Nuevo...</option>
@@ -202,10 +165,7 @@
           </label>
           <label>
             <span>Padre</span>
-            <select
-              autocomplete="off"
-              name="parent"
-            >
+            <select autocomplete="off" name="parent">
               <option value="">Seleccione una opción...</option>
             </select>
           </label>
@@ -215,63 +175,93 @@
   </main>
   <nav class="">
     <a class="btn" href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_home"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_home">
+      </svg>
       <span>Inicio</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_register"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_register">
+      </svg>
       <span>Registro de movimientos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_calendar_money"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_calendar_money">
+      </svg>
       <span>Presupuestos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_dashboard"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_dashboard">
+      </svg>
       <span>Panel de control</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_credit_card"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_credit_card">
+      </svg>
       <span>Tarjetas de crédito</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_cash"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_cash">
+      </svg>
       <span>Ingresos</span>
     </a>
     <a href="objetivos.html">
-      <svg viewBox="0 0 24 24"><use href="#icon_list"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_list">
+      </svg>
       <span>Objetivos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_research"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_research">
+      </svg>
       <span>Investigaciones</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_resumen"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_resumen">
+      </svg>
       <span>Resumen</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_pig"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_pig">
+      </svg>
       <span>Ahorros</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_register"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_register">
+      </svg>
       <span>Registro de movimientos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_resumen"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_resumen">
+      </svg>
       <span>Resumen</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_investments"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_investments">
+      </svg>
       <span>Inversiones</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_calendar_money"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_calendar_money">
+      </svg>
       <span>Egresos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_no-cash"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_no-cash">
+      </svg>
       <span>Deudas</span>
     </a>
   </nav>
@@ -371,7 +361,8 @@
     <g id="icon_no-cash">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M9.88 9.878a3 3 0 1 0 4.242 4.243m.58 -3.425a3.012 3.012 0 0 0 -1.412 -1.405"></path>
-      <path d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1">
+      <path
+        d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1">
       </path>
       <path d="M18 12l.01 0"></path>
       <path d="M6 12l.01 0"></path>
@@ -440,6 +431,8 @@
       previewImageLink(event.target.value)
     })
 
+    document.addEventListener('DOMContentLoaded', start, false)
+
     $form.addEventListener('submit', event => submitForm(event), false)
 
     $inputPreview.addEventListener('change', event => {
@@ -452,25 +445,77 @@
       reader.readAsDataURL(file)
     })
 
-    function submitForm(event) {
-      event.preventDefault()
-      const formData = new FormData($form)
-      const id = formData.get('id')
-      if (!$form.checkValidity()) {
-        focusFirstInputInvalid()
-      }
+    function start() {
+      const params = new URLSearchParams(window.location.search)
+      const id = params.get('id')
       if (id) {
-        updateObjective(id)
-      } else {
-        createObjective(formData, 'OBJETIVOS')
+        getDataItem(id, 'OBJETIVOS', 'objetivos')
       }
     }
 
+    function getDataItem(id, collectionName, items) {
+      // 1. Obtenemos la información del elemento
+      const item = getData(collectionName, items).find(obj => obj.id == id)
+      if (!item) return
+
+      // 2. Rellenamos el form con la información disponible
+      const set = (name, value) => {
+        const el = $form.querySelector(`[name="${name}"]`)
+        if (el) el.value = value ?? ''
+      }
+
+      set('id',       item.id)
+      set('nombre',   item.nombre   || '')
+      set('alias',    item.alias    || '')
+      set('enlace',   item.enlace   || '')
+      set('categoria',item.categoria || '')
+      set('parent',   item.parent   || '')
+      set('activo',   item.activo !== undefined ? item.activo : 'true')
+
+      const imgVal = item.imagen || ''
+      if (imgVal) {
+        $previewImage.src = imgVal
+        $inputImage.value = imgVal
+        if (!imgVal.startsWith('data:')) {
+          $inputImageLink.value = imgVal
+        }
+      }
+    }
+
+    function submitForm(event) {
+      event.preventDefault()
+      const formData = new FormData($form)
+      const info = generateInfo(formData)
+      if (!$form.checkValidity()) {
+        focusFirstInputInvalid()
+        return
+      }
+      if (!info?.id) {
+        createObjective(info, 'OBJETIVOS', 'objetivos')
+      } else {
+        updateObjective(info, 'OBJETIVOS', 'objetivos')
+      }
+    }
+
+    function generateInfo(formData) {
+      const info = {}
+      for (const [key, value] of formData.entries()) {
+        info[key] = value
+        info[key.toLowerCase()] = value
+      }
+      info.fecha_creacion = getDate()
+      info.creador = 'etxu00'
+      return info
+    }
+
+    function getIdItem(key, subKey) {
+      const data = getData(key, subKey)
+      return data.length ? Math.max(...data.map(item => item.id)) + 1 : 1
+    }
+
     function focusFirstInputInvalid() {
-      // Buscamos el primer input, select o textarea que esté inválido
       const $firstInvalid = $form.querySelectorAll('input:invalid, select:invalid, textarea:invalid')
       if ($firstInvalid.length) {
-        // Si el campo es <input> y tiene un valor lo seleccionamos
         if ($firstInvalid[0].tagName === 'INPUT' && $firstInvalid[0].value) {
           $firstInvalid[0].select()
           return
@@ -479,21 +524,33 @@
       }
     }
 
-    function updateObjective(id) {
-      // TODO: Actualizar el objetivo
-    }
+    function updateObjective(info, collectionName, items) {
+      const id = info.id
+      const data = getData(collectionName, items)
+      const tmpData = localStorage.getItem('DATA') ? JSON.parse(localStorage.getItem('DATA')) : {}
 
-    function createObjective(formData, collectionName) {
-      const info = {}
-      for (const [key, value] of formData.entries()) {
-        info[key] = value
-        info[key.toLowerCase()] = value
-      }
-      info.fecha_creacion = getDate()
-      info.id = 1
-      const DATA = { OBJETIVOS: { objetivos: [info] } }
+      data[id] = info
+      const DATA = { ...tmpData, [collectionName]: { [items]: data } }
       localStorage.setItem('DATA', JSON.stringify(DATA))
       window.location.href = '/objetivos.html'
+    }
+
+    function createObjective(info, collectionName, items) {
+      const localData = localStorage.getItem('DATA')
+      const tmpData = localData ? JSON.parse(localData) : {}
+      const data = getData(collectionName, items)
+      info.id = getIdItem('OBJETIVOS', 'objetivos')
+      data.push(info)
+      const DATA = { ...tmpData, [collectionName]: { [items]: data } }
+      localStorage.setItem('DATA', JSON.stringify(DATA))
+      window.location.href = '/objetivos.html'
+    }
+
+    function getData(key, subKey) {
+      const localData = localStorage.getItem('DATA')
+      const tmpData = localData ? JSON.parse(localData) : {}
+      const data = tmpData[key] ? tmpData[key][subKey] : []
+      return data
     }
 
     function getDate() {
@@ -508,16 +565,8 @@
       } else {
         // Validamos con un fetch que el enlace sea una imagen .jpg, .png, .gif, .webp
         fetch(url)
-          .then(response => {
-            if (response.ok) {
-              $previewImage.src = url
-            } else {
-              $previewImage.src = imgError
-            }
-          })
-          .catch(error => {
-            $previewImage.src = imgError
-          })
+          .then(response => $previewImage.src = response.ok ? url : imgError)
+          .catch(error => $previewImage.src = imgError)
       }
       // Convierte la imagen en base64 y la pinta en el input hidden
       const canvas = document.createElement('canvas')
@@ -533,6 +582,7 @@
     }
   </script>
 </body>
+
 </html>
 
 <!-- AGREDECIMIENTOS A -->

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-419">
+
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="App para el control de finanzas personales">
@@ -18,7 +19,7 @@
     tbody:has(tr:not(.empty)) .empty td {
       display: none;
     }
-    
+
     tbody .empty td {
       padding: 1lh;
       text-align: center;
@@ -35,6 +36,7 @@
     }
   </style>
 </head>
+
 <body>
   <footer>footer</footer>
   <header>
@@ -42,20 +44,23 @@
       <a class="btn" href="#"><span>Inicio</span></a>
       <a href="objetivos.html"><span>Objetivos</span></a>
     </nav>
-    <button
-      type="button"
-      onclick="dialog.show()"
-    >
-      <svg viewBox="0 0 24 24"><use href="#icon_new"></svg>
+    <button type="button" onclick="dialog.show()">
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_new">
+      </svg>
       <span>Nuevo</span>
     </button>
     <details>
       <summary class="min">
-        <svg viewBox="0 0 24 24"><use href="#icon_dots_vertical"></svg>
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_dots_vertical">
+        </svg>
       </summary>
       <section class="dropdown">
         <button>
-          <svg viewBox="0 0 24 24"><use href="#icon_setting"></svg>
+          <svg viewBox="0 0 24 24">
+            <use href="#icon_setting">
+          </svg>
           <span>Preferencias</span>
         </button>
       </section>
@@ -155,7 +160,9 @@
           <td colspan="12">
             <p>Sin resultados</p>
             <a href="#">
-              <svg viewBox="0 0 24 24"><use href="#icon_new"></svg>
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_new">
+              </svg>
               <span>Crear nuevo objetivo</span>
             </a>
           </td>
@@ -165,63 +172,93 @@
   </main>
   <nav class="">
     <a class="btn" href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_home"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_home">
+      </svg>
       <span>Inicio</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_register"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_register">
+      </svg>
       <span>Registro de movimientos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_calendar_money"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_calendar_money">
+      </svg>
       <span>Presupuestos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_dashboard"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_dashboard">
+      </svg>
       <span>Panel de control</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_credit_card"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_credit_card">
+      </svg>
       <span>Tarjetas de crédito</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_cash"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_cash">
+      </svg>
       <span>Ingresos</span>
     </a>
     <a href="objetivos.html">
-      <svg viewBox="0 0 24 24"><use href="#icon_list"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_list">
+      </svg>
       <span>Objetivos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_research"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_research">
+      </svg>
       <span>Investigaciones</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_resumen"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_resumen">
+      </svg>
       <span>Resumen</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_pig"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_pig">
+      </svg>
       <span>Ahorros</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_register"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_register">
+      </svg>
       <span>Registro de movimientos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_resumen"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_resumen">
+      </svg>
       <span>Resumen</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_investments"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_investments">
+      </svg>
       <span>Inversiones</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_calendar_money"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_calendar_money">
+      </svg>
       <span>Egresos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_no-cash"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_no-cash">
+      </svg>
       <span>Deudas</span>
     </a>
   </nav>
@@ -321,7 +358,8 @@
     <g id="icon_no-cash">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M9.88 9.878a3 3 0 1 0 4.242 4.243m.58 -3.425a3.012 3.012 0 0 0 -1.412 -1.405"></path>
-      <path d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1">
+      <path
+        d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1">
       </path>
       <path d="M18 12l.01 0"></path>
       <path d="M6 12l.01 0"></path>
@@ -375,7 +413,8 @@
     </g>
     <g id="icon_clone">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
+      <path
+        d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
       </path>
       <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1">
       </path>
@@ -396,7 +435,9 @@
     </g>
     <g id="icon_start">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
+      <path
+        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+      </path>
     </g>
     <g id="icon_trash">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -410,13 +451,10 @@
   <dialog id="dialog">
     <header>
       <span>Objetivo</span>
-      <button
-        class="min"
-        title="Cerrar"
-        type="button"
-        onclick="dialog.close()"
-      >
-        <svg viewBox="0 0 24 24"><use href="#icon_close"></svg>
+      <button class="min" title="Cerrar" type="button" onclick="dialog.close()">
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_close">
+        </svg>
         <span>Cerrar</span>
       </button>
     </header>
@@ -463,16 +501,17 @@
     <footer>
       <a href="objetivo.html">
         <span>Más opciones</span>
-        <svg viewBox="0 0 24 24"><use href="#icon_external_link"></svg>
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_external_link">
+        </svg>
       </a>
-      <button
-        type="reset"
-        onclick="dialog.close()"
-      >
+      <button type="reset" onclick="dialog.close()">
         <span>Cancelar</span>
       </button>
       <button>
-        <svg viewBox="0 0 24 24"><use href="#icon_save"></svg>
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_save">
+        </svg>
         <span>Guardar</span>
       </button>
     </footer>
@@ -487,21 +526,15 @@
       </td>
       <td>
         <span class="_emoji">🎯</span>
-        <img
-          alt="Imagen del objetivo"
-          class="_imagen"
-          width="100"
-        >
+        <img alt="Imagen del objetivo" class="_imagen" width="100">
       </td>
       <td class="_nombre"></td>
       <td class="_alias"></td>
       <td>
-        <a
-          class="_enlace"
-          href=""
-          target="_blank"
-        >
-          <svg viewBox="0 0 24 24"><use href="#icon_link"></svg>
+        <a class="_enlace" href="" target="_blank">
+          <svg viewBox="0 0 24 24">
+            <use href="#icon_link">
+          </svg>
           <span>Ver</span>
         </a>
       </td>
@@ -514,42 +547,58 @@
       <td>
         <div>
           <div class="toolbar min">
-            <button type="button">
-              <svg viewBox="0 0 24 24"><use href="#icon_pencil"></svg>
+            <button type="button" onclick="redirectEdit(event)">
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_pencil">
+              </svg>
               <span>Editar</span>
             </button>
             <button type="button">
-              <svg viewBox="0 0 24 24"><use href="#icon_start"></svg>
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_start">
+              </svg>
               <span>Favoritos</span>
             </button>
             <button type="button">
-              <svg viewBox="0 0 24 24"><use href="#icon_pause"></svg>
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_pause">
+              </svg>
               <span>Desactivar</span>
             </button>
           </div>
           <details>
             <summary class="min">
-              <svg viewBox="0 0 24 24"><use href="#icon_dots_vertical"></svg>
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_dots_vertical">
+              </svg>
             </summary>
             <section class="dropdown">
               <section data-title="Otros">
                 <button type="button">
-                  <svg viewBox="0 0 24 24"><use href="#icon_research"></svg>
+                  <svg viewBox="0 0 24 24">
+                    <use href="#icon_research">
+                  </svg>
                   <span>Historial de precios</span>
                 </button>
               </section>
               <section data-title="Utiles">
                 <button type="button">
-                  <svg viewBox="0 0 24 24"><use href="#icon_clone"></svg>
+                  <svg viewBox="0 0 24 24">
+                    <use href="#icon_clone">
+                  </svg>
                   <span>Duplicar</span>
                 </button>
                 <button type="button">
-                  <svg viewBox="0 0 24 24"><use href="#icon_play"></svg>
+                  <svg viewBox="0 0 24 24">
+                    <use href="#icon_play">
+                  </svg>
                   <span>Activar</span>
                 </button>
               </section>
               <button type="button">
-                <svg viewBox="0 0 24 24"><use href="#icon_trash"></svg>
+                <svg viewBox="0 0 24 24">
+                  <use href="#icon_trash">
+                </svg>
                 <span>Eliminar</span>
               </button>
             </section>
@@ -561,17 +610,15 @@
   <script src="./scripts.js"></script>
   <script>
     const $ = selector => document.querySelector(selector) ? document.querySelector(selector) : null
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      const tmpData = localStorage.getItem('DATA') 
-      const _DATA = tmpData ? JSON.parse(tmpData) : []
-      const data = _DATA?.OBJETIVOS?.objetivos || []
-      debugger
 
-      if (data) {
-        renderTable(data)
+    document.addEventListener('DOMContentLoaded', start, false)
+
+    function start() {
+      const items = getData('OBJETIVOS', 'objetivos')
+      if (items.length) {
+        renderTable(items)
       }
-    })
+    }
 
     function renderTable(data) {
       const $tbody = $('tbody')
@@ -588,20 +635,26 @@
         tr('._categoria').textContent = item.categoria
         tr('._creador').textContent = item.creador
         tr('._fecha').textContent = item.fecha_creacion
-        /* item.etiquetas.forEach(etiqueta => {
-          const $etiqueta = $('#template_tag').content.cloneNode(true)
-          const tag = selector => $etiqueta.querySelector(selector)
-          tag('a').href = `/etiquetas/${etiqueta}`
-          tag('a').textContent = etiqueta
-          tr('._etiquetas').appendChild($etiqueta)
-        }) */
         tr('._activo').textContent = item.activo === 'true' ? 'Sí' : 'No'
         tr('._estado').textContent = item.estatus ? item.estatus : ''
         $tbody.appendChild($tr)
       })
     }
+
+    function getData(key, subKey) {
+      const tmpData = localStorage.getItem('DATA') ? JSON.parse(localStorage.getItem('DATA')) : {}
+      const data = tmpData[key][subKey] || []
+      return data
+    }
+
+    function redirectEdit(event) {
+      const $tr = event.target.closest('tr')
+      const id = $tr.dataset.id
+      location.href = 'objetivo.html?edit&id=' + id
+    }
   </script>
 </body>
+
 </html>
 
 <!-- AGREDECIMIENTOS A -->
