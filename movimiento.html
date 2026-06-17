@@ -71,7 +71,6 @@
   <main>
     <form id="form">
       <input name="id" type="hidden">
-      <input id="input_image" name="imagen" type="hidden">
       <input id="active" name="activo" type="hidden" value="true">
       <input name="creador" type="hidden" value="etxu00">
       <!-- GENERAL -->
@@ -79,96 +78,72 @@
         <summary>General</summary>
         <section>
           <label>
-            <span>Nombre</span>
-            <input autocomplete="off" autofocus name="nombre" placeholder="Nombre del objetivo" required>
+            <span>Monto</span>
+            <input
+              autocomplete="off"
+              autofocus
+              name="monto"
+              placeholder="$0.00"
+              required
+              step="0.01"
+              type="number"
+            >
+            <small class="invalid">Campo obligatorio</small>
           </label>
           <label>
-            <span>Alias</span>
-            <input autocomplete="off" name="alias" placeholder="Nombre corto">
-          </label>
-          <style>
-            .input_image {
-              display: grid;
-              grid-template-columns: auto 1fr auto;
-              grid-template-rows: auto auto;
-
-              &:not(:hover) {
-                button {
-                  display: none;
-                }
-              }
-
-              button {
-                grid-column: 3 / -1;
-                grid-row: 1 / 2;
-              }
-
-              label[for] {
-                grid-column: 1 / 2;
-                grid-row: 1 / 2;
-              }
-
-              label:not([for]) {
-                grid-column: 3 / -1;
-                grid-row: 2 / 3;
-              }
-
-              img {
-                grid-column: 2 / -1;
-                grid-row: 1 / 2;
-              }
-
-              input[type="link"] {
-                grid-column: 2 / 3;
-                grid-row: 2 / 3;
-              }
-
-              input[type="file"] {
-                display: none;
-              }
-            }
-          </style>
-          <div class="input_image">
-            <label for="input_image_link">Imagen</label>
-            <img alt="Imagen del objetivo" id="preview_image"
-              src="https://img.icons8.com/forma-bold-filled/24/no-image.png">
-            <label>
-              <span>Subir imagen</span>
-              <input autocomplete="off" accept="image/*" id="input_preview" type="file">
-            </label>
-            <input autocomplete="off" id="input_image_link" placeholder="Imagen desde enlace" type="link">
-            <button type="button">
-              <svg viewBox="0 0 24 24">
-                <use href="#icon_trash">
-              </svg>
-              <span>Limpiar</span>
-            </button>
-          </div>
-          <label>
-            <span>Enlace de referencia</span>
-            <input autocomplete="off" name="enlace" pattern="https?://.*" type="link">
-            <small class="invalid">Formato invalido</small>
-          </label>
-        </section>
-        <div><i></i><i></i><i></i></div>
-      </details>
-      <!-- ORGANIZACIÓN -->
-      <details open>
-        <summary>Organización</summary>
-        <section>
-          <label>
-            <span>Categoría</span>
-            <select autocomplete="off" name="categoria">
+            <span>Concepto</span>
+            <select
+              autocomplete="off"
+              name="concepto"
+              required
+            >
               <option value="">Seleccione una opción...</option>
-              <option>Setup</option>
+              <option>Comida</option>
+              <option>Otros</option>
               <option>Nuevo...</option>
             </select>
+            <small class="invalid">Campo obligatorio</small>
           </label>
           <label>
-            <span>Padre</span>
-            <select autocomplete="off" name="parent">
+            <span>Lugar</span>
+            <select
+              autocomplete="off"
+              name="lugar"
+              required
+            >
               <option value="">Seleccione una opción...</option>
+              <option>Alsuper</option>
+              <option>Oxxo</option>
+              <option>Nuevo...</option>
             </select>
+            <small class="invalid">Campo obligatorio</small>
+          </label>
+          <label>
+            <span>Forma de pago</span>
+            <select
+              autocomplete="off"
+              name="forma_de_pago"
+              required
+            >
+              <option value="">Seleccione una opción...</option>
+              <option>Efectivo</option>
+              <option>Tarjeta de crédito</option>
+              <option>Tarjeta de débito</option>
+              <option>Transferencia</option>
+              <option>PayPal</option>
+              <option>Otros</option>
+              <option>Nuevo...</option>
+            </select>
+            <small class="invalid">Campo obligatorio</small>
+          </label>
+          <label>
+            <span>Fecha de compra</span>
+            <input
+              autocomplete="off"
+              name="fecha_de_compra"
+              type="date"
+            >
+            <small class="invalid">Campo obligatorio</small>
           </label>
         </section>
       </details>
@@ -423,68 +398,35 @@
   <script>
     const $ = selector => document.querySelector(selector)
     const $form = $('form')
-    const $previewImage = $('#preview_image')
-    const $inputPreview = $('#input_preview')
-    const $inputImage = $('#input_image')
-    const $inputImageLink = $('#input_image_link')
-
-    $inputImageLink.addEventListener('input', event => {
-      previewImageLink(event.target.value)
-    })
 
     document.addEventListener('DOMContentLoaded', start, false)
-
     $form.addEventListener('submit', event => submitForm(event), false)
-
-    $inputPreview.addEventListener('change', event => {
-      const file = event.target.files[0]
-      const reader = new FileReader()
-      reader.onload = event => {
-        $previewImage.src = event.target.result
-        $inputImage.value = event.target.result
-      }
-      reader.readAsDataURL(file)
-    })
 
     function start() {
       const params = new URLSearchParams(window.location.search)
       const id = params.get('id')
       if (id) {
-        getDataItem(id, 'OBJETIVOS', 'objetivos')
+        getDataItem(id, 'MOVIMIENTOS', 'items')
       }
     }
 
     function getDataItem(id, collectionName, items) {
-      // 1. Obtenemos la información del elemento
       const item = getData(collectionName, items).find(obj => obj.id == id)
-      if (!item) return
-
-      // 2. Rellenamos el form con la información disponible
-      const set = (name, value) => {
-        const el = $form.querySelector(`[name="${name}"]`)
-        if (el) el.value = value ?? ''
+      if (!item) {
+        return
       }
 
-      set('id',       item.id)
-      set('nombre',   item.nombre   || '')
-      set('alias',    item.alias    || '')
-      set('enlace',   item.enlace   || '')
-      set('categoria',item.categoria || '')
-      set('parent',   item.parent   || '')
-      set('activo',   item.activo !== undefined ? item.activo : 'true')
-
-      const imgVal = item.imagen || ''
-      if (imgVal) {
-        $previewImage.src = imgVal
-        $inputImage.value = imgVal
-        if (!imgVal.startsWith('data:')) {
-          $inputImageLink.value = imgVal
+      const set = (name, value) => {
+        const $input = $form.querySelector(`[name="${name}"]`)
+        if ($input) {
+          $input.value = value ?? ''
         }
       }
     }
 
     function submitForm(event) {
       event.preventDefault()
+      debugger
       const formData = new FormData($form)
       const info = generateInfo(formData)
       if (!$form.checkValidity()) {
@@ -492,9 +434,9 @@
         return
       }
       if (!info?.id) {
-        createObjective(info, 'OBJETIVOS', 'objetivos')
+        createObjective(info, 'MOVIMIENTOS', 'items')
       } else {
-        updateObjective(info, 'OBJETIVOS', 'objetivos')
+        updateObjective(info, 'MOVIMIENTOS', 'items')
       }
     }
 
@@ -533,18 +475,18 @@
       data[id] = info
       const DATA = { ...tmpData, [collectionName]: { [items]: data } }
       localStorage.setItem('DATA', JSON.stringify(DATA))
-      window.location.href = '/objetivos.html'
+      window.location.href = '/movimientos.html'
     }
 
     function createObjective(info, collectionName, items) {
       const localData = localStorage.getItem('DATA')
       const tmpData = localData ? JSON.parse(localData) : {}
       const data = getData(collectionName, items)
-      info.id = getIdItem('OBJETIVOS', 'objetivos')
+      info.id = getIdItem('MOVIMIENTOS', 'items')
       data.push(info)
       const DATA = { ...tmpData, [collectionName]: { [items]: data } }
       localStorage.setItem('DATA', JSON.stringify(DATA))
-      window.location.href = '/objetivos.html'
+      window.location.href = '/movimientos.html'
     }
 
     function getData(key, subKey) {
@@ -557,29 +499,6 @@
     function getDate() {
       const date = new Date()
       return date.toISOString()
-    }
-
-    function previewImageLink(url) {
-      const imgError = 'https://img.icons8.com/forma-bold-filled/24/no-image.png'
-      if (!url) {
-        $previewImage.src = imgError
-      } else {
-        // Validamos con un fetch que el enlace sea una imagen .jpg, .png, .gif, .webp
-        fetch(url)
-          .then(response => $previewImage.src = response.ok ? url : imgError)
-          .catch(error => $previewImage.src = imgError)
-      }
-      // Convierte la imagen en base64 y la pinta en el input hidden
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')
-      const img = new Image()
-      img.onload = () => {
-        canvas.width = img.width
-        canvas.height = img.height
-        ctx.drawImage(img, 0, 0)
-        $inputImage.value = canvas.toDataURL('image/png')
-      }
-      img.src = url
     }
   </script>
 </body>

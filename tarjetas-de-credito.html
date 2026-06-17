@@ -16,41 +16,39 @@
     }
   </script-->
   <style>
-    label:has([required]) span::after {
-      content: " *";
-      color: red;
-    }
-
-    label:has(input:invalid) {
-      color: red;
-
-      input {
-        border-color: red;
-      }
-    }
-
-    label:has(input:not(:invalid)) .invalid {
+    tbody:has(tr:not(.empty)) .empty td {
       display: none;
     }
 
-    img {
-      max-width: 200px;
+    tbody .empty td {
+      padding: 1lh;
+      text-align: center;
+      width: 100%;
+
+      a {
+        margin: 0 auto;
+      }
+    }
+
+    div {
+      align-items: center;
+      display: flex;
     }
   </style>
 </head>
 
 <body>
+  <footer>footer</footer>
   <header>
     <nav class="">
       <a class="btn" href="#"><span>Inicio</span></a>
       <a href="objetivos.html"><span>Objetivos</span></a>
-      <a href="#"><span>Nuevo</span></a>
     </nav>
-    <button type="button" onclick="submitForm(event)">
+    <button type="button" onclick="dialog.show()">
       <svg viewBox="0 0 24 24">
-        <use href="#icon_save">
+        <use href="#icon_new">
       </svg>
-      <span>Guardar</span>
+      <span>Nuevo</span>
     </button>
     <details>
       <summary class="min">
@@ -69,110 +67,36 @@
     </details>
   </header>
   <main>
-    <form id="form">
-      <input name="id" type="hidden">
-      <input id="input_image" name="imagen" type="hidden">
-      <input id="active" name="activo" type="hidden" value="true">
-      <input name="creador" type="hidden" value="etxu00">
-      <!-- GENERAL -->
-      <details open>
-        <summary>General</summary>
-        <section>
-          <label>
-            <span>Nombre</span>
-            <input autocomplete="off" autofocus name="nombre" placeholder="Nombre del objetivo" required>
-          </label>
-          <label>
-            <span>Alias</span>
-            <input autocomplete="off" name="alias" placeholder="Nombre corto">
-          </label>
-          <style>
-            .input_image {
-              display: grid;
-              grid-template-columns: auto 1fr auto;
-              grid-template-rows: auto auto;
-
-              &:not(:hover) {
-                button {
-                  display: none;
-                }
-              }
-
-              button {
-                grid-column: 3 / -1;
-                grid-row: 1 / 2;
-              }
-
-              label[for] {
-                grid-column: 1 / 2;
-                grid-row: 1 / 2;
-              }
-
-              label:not([for]) {
-                grid-column: 3 / -1;
-                grid-row: 2 / 3;
-              }
-
-              img {
-                grid-column: 2 / -1;
-                grid-row: 1 / 2;
-              }
-
-              input[type="link"] {
-                grid-column: 2 / 3;
-                grid-row: 2 / 3;
-              }
-
-              input[type="file"] {
-                display: none;
-              }
-            }
-          </style>
-          <div class="input_image">
-            <label for="input_image_link">Imagen</label>
-            <img alt="Imagen del objetivo" id="preview_image"
-              src="https://img.icons8.com/forma-bold-filled/24/no-image.png">
-            <label>
-              <span>Subir imagen</span>
-              <input autocomplete="off" accept="image/*" id="input_preview" type="file">
-            </label>
-            <input autocomplete="off" id="input_image_link" placeholder="Imagen desde enlace" type="link">
-            <button type="button">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col"><input type="checkbox" id="select_all_rows" name="select_all_rows"></th>
+          <th scope="col">Icono</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Límite de crédito</th>
+          <th scope="col">Día de corte</th>
+          <th scope="col">Paypal</th>
+          <th scope="col">Tarjeta digital</th>
+          <th scope="col">Creado por</th>
+          <th scope="col">Fecha de creación</th>
+          <th scope="col">Activo</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="empty">
+          <td colspan="12">
+            <p>Sin resultados</p>
+            <a href="#">
               <svg viewBox="0 0 24 24">
-                <use href="#icon_trash">
+                <use href="#icon_new">
               </svg>
-              <span>Limpiar</span>
-            </button>
-          </div>
-          <label>
-            <span>Enlace de referencia</span>
-            <input autocomplete="off" name="enlace" pattern="https?://.*" type="link">
-            <small class="invalid">Formato invalido</small>
-          </label>
-        </section>
-        <div><i></i><i></i><i></i></div>
-      </details>
-      <!-- ORGANIZACIÓN -->
-      <details open>
-        <summary>Organización</summary>
-        <section>
-          <label>
-            <span>Categoría</span>
-            <select autocomplete="off" name="categoria">
-              <option value="">Seleccione una opción...</option>
-              <option>Setup</option>
-              <option>Nuevo...</option>
-            </select>
-          </label>
-          <label>
-            <span>Padre</span>
-            <select autocomplete="off" name="parent">
-              <option value="">Seleccione una opción...</option>
-            </select>
-          </label>
-        </section>
-      </details>
-    </form>
+              <span>Crear nuevo objetivo</span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </main>
   <nav class="">
     <a class="btn" href="#">
@@ -409,177 +333,237 @@
       <path d="M11 13l9 -9" />
       <path d="M15 4h5v5" />
     </g>
-    <g id="icon_trash">
+    <g id="icon_link">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M9 15l6 -6" />
+      <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
+      <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
+    </g>
+    <g id="icon_clone">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M4 7l16 0"></path>
-      <path d="M10 11l0 6"></path>
-      <path d="M14 11l0 6"></path>
-      <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+      <path
+        d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
+      </path>
+      <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1">
+      </path>
+    </g>
+    <g id="icon_pencil">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"></path>
+      <path d="M13.5 6.5l4 4"></path>
+    </g>
+    <g id="icon_pause">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
+      <path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
+    </g>
+    <g id="icon_play">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M7 4v16l13 -8l-13 -8" />
+    </g>
+    <g id="icon_start">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path
+        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+      </path>
+    </g>
+    <g id="icon_trash">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 7l16 0" />
+      <path d="M10 11l0 6" />
+      <path d="M14 11l0 6" />
+      <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
     </g>
   </svg>
-  <dialog open></dialog>
+  <dialog id="dialog">
+    <header>
+      <span>Objetivo</span>
+      <button class="min" title="Cerrar" type="button" onclick="dialog.close()">
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_close">
+        </svg>
+        <span>Cerrar</span>
+      </button>
+    </header>
+    <section>
+      <details open>
+        <summary>General</summary>
+        <section>
+          <label>
+            <span>Nombre</span>
+            <input type="text" placeholder="Nombre del objetivo" required>
+          </label>
+          <label>
+            <span>Alias</span>
+            <input type="text" placeholder="Nombre corto">
+          </label>
+          <label>
+            <span>Imagen</span>
+            <input type="file">
+          </label>
+          <label>
+            <span>Enlace de referencia</span>
+            <input type="link">
+          </label>
+        </section>
+      </details>
+      <details open>
+        <summary>Organización</summary>
+        <section>
+          <label>
+            <span>Categoria</span>
+            <select required>
+              <option value="">Seleccione una opción...</option>
+            </select>
+          </label>
+          <label>
+            <span>Padre</span>
+            <select>
+              <option value="">Seleccione una opción...</option>
+            </select>
+          </label>
+        </section>
+      </details>
+    </section>
+    <footer>
+      <a href="objetivo.html">
+        <span>Más opciones</span>
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_external_link">
+        </svg>
+      </a>
+      <button type="reset" onclick="dialog.close()">
+        <span>Cancelar</span>
+      </button>
+      <button>
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_save">
+        </svg>
+        <span>Guardar</span>
+      </button>
+    </footer>
+  </dialog>
+  <template id="template_tag">
+    <a href="" class="btn tag"></a>
+  </template>
+  <template id="template_tr">
+    <tr data-id="">
+      <td><input type="checkbox" name="select-1"></td>
+      <td><span class="_emoji">🛍️</span></td>
+      <td class="_nombre"></td>
+      <td class="_limite_de_credito"></td>
+      <td class="_dia_corte"></td>
+      <td class="_paypal"></td>
+      <td class="_tarjeta_digital"></td>
+      <td class="_creador"></td>
+      <td class="_fecha_creacion"></td>
+      <td class="_activo"></td>
+      <td>
+        <div>
+          <div class="toolbar min">
+            <button type="button" onclick="redirectEdit(event)">
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_pencil">
+              </svg>
+              <span>Editar</span>
+            </button>
+            <button type="button">
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_start">
+              </svg>
+              <span>Favoritos</span>
+            </button>
+            <button type="button">
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_pause">
+              </svg>
+              <span>Desactivar</span>
+            </button>
+          </div>
+          <details>
+            <summary class="min">
+              <svg viewBox="0 0 24 24">
+                <use href="#icon_dots_vertical">
+              </svg>
+            </summary>
+            <section class="dropdown">
+              <section data-title="Otros">
+                <button type="button">
+                  <svg viewBox="0 0 24 24">
+                    <use href="#icon_research">
+                  </svg>
+                  <span>Historial de precios</span>
+                </button>
+              </section>
+              <section data-title="Utiles">
+                <button type="button">
+                  <svg viewBox="0 0 24 24">
+                    <use href="#icon_clone">
+                  </svg>
+                  <span>Duplicar</span>
+                </button>
+                <button type="button">
+                  <svg viewBox="0 0 24 24">
+                    <use href="#icon_play">
+                  </svg>
+                  <span>Activar</span>
+                </button>
+              </section>
+              <button type="button">
+                <svg viewBox="0 0 24 24">
+                  <use href="#icon_trash">
+                </svg>
+                <span>Eliminar</span>
+              </button>
+            </section>
+          </details>
+        </div>
+      </td>
+    </tr>
+  </template>
   <script src="./scripts.js"></script>
   <script>
-    const $ = selector => document.querySelector(selector)
-    const $form = $('form')
-    const $previewImage = $('#preview_image')
-    const $inputPreview = $('#input_preview')
-    const $inputImage = $('#input_image')
-    const $inputImageLink = $('#input_image_link')
-
-    $inputImageLink.addEventListener('input', event => {
-      previewImageLink(event.target.value)
-    })
+    const $ = selector => document.querySelector(selector) ? document.querySelector(selector) : null
 
     document.addEventListener('DOMContentLoaded', start, false)
 
-    $form.addEventListener('submit', event => submitForm(event), false)
-
-    $inputPreview.addEventListener('change', event => {
-      const file = event.target.files[0]
-      const reader = new FileReader()
-      reader.onload = event => {
-        $previewImage.src = event.target.result
-        $inputImage.value = event.target.result
-      }
-      reader.readAsDataURL(file)
-    })
-
     function start() {
-      const params = new URLSearchParams(window.location.search)
-      const id = params.get('id')
-      if (id) {
-        getDataItem(id, 'OBJETIVOS', 'objetivos')
+      const items = getData('TARJETAS_DE_CRÉDITO', 'items')
+      if (items.length) {
+        renderTable(items)
       }
     }
 
-    function getDataItem(id, collectionName, items) {
-      // 1. Obtenemos la información del elemento
-      const item = getData(collectionName, items).find(obj => obj.id == id)
-      if (!item) return
-
-      // 2. Rellenamos el form con la información disponible
-      const set = (name, value) => {
-        const el = $form.querySelector(`[name="${name}"]`)
-        if (el) el.value = value ?? ''
-      }
-
-      set('id',       item.id)
-      set('nombre',   item.nombre   || '')
-      set('alias',    item.alias    || '')
-      set('enlace',   item.enlace   || '')
-      set('categoria',item.categoria || '')
-      set('parent',   item.parent   || '')
-      set('activo',   item.activo !== undefined ? item.activo : 'true')
-
-      const imgVal = item.imagen || ''
-      if (imgVal) {
-        $previewImage.src = imgVal
-        $inputImage.value = imgVal
-        if (!imgVal.startsWith('data:')) {
-          $inputImageLink.value = imgVal
-        }
-      }
-    }
-
-    function submitForm(event) {
-      event.preventDefault()
-      const formData = new FormData($form)
-      const info = generateInfo(formData)
-      if (!$form.checkValidity()) {
-        focusFirstInputInvalid()
-        return
-      }
-      if (!info?.id) {
-        createObjective(info, 'OBJETIVOS', 'objetivos')
-      } else {
-        updateObjective(info, 'OBJETIVOS', 'objetivos')
-      }
-    }
-
-    function generateInfo(formData) {
-      const info = {}
-      for (const [key, value] of formData.entries()) {
-        info[key] = value
-        info[key.toLowerCase()] = value
-      }
-      info.fecha_creacion = getDate()
-      info.creador = 'etxu00'
-      return info
-    }
-
-    function getIdItem(key, subKey) {
-      const data = getData(key, subKey)
-      return data.length ? Math.max(...data.map(item => item.id)) + 1 : 1
-    }
-
-    function focusFirstInputInvalid() {
-      const $firstInvalid = $form.querySelectorAll('input:invalid, select:invalid, textarea:invalid')
-      if ($firstInvalid.length) {
-        if ($firstInvalid[0].tagName === 'INPUT' && $firstInvalid[0].value) {
-          $firstInvalid[0].select()
-          return
-        }
-        $firstInvalid[0].focus()
-      }
-    }
-
-    function updateObjective(info, collectionName, items) {
-      const id = info.id
-      const data = getData(collectionName, items)
-      const tmpData = localStorage.getItem('DATA') ? JSON.parse(localStorage.getItem('DATA')) : {}
-
-      data[id] = info
-      const DATA = { ...tmpData, [collectionName]: { [items]: data } }
-      localStorage.setItem('DATA', JSON.stringify(DATA))
-      window.location.href = '/objetivos.html'
-    }
-
-    function createObjective(info, collectionName, items) {
-      const localData = localStorage.getItem('DATA')
-      const tmpData = localData ? JSON.parse(localData) : {}
-      const data = getData(collectionName, items)
-      info.id = getIdItem('OBJETIVOS', 'objetivos')
-      data.push(info)
-      const DATA = { ...tmpData, [collectionName]: { [items]: data } }
-      localStorage.setItem('DATA', JSON.stringify(DATA))
-      window.location.href = '/objetivos.html'
+    function renderTable(data) {
+      const $tbody = $('tbody')
+      const $template = $('#template_tr')
+      data.forEach(item => {
+        const $tr = $template.content.cloneNode(true)
+        const tr = selector => $tr.querySelector(selector)
+        tr('[data-id]').dataset.id = item.id
+        tr('._nombre').textContent = item.nombre
+        tr('._limite_de_credito').textContent = item.limite_de_credito
+        tr('._dia_corte').textContent = item.dia_de_corte
+        tr('._paypal').textContent = item.paypal === 'on' ? 'Sí' : 'No'
+        tr('._tarjeta_digital').textContent = item.tarjeta_digital === 'on' ? 'Sí' : 'No'
+        tr('._creador').textContent = item.creador
+        tr('._fecha_creacion').textContent = item.fecha_creacion
+        tr('._activo').textContent = item.activo === 'true' ? 'Sí' : 'No'
+        $tbody.appendChild($tr)
+      })
     }
 
     function getData(key, subKey) {
-      const localData = localStorage.getItem('DATA')
-      const tmpData = localData ? JSON.parse(localData) : {}
-      const data = tmpData[key] ? tmpData[key][subKey] : []
+      const tmpData = localStorage.getItem('DATA') ? JSON.parse(localStorage.getItem('DATA')) : {}
+      const data = tmpData[key][subKey] || []
       return data
     }
 
-    function getDate() {
-      const date = new Date()
-      return date.toISOString()
-    }
-
-    function previewImageLink(url) {
-      const imgError = 'https://img.icons8.com/forma-bold-filled/24/no-image.png'
-      if (!url) {
-        $previewImage.src = imgError
-      } else {
-        // Validamos con un fetch que el enlace sea una imagen .jpg, .png, .gif, .webp
-        fetch(url)
-          .then(response => $previewImage.src = response.ok ? url : imgError)
-          .catch(error => $previewImage.src = imgError)
-      }
-      // Convierte la imagen en base64 y la pinta en el input hidden
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')
-      const img = new Image()
-      img.onload = () => {
-        canvas.width = img.width
-        canvas.height = img.height
-        ctx.drawImage(img, 0, 0)
-        $inputImage.value = canvas.toDataURL('image/png')
-      }
-      img.src = url
+    function redirectEdit(event) {
+      const $tr = event.target.closest('tr')
+      const id = $tr.dataset.id
+      location.href = 'tarjeta-de-credito.html?edit&id=' + id
     }
   </script>
 </body>
@@ -589,4 +573,5 @@
 <!-- AGREDECIMIENTOS A -->
 <!-- https://realfavicongenerator.net/ -->
 <!-- https://www.favicon-generator.org/ -->
+<!-- https://realfavicongenerator.net/ -->
 <!-- https://www.favicon-generator.org/ -->

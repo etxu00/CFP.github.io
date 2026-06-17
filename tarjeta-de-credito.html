@@ -82,10 +82,6 @@
             <span>Nombre</span>
             <input autocomplete="off" autofocus name="nombre" placeholder="Nombre del objetivo" required>
           </label>
-          <label>
-            <span>Alias</span>
-            <input autocomplete="off" name="alias" placeholder="Nombre corto">
-          </label>
           <style>
             .input_image {
               display: grid;
@@ -134,9 +130,19 @@
               src="https://img.icons8.com/forma-bold-filled/24/no-image.png">
             <label>
               <span>Subir imagen</span>
-              <input autocomplete="off" accept="image/*" id="input_preview" type="file">
+              <input
+                autocomplete="off"
+                accept="image/*"
+                id="input_preview"
+                type="file"
+              >
             </label>
-            <input autocomplete="off" id="input_image_link" placeholder="Imagen desde enlace" type="link">
+            <input
+              autocomplete="off"
+              id="input_image_link"
+              placeholder="Imagen desde enlace"
+              type="link"
+            >
             <button type="button">
               <svg viewBox="0 0 24 24">
                 <use href="#icon_trash">
@@ -145,30 +151,47 @@
             </button>
           </div>
           <label>
-            <span>Enlace de referencia</span>
-            <input autocomplete="off" name="enlace" pattern="https?://.*" type="link">
-            <small class="invalid">Formato invalido</small>
+            <span>Límite de crédito</span>
+            <input
+              autocomplete="off"
+              name="limite_de_credito"
+              placeholder="$0.00"
+              required
+              step="1"
+              type="number"
+            >
+            <small class="invalid">Campo obligatorio</small>
+          </label>
+          <label>
+            <span>Día de corte</span>
+            <input
+              autocomplete="off"
+              name="dia_corte"
+              required
+              type="number"
+            >
+            <small class="invalid">Campo obligatorio</small>
           </label>
         </section>
-        <div><i></i><i></i><i></i></div>
       </details>
-      <!-- ORGANIZACIÓN -->
       <details open>
-        <summary>Organización</summary>
+        <summary>Variantes</summary>
         <section>
           <label>
-            <span>Categoría</span>
-            <select autocomplete="off" name="categoria">
-              <option value="">Seleccione una opción...</option>
-              <option>Setup</option>
-              <option>Nuevo...</option>
-            </select>
+            <span>Paypal</span>
+            <input
+              autocomplete="off"
+              name="paypal"
+              type="checkbox"
+            >
           </label>
           <label>
-            <span>Padre</span>
-            <select autocomplete="off" name="parent">
-              <option value="">Seleccione una opción...</option>
-            </select>
+            <span>Tarjeta digital</span>
+            <input
+              autocomplete="off"
+              name="tarjeta_digital"
+              type="checkbox"
+            >
           </label>
         </section>
       </details>
@@ -418,7 +441,6 @@
       <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
     </g>
   </svg>
-  <dialog open></dialog>
   <script src="./scripts.js"></script>
   <script>
     const $ = selector => document.querySelector(selector)
@@ -427,6 +449,8 @@
     const $inputPreview = $('#input_preview')
     const $inputImage = $('#input_image')
     const $inputImageLink = $('#input_image_link')
+    const CONCEPT = 'TARJETAS_DE_CRÉDITO'
+    const ITEMS = 'items'
 
     $inputImageLink.addEventListener('input', event => {
       previewImageLink(event.target.value)
@@ -450,7 +474,7 @@
       const params = new URLSearchParams(window.location.search)
       const id = params.get('id')
       if (id) {
-        getDataItem(id, 'OBJETIVOS', 'objetivos')
+        getDataItem(id, CONCEPT, ITEMS)
       }
     }
 
@@ -465,13 +489,13 @@
         if (el) el.value = value ?? ''
       }
 
-      set('id',       item.id)
-      set('nombre',   item.nombre   || '')
-      set('alias',    item.alias    || '')
-      set('enlace',   item.enlace   || '')
-      set('categoria',item.categoria || '')
-      set('parent',   item.parent   || '')
-      set('activo',   item.activo !== undefined ? item.activo : 'true')
+      set('id', item.id)
+      set('nombre', item.nombre || '')
+      set('limite_de_credito', item.limite_de_credito || '')
+      set('dia_corte', item.dia_corte || '')
+      set('paypal', item.paypal || '')
+      set('tarjeta_digital', item.tarjeta_digital || '')
+      set('activo', item.activo !== undefined ? item.activo : 'true')
 
       const imgVal = item.imagen || ''
       if (imgVal) {
@@ -492,9 +516,9 @@
         return
       }
       if (!info?.id) {
-        createObjective(info, 'OBJETIVOS', 'objetivos')
+        createObjective(info, CONCEPT, ITEMS)
       } else {
-        updateObjective(info, 'OBJETIVOS', 'objetivos')
+        updateObjective(info, CONCEPT, ITEMS)
       }
     }
 
@@ -540,11 +564,12 @@
       const localData = localStorage.getItem('DATA')
       const tmpData = localData ? JSON.parse(localData) : {}
       const data = getData(collectionName, items)
-      info.id = getIdItem('OBJETIVOS', 'objetivos')
+      info.id = getIdItem(CONCEPT, ITEMS)
       data.push(info)
       const DATA = { ...tmpData, [collectionName]: { [items]: data } }
+      console.log(DATA)
       localStorage.setItem('DATA', JSON.stringify(DATA))
-      window.location.href = '/objetivos.html'
+      window.location.href = '/tarjetas-de-credito.html'
     }
 
     function getData(key, subKey) {
