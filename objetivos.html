@@ -6,8 +6,8 @@
   <meta name="description" content="App para el control de finanzas personales">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de finanzas personales</title>
-  <link rel="stylesheet" href="http://127.0.0.1:3002/style.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="http://127.0.0.1:3003/style.css?v=1">
+  <link rel="stylesheet" href="styles.css">
   <!--link rel="manifest" href="./manifest.json">
 
   <script>
@@ -15,26 +15,6 @@
       navigator.serviceWorker.register('sw.js')
     }
   </script-->
-  <style>
-    tbody:has(tr:not(.empty)) .empty td {
-      display: none;
-    }
-
-    tbody .empty td {
-      padding: 1lh;
-      text-align: center;
-      width: 100%;
-
-      a {
-        margin: 0 auto;
-      }
-    }
-
-    div {
-      align-items: center;
-      display: flex;
-    }
-  </style>
 </head>
 
 <body>
@@ -170,7 +150,7 @@
       </tbody>
     </table>
   </main>
-  <nav class="">
+  <nav>
     <a class="btn" href="#">
       <svg viewBox="0 0 24 24">
         <use href="#icon_home">
@@ -541,7 +521,7 @@
       <td class="_categoria"></td>
       <td class="_creador"></td>
       <td class="_etiquetas"></td>
-      <td class="_fecha"></td>
+      <td class="_fecha_creacion"></td>
       <td class="_estado"></td>
       <td class="_activo"></td>
       <td>
@@ -607,58 +587,15 @@
       </td>
     </tr>
   </template>
-  <script src="./scripts.js"></script>
+  <script src="scripts.js"></script>
   <script>
-    const $ = selector => document.querySelector(selector) ? document.querySelector(selector) : null
-
-    document.addEventListener('DOMContentLoaded', start, false)
-
-    function start() {
-      const items = getData('OBJETIVOS', 'objetivos')
-      if (items.length) {
-        renderTable(items)
-      }
-    }
-
-    function renderTable(data) {
-      const $tbody = $('tbody')
-      const $template = $('#template_tr')
-      data.forEach(item => {
-        const $tr = $template.content.cloneNode(true)
-        const tr = selector => $tr.querySelector(selector)
-        tr('[data-id]').dataset.id = item.id
-        tr('._nombre').textContent = item.nombre
-        tr('._alias').textContent = item.alias
-        tr('._enlace').href = item.enlace
-        tr('._imagen').src = item.imagen
-        tr('._imagen').alt = item.nombre
-        tr('._categoria').textContent = item.categoria
-        tr('._creador').textContent = item.creador
-        tr('._fecha').textContent = item.fecha_creacion
-        tr('._activo').textContent = item.activo === 'true' ? 'Sí' : 'No'
-        tr('._estado').textContent = item.estatus ? item.estatus : ''
-        $tbody.appendChild($tr)
-      })
-    }
-
-    function getData(key, subKey) {
-      const tmpData = localStorage.getItem('DATA') ? JSON.parse(localStorage.getItem('DATA')) : {}
-      const data = tmpData[key][subKey] || []
-      return data
-    }
-
-    function redirectEdit(event) {
-      const $tr = event.target.closest('tr')
-      const id = $tr.dataset.id
-      location.href = 'objetivo.html?edit&id=' + id
-    }
+    const _CONCEPT = 'OBJETIVOS'
+    const _HTML = 'objetivo'
   </script>
 </body>
 
 </html>
 
 <!-- AGREDECIMIENTOS A -->
-<!-- https://realfavicongenerator.net/ -->
-<!-- https://www.favicon-generator.org/ -->
 <!-- https://realfavicongenerator.net/ -->
 <!-- https://www.favicon-generator.org/ -->

@@ -83,4 +83,26 @@ table {
   th, td {
     text-align: left;
   }
+
+  tbody:has(tr:not(.empty)) .empty td {
+    display: none;
+  }
+
+  tbody .empty td {
+    padding: 1lh;
+    text-align: center;
+    width: 100%;
+
+    a {
+      margin: 0 auto;
+    }
+  }
+
+  td {
+
+    div {
+      align-items: center;
+      display: flex;
+    }
+  }
 }

@@ -1,60 +1,63 @@
-const $body = document.querySelector('body');
-const _DATA = localStorage.getItem('DATA') ? JSON.parse(localStorage.getItem('DATA')) : {};
+const $ = selector => document.querySelector(selector)
+  ? document.querySelector(selector)
+  : null
 
-/**
- * OBETENER ELEMENTO.    
- * Obtiene los elementos de _DATA según el concepto
- * @param {string} concept - Concepto que se va a obtener de _DATA
- */
-function getData(concept) {
-  console.clear()
-  !_DATA[concept]
-    ? console.table(_DATA)
-    : console.table(_DATA[concept])
+function getData(key, subKey) {
+  const tmpData = localStorage.getItem('DATA')
+    ? JSON.parse(localStorage.getItem('DATA'))
+    : {}
+  const data = tmpData[key][subKey] || []
+  return data
 }
 
-/**
- * AGREGAR ELEMENTO.   
- * Agrega o actualiza un nuevo elemento a _DATA según el concepto
- * @param {string} concept - Concepto que se va a agregar a _DATA
- * @param {*} values - Objeto a insertar en _DATA[concept]
- */
-function addItem(concept, values) {
-  if (!_DATA[concept]) {
-    return console.error(`⚠ No existe el concepto: ${concept}.`);
+function redirectEdit(event) {
+  const $tr = event.target.closest('tr')
+  const id = $tr.dataset.id
+  location.href = _HTML + '.html?edit&id=' + id
+}
+
+function renderTable(data) {
+  const $tbody = $('tbody')
+  const $template = $('#template_tr')
+  data.forEach((item, index) => {
+    const $tr = $template.content.cloneNode(true)
+    const tr = selector => $tr.querySelector(selector)
+    for (i in item) {
+      const value = item[i]
+      if (i === 'id') {
+        tr('[data-id]').dataset.id = value
+      } else {
+        const tmpTr = tr('._' + i)
+        if (tmpTr) {
+          if (tmpTr.tagName === 'IMG') {
+            tr('._' + i).src = value
+            tr('._' + i).alt = value
+          }else if (tmpTr.tagName === 'A') {
+            tr('._' + i).href = value
+          } else {
+            tr('._' + i).textContent = typeValue(value)
+          }
+        }
+      }
+    }
+    $tbody.appendChild($tr)
+  })
+}
+
+function start() {
+  const items = getData(_CONCEPT, 'items')
+  if (items.length) {
+    renderTable(items)
   }
+}
 
-  if (!values) {
-    return console.error(`⚠ No se recibieron valores para agregar en: ${concept}.`);
+function typeValue(value) {
+  if (value === 'true' || value === 'false') {
+    return value === "true" ? "Si" : "No"
+  } else if (value === 'on') {
+    return value === "on" ? "Si" : "No"
   }
-
-  values.id ? updateItem(concept, values) : createItem(concept, values);
+  return value
 }
 
-/**
- * CREAR ELEMENTO.   
- * Crea un nuevo elemento en _DATA según el concepto, genera el id en base a la longitud del    
- * arreglo del concepto y agrega el objeto a _DATA[concept]
- * @param {string} concept - Concepto que se va a agregar a _DATA
- * @param {*} values - Objeto a insertar en _DATA[concept]
- */
-function createItem(concept, values) {
-  values.id = _DATA[concept].length + 1;
-  _DATA[concept].push(values);
-  getData(concept);
-}
-
-/**
- * ACTUALIZAR ELEMENTO.    
- * Actualiza un elemento en _DATA según el concepto y el id del objeto a actualizar
- * @param {string} concept - Concepto que se va a actualizar en _DATA
- * @param {*} values - Objeto a actualizar en _DATA[concept]
- */
-function updateItem(concept, values) {
-  _DATA[concept] = _DATA[concept].map(item => item.id === values.id ? values : item)
-  getData(concept)
-}
-
-function generateInput(leyend) {
-  return `<label><span>${leyend}</span><input type="text"></label>`
-}
+document.addEventListener('DOMContentLoaded', start, false)
