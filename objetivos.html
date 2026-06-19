@@ -6,7 +6,7 @@
   <meta name="description" content="App para el control de finanzas personales">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de finanzas personales</title>
-  <link rel="stylesheet" href="http://127.0.0.1:3003/style.css?v=1">
+  <link rel="stylesheet" href="http://127.0.0.1:3002/style.css">
   <link rel="stylesheet" href="styles.css">
   <!--link rel="manifest" href="./manifest.json">
 
@@ -495,6 +495,255 @@
         <span>Guardar</span>
       </button>
     </footer>
+  </dialog>
+  <dialog id="dialog_preferences">
+    <header>
+      <h7>Preferencias</h7>
+      <button
+        class="min"
+        data-shortcut="Esc"
+        onclick="dialog_preferences.close()"
+        title="Cerrar preferencias"
+        type="button"
+      >
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_close">
+        </svg>
+        <span>Cerrar</span>
+      </button>
+    </header>
+    <section>
+      <!-- TEMA -->
+      <details>
+        <summary>Tema</summary>
+        <section>
+          <label class="btn">
+            <input
+              checked
+              id="theme_system"
+              name="theme_color"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_config">
+            </svg>
+            <span>Sistema</span>
+          </label>
+          <label class="btn">
+            <input
+              id="theme_dark"
+              name="theme_color"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_moon">
+            </svg>
+            <span>Oscuro</span>
+          </label>
+          <label class="btn">
+            <input
+              id="theme_light"
+              name="theme_color"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_sun">
+            </svg>
+            <span>Claro</span>
+          </label>
+        </section>
+      </details>
+      <!-- FUENTE -->
+      <details>
+        <summary>Fuente</summary>
+        <section>
+          <label class="btn">
+            <input
+              checked
+              id="font_default"
+              name="font"
+              type="radio"
+            >
+            <span style="font-family: 'Font'">Predeterminada</span>
+          </label>
+          <label class="btn">
+            <input
+              id="font_system"
+              name="font"
+              type="radio"
+            >
+            <span style="font-family: system-ui">Sistema</span>
+          </label>
+          <label class="btn">
+            <input
+              id="font_arial"
+              name="font"
+              type="radio"
+            >
+            <span style="font-family: Arial">Arial</span>
+          </label>
+          <label class="btn">
+            <input
+              id="font_simple"
+              name="font"
+              type="radio"
+            >
+            <span style="font-family: monospace">Sencilla</span>
+          </label>
+          <label class="btn">
+            <input
+              id="font_none"
+              name="font"
+              type="radio"
+            >
+            <span style="font-family: auto">Ninguna</span>
+          </label>
+        </section>
+      </details>
+      <!-- ESPACIADO -->
+      <details>
+        <summary>Espaciado</summary>
+        <section>
+          <label class="btn">
+            <input
+              id="spacing_compact"
+              name="spacing"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_line_compact">
+            </svg>
+            <span>Compacto</span>
+          </label>
+          <label class="btn">
+            <input
+              checked
+              id="spacing_default"
+              name="spacing"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_line_normal">
+            </svg>
+            <span>Normal</span>
+          </label>
+          <label class="btn">
+            <input
+              id="spacing_comfortable"
+              name="spacing"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_line_comfortable">
+            </svg>
+            <span>Cómodo</span>
+          </label>
+        </section>
+      </details>
+      <!-- DENSIDAD DE INFORMACIÓN -->
+      <details>
+        <summary>Densidad de información</summary>
+        <aside>
+          <label class="btn">
+            <input
+              id="density_compact"
+              name="density"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_density_min"></use>
+            </svg>
+            <span>Minimo</span>
+          </label>
+          <label class="btn">
+            <input
+              checked
+              id="density_default"
+              name="density"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_density_normal"></use>
+            </svg>
+            <span>Normal</span>
+          </label>
+          <label class="btn">
+            <input
+              id="density_comfortable"
+              name="density"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_density_comfortable"></use>
+            </svg>
+            <span>Completa</span>
+          </label>
+        </aside>
+      </details>
+      <!-- ESTILOS -->
+      <details>
+        <summary>Estilo</summary>
+        <section>
+          <label class="btn">
+            <input
+              checked
+              id="style_background"
+              type="checkbox"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_style_background">
+            </svg>
+            <span>Fondo</span>
+          </label>
+          <label class="btn">
+            <input
+              checked
+              id="style_simple"
+              type="checkbox"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_style_color">
+            </svg>
+            <span>Color</span>
+          </label>
+          <hr>
+          <label class="btn">
+            <input
+              checked
+              id="style_circle"
+              name="style_rounded"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_style_circle">
+            </svg>
+            <span>Circular</span>
+          </label>
+          <label class="btn">
+            <input
+              id="style_square"
+              name="style_rounded"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_style_lineal">
+            </svg>
+            <span>Lineal</span>
+          </label>
+          <label class="btn">
+            <input
+              id="style_rounded"
+              name="style_rounded"
+              type="radio"
+            >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_style_rounded">
+            </svg>
+            <span>Redondeado</span>
+          </label>
+        </section>
+      </details>
+    </section>
   </dialog>
   <template id="template_tag">
     <a href="" class="btn tag"></a>

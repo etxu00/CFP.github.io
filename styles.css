@@ -72,7 +72,7 @@ dialog {
 
   label:has(input:not([required])),
   label:has(select:not([required])) {
-    display: none;
+    /* display: none; */
   }
 }
 
@@ -104,5 +104,74 @@ table {
       align-items: center;
       display: flex;
     }
+  }
+}
+
+/* FORM */
+
+label:has([required]) span::after {
+  content: " *";
+  color: red;
+}
+
+label:has(input:invalid) {
+  color: red;
+
+  input {
+    border-color: red;
+  }
+}
+
+label:has(select:invalid) {
+  color: red;
+
+  select {
+    border-color: red;
+  }
+}
+
+label:has(input:not(:invalid)) .invalid {
+  display: none;
+}
+
+.input_image {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+
+  &:not(:hover) {
+    button {
+      display: none;
+    }
+  }
+
+  button {
+    grid-column: 3 / -1;
+    grid-row: 1 / 2;
+  }
+
+  label[for] {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  label:not([for]) {
+    grid-column: 3 / -1;
+    grid-row: 2 / 3;
+  }
+
+  img {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+    max-width: 200px;
+  }
+
+  input[type="link"] {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  input[type="file"] {
+    display: none;
   }
 }

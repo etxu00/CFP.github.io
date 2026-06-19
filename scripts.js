@@ -32,7 +32,7 @@ function renderTable(data) {
           if (tmpTr.tagName === 'IMG') {
             tr('._' + i).src = value
             tr('._' + i).alt = value
-          }else if (tmpTr.tagName === 'A') {
+          } else if (tmpTr.tagName === 'A') {
             tr('._' + i).href = value
           } else {
             tr('._' + i).textContent = typeValue(value)
