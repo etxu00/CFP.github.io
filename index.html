@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es-419">
+
 <head>
   <meta charset="UTF-8">
   <meta name="description" content="App para el control de finanzas personales">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de finanzas personales</title>
-  <link rel="stylesheet" href="http://127.0.0.1:3003/style.css">
+  <link rel="stylesheet" href="http://127.0.0.1:3002/style.css">
   <link rel="stylesheet" href="styles.css">
   <!--link rel="manifest" href="./manifest.json">
 
@@ -15,69 +16,107 @@
     }
   </script-->
 </head>
+
 <body>
-  <footer>footer</footer>
-  <header>header</header>
-  <main>main</main>
+  <main>
+    <section>
+      <span>MOVIMIENTOS</span>
+      <p id="movimientos"></p>
+    </section>
+    <section>
+      <span>TARJETAS DE CRÉDITO</span>
+      <p id="tarjetas"></p>
+    </section>
+    <section>
+      <span>INGRESOS</span>
+      <p id="ingresos"></p>
+    </section>
+    <section>
+      <span>OBJETIVOS</span>
+      <p id="objectives"></p>
+    </section>
+    <section>
+      <span>DEUDAS</span>
+      <p id="deudas"></p>
+    </section>
+  </main>
   <nav>
     <a class="btn" href="index.html">
-      <svg viewBox="0 0 24 24"><use href="#icon_home"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_home">
+      </svg>
       <span>Inicio</span>
     </a>
     <a href="movimientos.html">
-      <svg viewBox="0 0 24 24"><use href="#icon_register"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_register">
+      </svg>
       <span>Registro de movimientos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_calendar_money"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_calendar_money">
+      </svg>
       <span>Presupuestos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_dashboard"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_dashboard">
+      </svg>
       <span>Panel de control</span>
     </a>
     <a href="tarjetas-de-credito.html">
-      <svg viewBox="0 0 24 24"><use href="#icon_credit_card"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_credit_card">
+      </svg>
       <span>Tarjetas de crédito</span>
     </a>
-    <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_cash"></svg>
+    <a href="ingresos.html">
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_cash">
+      </svg>
       <span>Ingresos</span>
     </a>
     <a href="objetivos.html">
-      <svg viewBox="0 0 24 24"><use href="#icon_list"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_list">
+      </svg>
       <span>Objetivos</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_research"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_research">
+      </svg>
       <span>Investigaciones</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_resumen"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_resumen">
+      </svg>
       <span>Resumen</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_pig"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_pig">
+      </svg>
       <span>Ahorros</span>
     </a>
-    <a href="movimientos.html">
-      <svg viewBox="0 0 24 24"><use href="#icon_register"></svg>
-      <span>Registro de movimientos</span>
-    </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_resumen"></svg>
-      <span>Resumen</span>
-    </a>
-    <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_investments"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_investments">
+      </svg>
       <span>Inversiones</span>
     </a>
     <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_calendar_money"></svg>
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_calendar_money">
+      </svg>
       <span>Egresos</span>
     </a>
-    <a href="#">
-      <svg viewBox="0 0 24 24"><use href="#icon_no-cash"></svg>
+    <a href="deudas.html">
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_no-cash">
+      </svg>
       <span>Deudas</span>
     </a>
   </nav>
@@ -578,8 +617,22 @@
       <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
     </g>
   </svg>
-  <script src="scripts.js"></script>
+  <script>
+    const _DATA = JSON.parse(localStorage.getItem('DATA') || '{}')
+    const $objectives = document.querySelector('#objectives')
+    const $deudas = document.querySelector('#deudas')
+    const $tarjetas = document.querySelector('#tarjetas')
+    const $movimientos = document.querySelector('#movimientos')
+    const $ingresos = document.querySelector('#ingresos')
+    
+    $objectives.innerHTML = _DATA.OBJETIVOS?.items?.length || 0
+    $deudas.innerHTML = _DATA.DEUDAS?.items?.length || 0
+    $tarjetas.innerHTML = _DATA['TARJETAS_DE_CRÉDITO']?.items?.length || 0
+    $movimientos.innerHTML = _DATA.MOVIMIENTOS?.items?.length || 0
+    $ingresos.innerHTML = _DATA.INGRESOS?.items?.length || 0
+  </script>
 </body>
+
 </html>
 
 <!-- AGREDECIMIENTOS A -->

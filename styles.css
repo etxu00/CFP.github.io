@@ -175,3 +175,16 @@ label:has(input:not(:invalid)) .invalid {
     display: none;
   }
 }
+
+/* TMP */
+
+a[href="#"] {
+  display: none;
+}
+
+
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+}

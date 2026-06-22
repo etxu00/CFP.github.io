@@ -134,7 +134,7 @@
     </form>
   </main>
   <nav>
-    <a class="btn" href="#">
+    <a class="btn" href="index.html">
       <svg viewBox="0 0 24 24">
         <use href="#icon_home">
       </svg>
@@ -164,7 +164,7 @@
       </svg>
       <span>Tarjetas de crédito</span>
     </a>
-    <a href="#">
+    <a href="ingresos.html">
       <svg viewBox="0 0 24 24">
         <use href="#icon_cash">
       </svg>
@@ -218,7 +218,7 @@
       </svg>
       <span>Egresos</span>
     </a>
-    <a href="#">
+    <a href="deudas.html">
       <svg viewBox="0 0 24 24">
         <use href="#icon_no-cash">
       </svg>
@@ -722,172 +722,11 @@
       <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
     </g>
   </svg>
-  <script src="scripts.js"></script>
   <script>
-    const $ = selector => document.querySelector(selector)
-    const $form = $('form')
-    const $previewImage = $('#preview_image')
-    const $inputPreview = $('#input_preview')
-    const $inputImage = $('#input_image')
-    const $inputImageLink = $('#input_image_link')
-    const CONCEPT = 'TARJETAS_DE_CRÉDITO'
-    const ITEMS = 'items'
-
-    $inputImageLink.addEventListener('input', event => {
-      previewImageLink(event.target.value)
-    })
-
-    document.addEventListener('DOMContentLoaded', start, false)
-
-    $form.addEventListener('submit', event => submitForm(event), false)
-
-    $inputPreview.addEventListener('change', event => {
-      const file = event.target.files[0]
-      const reader = new FileReader()
-      reader.onload = event => {
-        $previewImage.src = event.target.result
-        $inputImage.value = event.target.result
-      }
-      reader.readAsDataURL(file)
-    })
-
-    function start() {
-      const params = new URLSearchParams(window.location.search)
-      const id = params.get('id')
-      if (id) {
-        getDataItem(id, CONCEPT, ITEMS)
-      }
-    }
-
-    function getDataItem(id, collectionName, items) {
-      // 1. Obtenemos la información del elemento
-      const item = getData(collectionName, items).find(obj => obj.id == id)
-      if (!item) return
-
-      // 2. Rellenamos el form con la información disponible
-      const set = (name, value) => {
-        const el = $form.querySelector(`[name="${name}"]`)
-        if (el) el.value = value ?? ''
-      }
-
-      set('id', item.id)
-      set('nombre', item.nombre || '')
-      set('limite_de_credito', item.limite_de_credito || '')
-      set('dia_corte', item.dia_corte || '')
-      set('paypal', item.paypal || '')
-      set('tarjeta_digital', item.tarjeta_digital || '')
-      set('activo', item.activo !== undefined ? item.activo : 'true')
-
-      const imgVal = item.imagen || ''
-      if (imgVal) {
-        $previewImage.src = imgVal
-        $inputImage.value = imgVal
-        if (!imgVal.startsWith('data:')) {
-          $inputImageLink.value = imgVal
-        }
-      }
-    }
-
-    function submitForm(event) {
-      event.preventDefault()
-      const formData = new FormData($form)
-      const info = generateInfo(formData)
-      if (!$form.checkValidity()) {
-        focusFirstInputInvalid()
-        return
-      }
-      if (!info?.id) {
-        createObjective(info, CONCEPT, ITEMS)
-      } else {
-        updateObjective(info, CONCEPT, ITEMS)
-      }
-    }
-
-    function generateInfo(formData) {
-      const info = {}
-      for (const [key, value] of formData.entries()) {
-        info[key] = value
-        info[key.toLowerCase()] = value
-      }
-      info.fecha_creacion = getDate()
-      info.creador = 'etxu00'
-      return info
-    }
-
-    function getIdItem(key, subKey) {
-      const data = getData(key, subKey)
-      return data.length ? Math.max(...data.map(item => item.id)) + 1 : 1
-    }
-
-    function focusFirstInputInvalid() {
-      const $firstInvalid = $form.querySelectorAll('input:invalid, select:invalid, textarea:invalid')
-      if ($firstInvalid.length) {
-        if ($firstInvalid[0].tagName === 'INPUT' && $firstInvalid[0].value) {
-          $firstInvalid[0].select()
-          return
-        }
-        $firstInvalid[0].focus()
-      }
-    }
-
-    function updateObjective(info, collectionName, items) {
-      const id = info.id
-      const data = getData(collectionName, items)
-      const tmpData = localStorage.getItem('DATA') ? JSON.parse(localStorage.getItem('DATA')) : {}
-
-      data[id] = info
-      const DATA = { ...tmpData, [collectionName]: { [items]: data } }
-      localStorage.setItem('DATA', JSON.stringify(DATA))
-      window.location.href = '/objetivos.html'
-    }
-
-    function createObjective(info, collectionName, items) {
-      const localData = localStorage.getItem('DATA')
-      const tmpData = localData ? JSON.parse(localData) : {}
-      const data = getData(collectionName, items)
-      info.id = getIdItem(CONCEPT, ITEMS)
-      data.push(info)
-      const DATA = { ...tmpData, [collectionName]: { [items]: data } }
-      console.log(DATA)
-      localStorage.setItem('DATA', JSON.stringify(DATA))
-      window.location.href = '/tarjetas-de-credito.html'
-    }
-
-    function getData(key, subKey) {
-      const localData = localStorage.getItem('DATA')
-      const tmpData = localData ? JSON.parse(localData) : {}
-      const data = tmpData[key] ? tmpData[key][subKey] : []
-      return data
-    }
-
-    function getDate() {
-      const date = new Date()
-      return date.toISOString()
-    }
-
-    function previewImageLink(url) {
-      const imgError = 'https://img.icons8.com/forma-bold-filled/24/no-image.png'
-      if (!url) {
-        $previewImage.src = imgError
-      } else {
-        // Validamos con un fetch que el enlace sea una imagen .jpg, .png, .gif, .webp
-        fetch(url)
-          .then(response => $previewImage.src = response.ok ? url : imgError)
-          .catch(error => $previewImage.src = imgError)
-      }
-      // Convierte la imagen en base64 y la pinta en el input hidden
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')
-      const img = new Image()
-      img.onload = () => {
-        canvas.width = img.width
-        canvas.height = img.height
-        ctx.drawImage(img, 0, 0)
-        $inputImage.value = canvas.toDataURL('image/png')
-      }
-      img.src = url
-    }
+    const _CONCEPT = 'TARJETAS_DE_CRÉDITO'
+    const _REDIRECT = 'tarjetas-de-credito'
   </script>
+  <script src="forms.js"></script>
 </body>
 
 </html>

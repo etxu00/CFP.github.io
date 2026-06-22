@@ -20,9 +20,9 @@
 <body>
   <header>
     <nav class="">
-      <a class="btn" href="#"><span>Inicio</span></a>
-      <a href="objetivos.html"><span>Objetivos</span></a>
-      <a href="#"><span>Nuevo</span></a>
+      <a class="btn" href="index.html"><span>Inicio</span></a>
+      <a href="ingresos.html"><span>Ingresos</span></a>
+      <a href=""><span>Nuevo</span></a>
     </nav>
     <button type="button" onclick="submitForm(event)">
       <svg viewBox="0 0 24 24">
@@ -49,7 +49,6 @@
   <main>
     <form id="form">
       <input name="id" type="hidden">
-      <input id="input_image" name="imagen" type="hidden">
       <input id="active" name="activo" type="hidden" value="true">
       <input name="creador" type="hidden" value="etxu00">
       <!-- GENERAL -->
@@ -57,241 +56,40 @@
         <summary>General</summary>
         <section>
           <label>
-            <span>Nombre</span>
-            <input autocomplete="off" autofocus name="nombre" placeholder="Nombre del objetivo" required>
+            <span>Monto</span>
+            <input
+              autocomplete="off"
+              autofocus
+              name="monto"
+              placeholder="$0.00"
+              required
+              step="0.01"
+              type="number"
+            >
+            <small class="invalid">Campo obligatorio</small>
           </label>
           <label>
-            <span>Alias</span>
-            <input autocomplete="off" name="alias" placeholder="Nombre corto">
-          </label>
-          <div class="input_image">
-            <label for="input_image_link">Imagen</label>
-            <img alt="Imagen del objetivo" id="preview_image"
-              src="https://img.icons8.com/forma-bold-filled/24/no-image.png">
-            <label>
-              <span>Subir imagen</span>
-              <input autocomplete="off" accept="image/*" id="input_preview" type="file">
-            </label>
-            <input autocomplete="off" id="input_image_link" placeholder="Imagen desde enlace" type="link">
-            <button type="button">
-              <svg viewBox="0 0 24 24">
-                <use href="#icon_trash">
-              </svg>
-              <span>Limpiar</span>
-            </button>
-          </div>
-          <label>
-            <span>Enlace de referencia</span>
-            <input autocomplete="off" name="enlace" pattern="https?://.*" type="link">
-            <small class="invalid">Formato invalido</small>
-          </label>
-        </section>
-        <style>
-          @property --rotation {
-            syntax: "<angle>";
-            inherits: false;
-            initial-value: 315deg;
-          }
-          
-          details {
-            position: relative;
-            padding: 1lh;
-
-            &:hover {
-              div {
-                i:nth-child(2) {
-                  filter: blur(20px);
-                }
-              }
-            }
-
-            div {
-              
-              i:nth-child(1) {
-                animation: rotate 10s linear infinite;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(var(--rotation),
-                            rgba(243, 27, 247, 1) 0%,
-                            rgba(105, 53, 250, 1) 25%,
-                            rgba(62, 61, 251, 1) 50%,
-                            rgba(68, 141, 252, 1) 75%,
-                            rgba(76, 234, 254, 1) 100%);
-                border-radius: 1lh;
-                z-index: -1;
-
-                &:before {
-                  --size: calc(100% - 2px);
-                  
-                  content: "";
-                  position: absolute;
-                  top: 1px;
-                  left: 1px;
-                  width: var(--size);
-                  height: var(--size);
-                  background: rgb(33, 33, 33, .95);
-                  border-radius: 1lh;
-                  z-index: 1;
-                }
-              }
-
-              i:nth-child(2) {
-                animation: rotate 10s linear infinite;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                filter: blur(5px);
-                background: linear-gradient(var(--rotation),
-                            rgba(243, 27, 247, 1) 0%,
-                            rgba(105, 53, 250, 1) 25%,
-                            rgba(62, 61, 251, 1) 50%,
-                            rgba(68, 141, 252, 1) 75%,
-                            rgba(76, 234, 254, 1) 100%);
-                border-radius: 1lh;
-                transition: .25s ease-in-out;
-                z-index: -2;
-              }
-
-              i:nth-child(3) {
-                display: block;
-                position: absolute;
-                transition: 1s ease-in-out;
-                top: -0.5rem;
-                left: -0.5rem;
-
-                &:after {
-                  animation: scale 10s ease-in-out infinite;
-                  background: blue;
-                  display: block;
-                  filter: blur(2.5rem);
-                  height: 4rem;
-                  left: -1rem;
-                  top: -1rem;
-                  width: 4rem;
-                  border-radius: 50%;
-                  content: '';
-                  position: absolute;
-                  transition: .5s ease-in-out;
-                  z-index: -2;
-                }
-
-                &:before {
-                  animation: scale 10s ease-in-out infinite;
-                  background: rgba(76, 234, 254, .5);
-                  border-radius: 50%;
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  transition: .5s ease-in-out;
-                  filter: blur(1.5rem);
-                  height: 2rem;
-                  width: 2rem;
-                  z-index: 1;
-                }
-              }
-
-              i:nth-child(5) {
-                display: block;
-                position: absolute;
-                transition: 1s ease-in-out;
-                right: 1.5rem;
-                bottom: 1.5rem;
-
-                &:after {
-                  animation: scale 10s ease-in-out infinite;
-                  background: purple;
-                  display: block;
-                  filter: blur(2.5rem);
-                  height: 4rem;
-                  left: -1rem;
-                  top: -1rem;
-                  width: 4rem;
-                  border-radius: 50%;
-                  content: '';
-                  position: absolute;
-                  transition: .5s ease-in-out;
-                  z-index: -2;
-                }
-
-                &:before {
-                  animation: scale 10s ease-in-out infinite;
-                  background: rgba(243, 27, 247, .5);
-                  border-radius: 50%;
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  transition: .5s ease-in-out;
-                  filter: blur(1.5rem);
-                  height: 2rem;
-                  width: 2rem;
-                  z-index: 1;
-                }
-              }
-            }
-          }
-
-          main {
-            padding: 1lh 3lh;
-          }
-
-          @keyframes rotate {
-            from {
-              --rotation: 135deg;
-            }
-            50% {
-              --rotation: 315deg;
-            }
-            to {
-              --rotation: 495deg;
-            }
-          }
-
-          @keyframes scale {
-            0% {
-              transform: scale(0);
-              opacity: 0;
-            }
-            50% {
-              transform: scale(1);
-              opacity: 1;
-            }
-            100% {
-              transform: scale(0);
-              opacity: 0;
-            }
-          }
-        </style>
-        <div>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
-      </details>
-      <!-- ORGANIZACIÓN -->
-      <details open>
-        <summary>Organización</summary>
-        <section>
-          <label>
-            <span>Categoría</span>
-            <select autocomplete="off" name="categoria">
+            <span>Concepto</span>
+            <select
+              autocomplete="off"
+              name="concepto"
+              required
+            >
               <option value="">Seleccione una opción...</option>
-              <option>Setup</option>
+              <option>Comida</option>
+              <option>Otros</option>
               <option>Nuevo...</option>
             </select>
+            <small class="invalid">Campo obligatorio</small>
           </label>
           <label>
-            <span>Padre</span>
-            <select autocomplete="off" name="parent">
-              <option value="">Seleccione una opción...</option>
-            </select>
+            <span>Fecha de ingreso</span>
+            <input
+              autocomplete="off"
+              name="fecha_de_ingreso"
+              type="date"
+            >
+            <small class="invalid">Campo obligatorio</small>
           </label>
         </section>
       </details>
@@ -887,8 +685,8 @@
     </g>
   </svg>
   <script>
-    const _CONCEPT = 'OBJETIVOS'
-    const _REDIRECT = 'objetivos'
+    const _CONCEPT = 'INGRESOS'
+    const _REDIRECT = 'ingresos'
   </script>
   <script src="forms.js"></script>
 </body>

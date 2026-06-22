@@ -22,7 +22,7 @@
   <header>
     <nav class="">
       <a class="btn" href="#"><span>Inicio</span></a>
-      <a href="objetivos.html"><span>Objetivos</span></a>
+      <a href="deudas.html"><span>Deudas</span></a>
     </nav>
     <button type="button" onclick="dialog.show()">
       <svg viewBox="0 0 24 24">
@@ -37,7 +37,10 @@
         </svg>
       </summary>
       <section class="dropdown">
-        <button>
+        <button
+          type="button"
+          onclick="dialog_preferences.show()"
+        >
           <svg viewBox="0 0 24 24">
             <use href="#icon_setting">
           </svg>
@@ -52,92 +55,24 @@
         <tr>
           <th scope="col"><input type="checkbox" id="select_all_rows" name="select_all_rows"></th>
           <th scope="col">Icono</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Alias</th>
-          <th scope="col">Enlace de referencia</th>
-          <th scope="col">Categoria</th>
+          <th scope="col">Concepto</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Avance</th>
+          <th scope="col">Pagado</th>
+          <th scope="col">Faltante</th>
+          <th scope="col">Mensual</th>
+          <th scope="col">Aporte a capital</th>
+          <th scope="col">Utilizado</th>
+          <th scope="col">Indefinido</th>
           <th scope="col">Creado por</th>
-          <th scope="col">Etiquetas</th>
           <th scope="col">Fecha de creación</th>
-          <th scope="col">Estatus</th>
           <th scope="col">Activo</th>
           <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <!--tr>
-          <td><input type="checkbox" name="select-1"></td>
-          <td>🎯</td>
-          <td>Monitor SOTSU Portátil Touch</td>
-          <td>Monitor Portátil Touch</td>
-          <td>
-            <a
-              href="https://www.amazon.com.mx/dp/B0CW3N8ZYG/?coliid=IVKNJGI960PJJ&colid=3OF2BQM5RMKVY&psc=1&ref_=list_c_wl_gv_ov_lig_pi_dp"
-              target="_blank"
-            >
-              <svg viewBox="0 0 24 24"><use href="#icon_link"></svg>
-              <span>Ver</span>
-            </a>
-          </td>
-          <td>Setup</td>
-          <td>admin</td>
-          <td>
-            <a href="/tags/tag-1" class="btn tag">Tag 1</a>
-            <a href="/tags/tag-2" class="btn tag">Tag 2</a>
-            <a href="/tags/tag-3" class="btn tag">Tag 3</a>
-            <a href="/tags/tag-4" class="btn tag">Tag n</a>
-          </td>
-          <td>Hace 36 años</td>
-          <td>22/09/1988 13:00:00</td>
-          <td>Activo</td>
-          <td>
-            <div class="toolbar min">
-              <button type="button">
-                <svg viewBox="0 0 24 24"><use href="#icon_clone"></svg>
-                <span>Duplicar</span>
-              </button>
-              <button type="button">
-                <svg viewBox="0 0 24 24"><use href="#icon_pencil"></svg>
-                <span>Editar</span>
-              </button>
-              <button type="button">
-                <svg viewBox="0 0 24 24"><use href="#icon_pause"></svg>
-                <span>Desactivar</span>
-              </button>
-              <button type="button">
-                <svg viewBox="0 0 24 24"><use href="#icon_start"></svg>
-                <span>Favoritos</span>
-              </button>
-            </div>
-            <details>
-              <summary class="min">
-                <svg viewBox="0 0 24 24"><use href="#icon_dots_vertical"></svg>
-              </summary>
-              <section class="dropdown">
-                <section data-title="Acciones temporales">
-                  <button type="button">
-                    <svg viewBox="0 0 24 24"><use href="#icon_clone"></svg>
-                    <span>Duplicar</span>
-                  </button>
-                  <button type="button">
-                    <svg viewBox="0 0 24 24"><use href="#icon_pencil"></svg>
-                    <span>Editar</span>
-                  </button>
-                  <button type="button">
-                    <svg viewBox="0 0 24 24"><use href="#icon_pause"></svg>
-                    <span>Desactivar</span>
-                  </button>
-                </section>
-                <button type="button">
-                  <svg viewBox="0 0 24 24"><use href="#icon_trash"></svg>
-                  <span>Eliminar</span>
-                </button>
-              </section>
-            </details>
-          </td>
-        </tr-->
         <tr class="empty">
-          <td colspan="12">
+          <td colspan="15">
             <p>Sin resultados</p>
             <a href="#">
               <svg viewBox="0 0 24 24">
@@ -305,9 +240,7 @@
     <g id="icon_pig">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M15 11v.01"></path>
-      <path
-        d="M16 3l0 3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342a6.008 6.008 0 0 1 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3z">
-      </path>
+      <path d="M16 3l0 3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342a6.008 6.008 0 0 1 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3z"></path>
     </g>
     <g id="icon_investments">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -326,9 +259,7 @@
     <g id="icon_no-cash">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M9.88 9.878a3 3 0 1 0 4.242 4.243m.58 -3.425a3.012 3.012 0 0 0 -1.412 -1.405"></path>
-      <path
-        d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1">
-      </path>
+      <path d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1"></path>
       <path d="M18 12l.01 0"></path>
       <path d="M6 12l.01 0"></path>
       <path d="M3 3l18 18"></path>
@@ -381,11 +312,8 @@
     </g>
     <g id="icon_clone">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
-      </path>
-      <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1">
-      </path>
+      <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z"></path>
+      <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"></path>
     </g>
     <g id="icon_pencil">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -403,9 +331,7 @@
     </g>
     <g id="icon_start">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
-      </path>
+      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
     </g>
     <g id="icon_trash">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -415,10 +341,81 @@
       <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
       <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
     </g>
+    <g id="icon_config">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
+      <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+    </g>
+    <g id="icon_moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+    </g>
+    <g id="icon_sun">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+      <path d="M3 12h1m8 -9v1m8 8h1m0 8h-1m-8 -8v1m0 8v1m0 -10v-1m8 0h-1"></path>
+    </g>
+    <g id="icon_line_compact">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 3h16"></path>
+      <path d="M4 9h16"></path>
+      <path d="M4 15h16"></path>
+      <path d="M4 21h16"></path>
+    </g>
+    <g id="icon_line_normal">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 20h16"></path>
+      <path d="M4 12h16"></path>
+      <path d="M4 4h16"></path>
+    </g>
+    <g id="icon_line_comfortable">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 4h16"></path>
+      <path d="M4 20h16"></path>
+    </g>
+    <g id="icon_density_min">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+      <path d="M9 12l6 0"></path>
+    </g>
+    <g id="icon_density_normal">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+      <path d="M12 3a4.5 4.5 0 0 0 0 9a4.5 4.5 0 0 1 0 9"></path>
+      <circle cx="12" cy="7.5" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="16.5" r=".5" fill="currentColor"></circle>
+    </g>
+    <g id="icon_density_comfortable">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+      <path d="M9 12h6"></path>
+      <path d="M12 9v6"></path>
+    </g>
+    <g id="icon_style_background">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+      <path d="M9 12l2 2l4 -4"></path>
+    </g>
+    <g id="icon_style_color">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M9 12l2 2l4 -4"></path>
+    </g>
+    <g id="icon_style_circle">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+    </g>
+    <g id="icon_style_lineal">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+    </g>
+    <g id="icon_style_rounded">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
+    </g>
   </svg>
   <dialog id="dialog">
     <header>
-      <span>Objetivo</span>
+      <span>Ingresos</span>
       <button class="min" title="Cerrar" type="button" onclick="dialog.close()">
         <svg viewBox="0 0 24 24">
           <use href="#icon_close">
@@ -427,47 +424,56 @@
       </button>
     </header>
     <section>
-      <details open>
-        <summary>General</summary>
-        <section>
-          <label>
-            <span>Nombre</span>
-            <input type="text" placeholder="Nombre del objetivo" required>
-          </label>
-          <label>
-            <span>Alias</span>
-            <input type="text" placeholder="Nombre corto">
-          </label>
-          <label>
-            <span>Imagen</span>
-            <input type="file">
-          </label>
-          <label>
-            <span>Enlace de referencia</span>
-            <input type="link">
-          </label>
-        </section>
-      </details>
-      <details open>
-        <summary>Organización</summary>
-        <section>
-          <label>
-            <span>Categoria</span>
-            <select required>
-              <option value="">Seleccione una opción...</option>
-            </select>
-          </label>
-          <label>
-            <span>Padre</span>
-            <select>
-              <option value="">Seleccione una opción...</option>
-            </select>
-          </label>
-        </section>
-      </details>
+      <form id="form">
+        <input name="id" type="hidden">
+        <input id="active" name="activo" type="hidden" value="true">
+        <input name="creador" type="hidden" value="etxu00">
+        <!-- GENERAL -->
+        <details open>
+          <summary>General</summary>
+          <section>
+            <label>
+              <span>Monto</span>
+              <input
+                autocomplete="off"
+                autofocus
+                name="monto"
+                placeholder="$0.00"
+                required
+                step="0.01"
+                type="number"
+              >
+              <small class="invalid">Campo obligatorio</small>
+            </label>
+            <label>
+              <span>Concepto</span>
+              <select
+                autocomplete="off"
+                name="concepto"
+                required
+              >
+                <option value="">Seleccione una opción...</option>
+                <option>Comida</option>
+                <option>Otros</option>
+                <option>Nuevo...</option>
+              </select>
+              <small class="invalid">Campo obligatorio</small>
+            </label>
+            <label>
+              <span>Fecha de ingreso</span>
+              <input
+                autocomplete="off"
+                name="fecha_de_ingreso"
+                type="date"
+              >
+              <small class="invalid">Campo obligatorio</small>
+            </label>
+          </section>
+        </details>
+      </form>
     </section>
     <footer>
-      <a href="objetivo.html">
+      <a href="deuda.html">
         <span>Más opciones</span>
         <svg viewBox="0 0 24 24">
           <use href="#icon_external_link">
@@ -738,28 +744,12 @@
   </template>
   <template id="template_tr">
     <tr data-id="">
-      <td>
-        <input type="checkbox" name="select-1">
-      </td>
-      <td>
-        <span class="_emoji">🎯</span>
-        <img alt="Imagen del objetivo" class="_imagen" width="100">
-      </td>
-      <td class="_nombre"></td>
-      <td class="_alias"></td>
-      <td>
-        <a class="_enlace" href="" target="_blank">
-          <svg viewBox="0 0 24 24">
-            <use href="#icon_link">
-          </svg>
-          <span>Ver</span>
-        </a>
-      </td>
-      <td class="_categoria"></td>
+      <td><input type="checkbox" name="select-1"></td>
+      <td><span class="_emoji">🛍️</span></td>
+      <td class="_monto"></td>
+      <td class="_concepto"></td>
       <td class="_creador"></td>
-      <td class="_etiquetas"></td>
       <td class="_fecha_creacion"></td>
-      <td class="_estado"></td>
       <td class="_activo"></td>
       <td>
         <div>
@@ -826,8 +816,8 @@
   </template>
   <script src="scripts.js"></script>
   <script>
-    const _CONCEPT = 'OBJETIVOS'
-    const _HTML = 'objetivo'
+    const _CONCEPT = 'DEUDAS'
+    const _HTML = 'deuda'
   </script>
 </body>
 
