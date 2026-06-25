@@ -6,8 +6,194 @@
   <meta name="description" content="App para el control de finanzas personales">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de finanzas personales</title>
-  <link rel="stylesheet" href="http://127.0.0.1:3002/style.css">
+  
   <link rel="stylesheet" href="styles.css">
+  <style>
+    @property --rotation {
+      syntax: "<angle>";
+      inherits: false;
+      initial-value: 315deg;
+    }
+    
+    details {
+      position: relative;
+      padding: 1lh;
+
+      &:hover {
+        div {
+          i:nth-child(2) {
+            filter: blur(20px);
+          }
+        }
+      }
+
+      div {
+        
+        i:nth-child(1) {
+          animation: rotate 10s linear infinite;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(var(--rotation),
+                      rgba(243, 27, 247, 1) 0%,
+                      rgba(105, 53, 250, 1) 25%,
+                      rgba(62, 61, 251, 1) 50%,
+                      rgba(68, 141, 252, 1) 75%,
+                      rgba(76, 234, 254, 1) 100%);
+          border-radius: 1lh;
+          z-index: -1;
+
+          &:before {
+            --size: calc(100% - 2px);
+            
+            content: "";
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: var(--size);
+            height: var(--size);
+            background: rgb(33, 33, 33, .95);
+            border-radius: 1lh;
+            z-index: 1;
+          }
+        }
+
+        i:nth-child(2) {
+          animation: rotate 10s linear infinite;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          filter: blur(5px);
+          background: linear-gradient(var(--rotation),
+                      rgba(243, 27, 247, 1) 0%,
+                      rgba(105, 53, 250, 1) 25%,
+                      rgba(62, 61, 251, 1) 50%,
+                      rgba(68, 141, 252, 1) 75%,
+                      rgba(76, 234, 254, 1) 100%);
+          border-radius: 1lh;
+          transition: .25s ease-in-out;
+          z-index: -2;
+        }
+
+        i:nth-child(3) {
+          display: block;
+          position: absolute;
+          transition: 1s ease-in-out;
+          top: -0.5rem;
+          left: -0.5rem;
+
+          &:after {
+            animation: scale 10s ease-in-out infinite;
+            background: blue;
+            display: block;
+            filter: blur(2.5rem);
+            height: 4rem;
+            left: -1rem;
+            top: -1rem;
+            width: 4rem;
+            border-radius: 50%;
+            content: '';
+            position: absolute;
+            transition: .5s ease-in-out;
+            z-index: -2;
+          }
+
+          &:before {
+            animation: scale 10s ease-in-out infinite;
+            background: rgba(76, 234, 254, .5);
+            border-radius: 50%;
+            content: '';
+            display: block;
+            position: absolute;
+            transition: .5s ease-in-out;
+            filter: blur(1.5rem);
+            height: 2rem;
+            width: 2rem;
+            z-index: 1;
+          }
+        }
+
+        i:nth-child(5) {
+          display: block;
+          position: absolute;
+          transition: 1s ease-in-out;
+          right: 1.5rem;
+          bottom: 1.5rem;
+
+          &:after {
+            animation: scale 10s ease-in-out infinite;
+            background: purple;
+            display: block;
+            filter: blur(2.5rem);
+            height: 4rem;
+            left: -1rem;
+            top: -1rem;
+            width: 4rem;
+            border-radius: 50%;
+            content: '';
+            position: absolute;
+            transition: .5s ease-in-out;
+            z-index: -2;
+          }
+
+          &:before {
+            animation: scale 10s ease-in-out infinite;
+            background: rgba(243, 27, 247, .5);
+            border-radius: 50%;
+            content: '';
+            display: block;
+            position: absolute;
+            transition: .5s ease-in-out;
+            filter: blur(1.5rem);
+            height: 2rem;
+            width: 2rem;
+            z-index: 1;
+          }
+        }
+      }
+    }
+
+    form {
+      display: grid;
+      gap: 1lh;
+    }
+
+    main {
+      padding: 1lh 3lh;
+    }
+
+    @keyframes rotate {
+      from {
+        --rotation: 135deg;
+      }
+      50% {
+        --rotation: 315deg;
+      }
+      to {
+        --rotation: 495deg;
+      }
+    }
+
+    @keyframes scale {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
+
+  </style>
   <!--link rel="manifest" href="./manifest.json">
 
   <script>
@@ -58,21 +244,52 @@
         <section>
           <label>
             <span>Nombre</span>
-            <input autocomplete="off" autofocus name="nombre" placeholder="Nombre del objetivo" required>
+            <input
+              autocomplete="off"
+              autofocus
+              name="nombre"
+              placeholder="Nombre del objetivo"
+              required
+            >
           </label>
           <label>
             <span>Alias</span>
-            <input autocomplete="off" name="alias" placeholder="Nombre corto">
+            <input
+              autocomplete="off"
+              name="alias"
+              placeholder="Nombre corto"
+            >
+          </label>
+          <label>
+            <span>Monto</span>
+            <input
+              autocomplete="off"
+              name="monto"
+              placeholder="Monto del objetivo"
+            >
           </label>
           <div class="input_image">
             <label for="input_image_link">Imagen</label>
-            <img alt="Imagen del objetivo" id="preview_image"
-              src="https://img.icons8.com/forma-bold-filled/24/no-image.png">
+            <img
+              alt="Imagen del objetivo"
+              id="preview_image"
+              src="https://img.icons8.com/forma-bold-filled/24/no-image.png"
+            >
             <label>
               <span>Subir imagen</span>
-              <input autocomplete="off" accept="image/*" id="input_preview" type="file">
+              <input
+                accept="image/*"
+                autocomplete="off"
+                id="input_preview"
+                type="file"
+              >
             </label>
-            <input autocomplete="off" id="input_image_link" placeholder="Imagen desde enlace" type="link">
+            <input
+              autocomplete="off"
+              id="input_image_link"
+              placeholder="Imagen desde enlace"
+              type="link"
+            >
             <button type="button">
               <svg viewBox="0 0 24 24">
                 <use href="#icon_trash">
@@ -80,192 +297,31 @@
               <span>Limpiar</span>
             </button>
           </div>
+        </section>
+        <div>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+      </details>
+      <!-- REFERENCIA -->
+      <details open>
+        <summary>Referencia</summary>
+        <section>
           <label>
             <span>Enlace de referencia</span>
-            <input autocomplete="off" name="enlace" pattern="https?://.*" type="link">
+            <input
+              autocomplete="off"
+              name="enlace"
+              pattern="https?://.*"
+              type="link"
+            >
             <small class="invalid">Formato invalido</small>
           </label>
         </section>
-        <style>
-          @property --rotation {
-            syntax: "<angle>";
-            inherits: false;
-            initial-value: 315deg;
-          }
-          
-          details {
-            position: relative;
-            padding: 1lh;
-
-            &:hover {
-              div {
-                i:nth-child(2) {
-                  filter: blur(20px);
-                }
-              }
-            }
-
-            div {
-              
-              i:nth-child(1) {
-                animation: rotate 10s linear infinite;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(var(--rotation),
-                            rgba(243, 27, 247, 1) 0%,
-                            rgba(105, 53, 250, 1) 25%,
-                            rgba(62, 61, 251, 1) 50%,
-                            rgba(68, 141, 252, 1) 75%,
-                            rgba(76, 234, 254, 1) 100%);
-                border-radius: 1lh;
-                z-index: -1;
-
-                &:before {
-                  --size: calc(100% - 2px);
-                  
-                  content: "";
-                  position: absolute;
-                  top: 1px;
-                  left: 1px;
-                  width: var(--size);
-                  height: var(--size);
-                  background: rgb(33, 33, 33, .95);
-                  border-radius: 1lh;
-                  z-index: 1;
-                }
-              }
-
-              i:nth-child(2) {
-                animation: rotate 10s linear infinite;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                filter: blur(5px);
-                background: linear-gradient(var(--rotation),
-                            rgba(243, 27, 247, 1) 0%,
-                            rgba(105, 53, 250, 1) 25%,
-                            rgba(62, 61, 251, 1) 50%,
-                            rgba(68, 141, 252, 1) 75%,
-                            rgba(76, 234, 254, 1) 100%);
-                border-radius: 1lh;
-                transition: .25s ease-in-out;
-                z-index: -2;
-              }
-
-              i:nth-child(3) {
-                display: block;
-                position: absolute;
-                transition: 1s ease-in-out;
-                top: -0.5rem;
-                left: -0.5rem;
-
-                &:after {
-                  animation: scale 10s ease-in-out infinite;
-                  background: blue;
-                  display: block;
-                  filter: blur(2.5rem);
-                  height: 4rem;
-                  left: -1rem;
-                  top: -1rem;
-                  width: 4rem;
-                  border-radius: 50%;
-                  content: '';
-                  position: absolute;
-                  transition: .5s ease-in-out;
-                  z-index: -2;
-                }
-
-                &:before {
-                  animation: scale 10s ease-in-out infinite;
-                  background: rgba(76, 234, 254, .5);
-                  border-radius: 50%;
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  transition: .5s ease-in-out;
-                  filter: blur(1.5rem);
-                  height: 2rem;
-                  width: 2rem;
-                  z-index: 1;
-                }
-              }
-
-              i:nth-child(5) {
-                display: block;
-                position: absolute;
-                transition: 1s ease-in-out;
-                right: 1.5rem;
-                bottom: 1.5rem;
-
-                &:after {
-                  animation: scale 10s ease-in-out infinite;
-                  background: purple;
-                  display: block;
-                  filter: blur(2.5rem);
-                  height: 4rem;
-                  left: -1rem;
-                  top: -1rem;
-                  width: 4rem;
-                  border-radius: 50%;
-                  content: '';
-                  position: absolute;
-                  transition: .5s ease-in-out;
-                  z-index: -2;
-                }
-
-                &:before {
-                  animation: scale 10s ease-in-out infinite;
-                  background: rgba(243, 27, 247, .5);
-                  border-radius: 50%;
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  transition: .5s ease-in-out;
-                  filter: blur(1.5rem);
-                  height: 2rem;
-                  width: 2rem;
-                  z-index: 1;
-                }
-              }
-            }
-          }
-
-          main {
-            padding: 1lh 3lh;
-          }
-
-          @keyframes rotate {
-            from {
-              --rotation: 135deg;
-            }
-            50% {
-              --rotation: 315deg;
-            }
-            to {
-              --rotation: 495deg;
-            }
-          }
-
-          @keyframes scale {
-            0% {
-              transform: scale(0);
-              opacity: 0;
-            }
-            50% {
-              transform: scale(1);
-              opacity: 1;
-            }
-            100% {
-              transform: scale(0);
-              opacity: 0;
-            }
-          }
-        </style>
         <div>
           <i></i>
           <i></i>
@@ -276,7 +332,7 @@
         </div>
       </details>
       <!-- ORGANIZACIÓN -->
-      <details open>
+      <details>
         <summary>Organización</summary>
         <section>
           <label>

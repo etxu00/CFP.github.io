@@ -1,12 +1,13 @@
 const $ = selector => document.querySelector(selector)
   ? document.querySelector(selector)
   : null
+const _DATA = {}
 
 function getData(key, subKey) {
-  const tmpData = localStorage.getItem('DATA')
-    ? JSON.parse(localStorage.getItem('DATA'))
-    : {}
-  const data = tmpData[key][subKey] || []
+  const localStorageData = localStorage.getItem('DATA')
+  const tmpData = localStorageData ? JSON.parse(localStorageData) : {}
+  const data = tmpData[key] ? tmpData[key][subKey] || [] : []
+  _DATA[key] = tmpData[key]
   return data
 }
 

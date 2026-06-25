@@ -6,7 +6,7 @@
   <meta name="description" content="App para el control de finanzas personales">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de finanzas personales</title>
-  <link rel="stylesheet" href="http://127.0.0.1:3002/style.css">
+  
   <link rel="stylesheet" href="styles.css">
   <!--link rel="manifest" href="./manifest.json">
 
@@ -58,31 +58,50 @@
       <details open>
         <summary>General</summary>
         <section>
+          <!-- CONCEPTO -->
+          <label>
+            <span>Concepto</span>
+            <select
+              autofocus
+              autocomplete="off"
+              name="concepto"
+              required
+              data-origin="OBJETIVOS.items"
+              data-value="id"
+              data-label="alias|nombre"
+              data-data-monto="nombre"
+              data-input="concepto_nombre"
+              data-new="Nuevo..."
+              data-order="asc"
+            >
+              <option value="">Seleccione una opción...</option>
+              <optgroup label="Objetivos"></optgroup>
+              <option>Nuevo...</option>
+            </select>
+            <small class="invalid">Campo obligatorio</small>
+          </label>
+          <label>
+            <span></span>
+            <input
+              autocomplete="off"
+              type="text"
+              id="concepto_nombre"
+              name="tmp_concepto"
+              placeholder="Nombre..."
+              hidden
+            >
+            <small class="invalid">Campo obligatorio</small>
+          </label>
           <label>
             <span>Monto</span>
             <input
               autocomplete="off"
-              autofocus
               name="monto"
               placeholder="$0.00"
               required
               step="0.01"
               type="number"
             >
-            <small class="invalid">Campo obligatorio</small>
-          </label>
-          <label>
-            <span>Concepto</span>
-            <select
-              autocomplete="off"
-              name="concepto"
-              required
-            >
-              <option value="">Seleccione una opción...</option>
-              <option>Comida</option>
-              <option>Otros</option>
-              <option>Nuevo...</option>
-            </select>
             <small class="invalid">Campo obligatorio</small>
           </label>
           <label>

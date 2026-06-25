@@ -6,7 +6,7 @@
   <meta name="description" content="App para el control de finanzas personales">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control de finanzas personales</title>
-  <link rel="stylesheet" href="http://127.0.0.1:3002/style.css">
+  
   <link rel="stylesheet" href="styles.css">
   <!--link rel="manifest" href="./manifest.json">
 
@@ -746,11 +746,18 @@
     <tr data-id="">
       <td><input type="checkbox" name="select-1"></td>
       <td><span class="_emoji">🛍️</span></td>
-      <td class="_monto"></td>
       <td class="_concepto"></td>
+      <td class="_monto"></td>
+      <td>100%</td>
+      <td>$50.00</td>
+      <td>$50.00</td>
+      <td>$50.00</td>
+      <td>$0.00</td>
+      <td>✅</td>
+      <td>🔴</td>
       <td class="_creador"></td>
       <td class="_fecha_creacion"></td>
-      <td class="_activo"></td>
+      <td class="_activo">🟢</td>
       <td>
         <div>
           <div class="toolbar min">
@@ -818,6 +825,10 @@
   <script>
     const _CONCEPT = 'DEUDAS'
     const _HTML = 'deuda'
+    const beforeSendSaveForm = data => {
+      debugger
+      return data
+    }
   </script>
 </body>
 
