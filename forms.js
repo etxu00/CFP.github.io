@@ -1,8 +1,8 @@
 const $ = selector => document.querySelector(selector)
 const $form = $('form')
+const MAX_WIDTH_IMAGE = 100 //px
 let _DATA = null
 let _FULL_DATA = null
-let $previewImage = null
 
 function addDataAttributes(option, item, $select) {
   Array.from($select.attributes).forEach(attr => {
@@ -20,6 +20,12 @@ function addDefaultValues(info) {
   info.creador = 'etxu00'
   info.fecha_creacion = getDate()
   return info
+}
+
+function clearImg() {
+  $inputImage.value = ''
+  $inputImageLink.value = ''
+  $previewImage.src = 'https://img.icons8.com/forma-bold-filled/24/no-image.png'
 }
 
 function createData(info) {
@@ -41,6 +47,14 @@ function createOption(value, text, item, $select) {
 
   addDataAttributes(option, item, $select)
   return option
+}
+
+function deleteRegister() {
+  const formData = new FormData($form)
+  const id = formData.get('id')
+  _DATA.items = _DATA.items.filter(item => item.id !== Number(id))
+  saveData()
+  redirect()
 }
 
 function focusFirstInputInvalid() {
@@ -124,12 +138,12 @@ function handleNewOptionChange($select, $input, newOption) {
 }
 
 function inputsFunction() {
-  const $inputPreview = $('#input_preview')
-  const $inputImage = $('#input_image')
-  const $inputImageLink = $('#input_image_link')
+  $inputPreview = $('#input_preview')
+  $inputImage = $('#input_image')
+  $inputImageLink = $('#input_image_link')
 
   if ($inputImage) {
-    $previewImage = $inputImage
+    $previewImage = $('#preview_image')
     if ($inputImageLink) {
       $inputImageLink.addEventListener('input', () => previewImageLink($inputImageLink.value), false)
     }  
@@ -144,7 +158,6 @@ function loadDataItem() {
   const id = params.get('id')
   if (id) {
     const item = _DATA.items.find(item => item.id === Number(id))
-    console.log(item)
     if (item) {
       for (const [key, value] of Object.entries(item)) {
         updateInput(key, value)
@@ -288,8 +301,13 @@ function previewImage(event) {
   const file = event.target.files[0]
   const reader = new FileReader()
   reader.onload = event => {
-    $previewImage.src = event.target.result
-    $inputImage.value = event.target.result
+    const img = new Image()
+    img.onload = () => {
+      const resizedImage = resizeImage(img, MAX_WIDTH_IMAGE)
+      $previewImage.src = resizedImage
+      $inputImage.value = resizedImage
+    }
+    img.src = event.target.result
   }
   reader.readAsDataURL(file)
 }
@@ -306,28 +324,58 @@ function previewImageLink(urlImage) {
         imgOk = response.ok
         return response
       })
-      .then(response => $previewImage.src = imgOk ? urlImage : imgError)
+      .then(response => {
+        if (imgOk) {
+          const img = new Image()
+          img.crossOrigin = 'anonymous' // Permitir acceso CORS
+          img.onload = () => {
+            try {
+              const resizedImage = resizeImage(img, MAX_WIDTH_IMAGE)
+              $previewImage.src = resizedImage
+              $inputImage.value = resizedImage
+            } catch (error) {
+              console.error('Error al redimensionar la imagen:', error)
+              $previewImage.src = urlImage
+              $inputImage.value = urlImage
+            }
+          }
+          img.onerror = () => {
+            $previewImage.src = imgError
+          }
+          img.src = urlImage
+        } else {
+          $previewImage.src = imgError
+        }
+      })
       .catch(error => $previewImage.src = imgError)
   }
-  // Convierte la imagen en base64 y la pinta en el input hidden
-  debugger
-  if (!imgOk) {
-    return false
-  }
-  const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')
-  const img = new Image()
-  img.onload = () => {
-    canvas.width = img.width
-    canvas.height = img.height
-    ctx.drawImage(img, 0, 0)
-    $inputImage.value = canvas.toDataURL('image/png')
-  }
-  img.src = urlImage
 }
 
 function redirect() {
   window.location.href = `/${_REDIRECT}.html`
+}
+
+function resizeImage(img, maxWidth) {
+  const canvas = document.createElement('canvas')
+  const ctx = canvas.getContext('2d')
+  
+  // Calcular el nuevo tamaño manteniendo la proporción
+  let width = img.width
+  let height = img.height
+  
+  if (width > maxWidth) {
+    const ratio = maxWidth / width
+    width = maxWidth
+    height = height * ratio
+  }
+  
+  canvas.width = width
+  canvas.height = height
+  
+  // Dibujar la imagen redimensionada
+  ctx.drawImage(img, 0, 0, width, height)
+  
+  return canvas.toDataURL('image/png')
 }
 
 function saveData() {

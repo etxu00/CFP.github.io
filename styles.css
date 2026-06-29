@@ -5,10 +5,11 @@
 
 /* GENERAL */
 :root {
+  /* FUENTE */
   --font: 'Font', Verdana, Geneva, Tahoma, sans-serif;
+  --font-size: 16px;
 
   /* BOTONES */
-  --font-size-buttons: 14px;
   --radius-buttons: 0;
   --gap-buttons: .5lh;
 
@@ -35,6 +36,7 @@ body {
 
   /* FUENTES */
   font-family: var(--font);
+  font-size: var(--font-size);
 
   &:has(#font_default:checked) {
     --font: 'Font';
@@ -54,6 +56,19 @@ body {
 
   &:has(#font_none:checked) {
     --font: auto;
+  }
+
+  /* TAMAÑO DE FUENTE */
+  &:has(#font_small:checked) {
+    --font-size: 12px;
+  }
+
+  &:has(#font_medium:checked) {
+    --font-size: 16px;
+  }
+
+  &:has(#font_large:checked) {
+    --font-size: 18px;
   }
 
   /* ESPACIADO */
@@ -373,10 +388,6 @@ dialog {
   details {
     border-top: var(--border);
     
-    &:last-child {
-      border-bottom: var(--border);
-    }
-
     :is(&:not(open), &:not([open])) {
       padding: calc(var(--padding) / 2) var(--padding);
     }

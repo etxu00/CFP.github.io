@@ -19,10 +19,10 @@
 
 <body>
   <header>
-    <nav class="">
+    <nav>
       <a class="btn" href="#"><span>Inicio</span></a>
-      <a href="objetivos.html"><span>Objetivos</span></a>
-      <a href="#"><span>Nuevo</span></a>
+      <a href="tarjetas-de-credito.html"><span>Tarjetas de crédito</span></a>
+      <a href="tarjeta-de-credito.html"><span>Nuevo</span></a>
     </nav>
     <button type="button" onclick="submitForm(event)">
       <svg viewBox="0 0 24 24">
@@ -37,7 +37,19 @@
         </svg>
       </summary>
       <section class="dropdown">
-        <button>
+        <button
+          type="button"
+          onclick="dialog_delete.show()"
+        >
+          <svg viewBox="0 0 24 24">
+            <use href="#icon_trash">
+          </svg>
+          <span>Eliminar</span>
+        </button>
+        <button
+          type="button"
+          onclick="dialog_preferences.show()"
+        >
           <svg viewBox="0 0 24 24">
             <use href="#icon_setting">
           </svg>
@@ -56,10 +68,12 @@
       <details open>
         <summary>General</summary>
         <section>
+          <!-- NOMBRE -->
           <label>
             <span>Nombre</span>
             <input autocomplete="off" autofocus name="nombre" placeholder="Nombre del objetivo" required>
           </label>
+          <!-- IMAGEN -->
           <div class="input_image">
             <label for="input_image_link">Imagen</label>
             <img alt="Imagen del objetivo" id="preview_image"
@@ -78,14 +92,19 @@
               id="input_image_link"
               placeholder="Imagen desde enlace"
               type="link"
+              onchange=""
             >
-            <button type="button">
+            <button
+              type="button"
+              onclick="clearImg()"
+            >
               <svg viewBox="0 0 24 24">
                 <use href="#icon_trash">
               </svg>
               <span>Limpiar</span>
             </button>
           </div>
+          <!-- LÍMITE DE CRÉDITO -->
           <label>
             <span>Límite de crédito</span>
             <input
@@ -98,6 +117,7 @@
             >
             <small class="invalid">Campo obligatorio</small>
           </label>
+          <!-- DÍA DE Corte -->
           <label>
             <span>Día de corte</span>
             <input
@@ -113,6 +133,7 @@
       <details open>
         <summary>Variantes</summary>
         <section>
+          <!-- PAYPAL -->
           <label>
             <span>Paypal</span>
             <input
@@ -121,6 +142,7 @@
               type="checkbox"
             >
           </label>
+          <!-- TARJETA DIGITAL -->
           <label>
             <span>Tarjeta digital</span>
             <input
@@ -225,7 +247,7 @@
       <span>Deudas</span>
     </a>
   </nav>
-  <dialog id="dialog_preferences">
+  <dialog id="dialog_preferences" open>
     <header>
       <h7>Preferencias</h7>
       <button
@@ -326,6 +348,32 @@
               type="radio"
             >
             <span style="font-family: auto">Ninguna</span>
+          </label>
+          <hr>
+          <label class="btn">
+            <input
+              id="font_small"
+              name="font_size"
+              type="radio"
+            >
+            <span style="font-size: small">Pequeño</span>
+          </label>
+          <label class="btn">
+            <input
+              checked
+              id="font_medium"
+              name="font_size"
+              type="radio"
+            >
+            <span style="font-size: medium">Normal</span>
+          </label>
+          <label class="btn">
+            <input
+              id="font_large"
+              name="font_size"
+              type="radio"
+            >
+            <span style="font-size: large">Grande</span>
           </label>
         </section>
       </details>
@@ -473,6 +521,28 @@
         </section>
       </details>
     </section>
+  </dialog>
+  <dialog id="dialog_delete">
+    <header>
+      <h7>Eliminar tarjeta de crédito</h7>
+    </header>
+    <section>
+      <p>¿Estás seguro de que deseas eliminar esta tarjeta de crédito?</p>
+    </section>
+    <footer>
+      <button
+        type="button"
+        onclick="dialog_delete.close()"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        onclick="deleteRegister()"
+      >
+        Aceptar
+      </button>
+    </footer>
   </dialog>
   <svg viewBox="0 0 24 24" style="display: none">
     <g id="icon_home">

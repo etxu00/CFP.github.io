@@ -18,12 +18,17 @@
 </head>
 
 <body>
-  <footer>footer</footer>
   <header>
-    <nav class="">
+    <nav>
       <a class="btn" href="#"><span>Inicio</span></a>
-      <a href="objetivos.html"><span>Objetivos</span></a>
+      <a href="tarjetas-de-credito.html"><span>Tarjetas de crédito</span></a>
     </nav>
+    <button type="button" onclick="deleteItems()">
+      <svg viewBox="0 0 24 24">
+        <use href="#icon_trash">
+      </svg>
+      <span>Eliminar</span>
+    </button>
     <button type="button" onclick="dialog.show()">
       <svg viewBox="0 0 24 24">
         <use href="#icon_new">
@@ -37,11 +42,32 @@
         </svg>
       </summary>
       <section class="dropdown">
-        <button>
+        <button
+          type="button"
+          onclick="dialog_preferences.show()"
+        >
           <svg viewBox="0 0 24 24">
             <use href="#icon_setting">
           </svg>
           <span>Preferencias</span>
+        </button>
+        <button
+          type="button"
+          onclick="exportData()"
+        >
+          <svg viewBox="0 0 24 24">
+            <use href="#icon_export">
+          </svg>
+          <span>Exportar</span>
+        </button>
+        <button
+          type="button"
+          onclick="dialog_import.show()"
+        >
+          <svg viewBox="0 0 24 24">
+            <use href="#icon_import">
+          </svg>
+          <span>Importar</span>
         </button>
       </section>
     </details>
@@ -52,6 +78,7 @@
         <tr>
           <th scope="col"><input type="checkbox" id="select_all_rows" name="select_all_rows"></th>
           <th scope="col">Icono</th>
+          <th scope="col">Imagen</th>
           <th scope="col">Nombre</th>
           <th scope="col">Límite de crédito</th>
           <th scope="col">Día de corte</th>
@@ -342,6 +369,17 @@
       <path d="M14 11l0 6" />
       <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
       <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+    </g>
+    <g id="icon_import">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+      <path d="M5 13v-8a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5.5m-9.5 -2h7m-3 -3l3 3l-3 3" />
+    </g>
+    <g id="icon_export">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+      <path d="M7 11l5 -6l5 6" />
+      <path d="M12 4l0 12" />
     </g>
   </svg>
   <dialog id="dialog">
@@ -661,15 +699,79 @@
       </details>
     </section>
   </dialog>
+  <dialog id="dialog_import">
+    <header>
+      <h7>Importar desde archivo</h7>
+      <button onclick="dialog_import.close()">
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_close"></use>
+        </svg>
+      </button>
+    </header>
+    <section>
+      <ol>
+        <li>
+          <p>Descargar la plantilla:</p>
+          <button
+            type="button"
+            onclick="generateTemplate()"
+          >
+            Tarjetas de crédito.csv
+          </button>
+        </li>
+        <li>
+          <p>Rellena la plantilla con los datos de las tarjetas de crédito.</p>
+        </li>
+        <li>
+          <p>Sube el archivo con los datos de las tarjetas de crédito.</p>
+          <label>
+            <span>Archivo</span>
+            <input
+              accept=".csv"
+              id="file_import"
+              type="file"
+            >
+          </label>
+        </li>
+      </ol>
+    </section>
+    <footer>
+      <button
+        type="button"
+        onclick="closeDialog('dialog_import')"
+      >
+        Cancelar
+      </button>
+      <button
+        type="button"
+        onclick="importData(event)"
+      >
+        Importar
+      </button>
+    </footer>
+  </dialog>
   <template id="template_tag">
     <a href="" class="btn tag"></a>
   </template>
   <template id="template_tr">
     <tr data-id="">
-      <td><input type="checkbox" name="select-1"></td>
-      <td><span class="_emoji">🛍️</span></td>
+      <td>
+        <input
+          type="checkbox"
+          name="select-1"
+          onchange="addItemSelected(event)"
+        >
+      </td>
+      <td><span class="_emoji">💳</span></td>
+      <td>
+        <img
+          class="_imagen"
+          alt="Tarjeta de crédito"
+          onerror="this.src='https://img.icons8.com/forma-bold-filled/24/no-image.png'"
+        >
+      </td>
       <td class="_nombre"></td>
-      <td class="_limite_de_credito"></td>
+      <td class="_limite_de_credito" data-pipe="money"></td>
       <td class="_dia_corte"></td>
       <td class="_paypal"></td>
       <td class="_tarjeta_digital"></td>
@@ -691,7 +793,10 @@
               </svg>
               <span>Favoritos</span>
             </button>
-            <button type="button">
+            <button
+              type="button"
+              onclick="activeOrDeactivateItem(event)"
+            >
               <svg viewBox="0 0 24 24">
                 <use href="#icon_pause">
               </svg>
@@ -720,14 +825,20 @@
                   </svg>
                   <span>Duplicar</span>
                 </button>
-                <button type="button">
+                <button
+                  type="button"
+                  onclick="activeOrDeactivateItem(event)"
+                >
                   <svg viewBox="0 0 24 24">
                     <use href="#icon_play">
                   </svg>
                   <span>Activar</span>
                 </button>
               </section>
-              <button type="button">
+              <button
+                type="button"
+                onclick="deleteItems(event)"
+              >
                 <svg viewBox="0 0 24 24">
                   <use href="#icon_trash">
                 </svg>
@@ -743,6 +854,68 @@
   <script>
     const _CONCEPT = 'TARJETAS_DE_CRÉDITO'
     const _HTML = 'tarjeta-de-credito'
+    const _MODEL = {
+      activo: {
+        name: "avtivo",
+        type: "boolean",
+        label: "Activo",
+        example: "true"
+      },
+      creador: {
+        name: "creador",
+        type: "string",
+        label: "Creador",
+        example: "Juan Pérez"
+      },
+      dia_corte: {
+        name: "dia_corte",
+        type: "number",
+        label: "Día de corte",
+        example: "5"
+      },
+      fecha_creacion: {
+        name: "fecha_creacion",
+        type: "date",
+        label: "Fecha de creación",
+        example: "2026-06-29T04:46:47.123Z"
+      },
+      id: {
+        name: "id",
+        type: "number",
+        label: "ID",
+        example: "1"
+      },
+      imagen: {
+        name: "imagen",
+        type: "base64",
+        label: "Imagen",
+        example: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+      },
+      limite_de_credito: {
+        name: "limite_de_credito",
+        type: "number",
+        label: "Límite de crédito",
+        example: "10000"
+      },
+      nombre: {
+        name: "nombre",
+        type: "string",
+        label: "Nombre",
+        example: "Nombre comercial de la tarjeta"
+      },
+      paypal: {
+        name: "paypal",
+        type: "boolean",
+        label: "PayPal",
+        example: "true"
+      },
+      tarjeta_digital: {
+        name: "tarjeta_digital",
+        type: "boolean",
+        label: "Tarjeta digital",
+        example: "true"
+      }
+    }
   </script>
 </body>
 </html>
