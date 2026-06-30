@@ -848,8 +848,6 @@ label:has(span) {
 }
 
 
-
-
 :is(*, *::after, *::before) {
   box-sizing: border-box;
 }
@@ -1049,4 +1047,56 @@ dialog {
   position: fixed;
   inset: 0;
   margin: auto;
+}
+
+/* TABLE */
+table {
+  --border-color: transparent;
+  --border-color: rgba(128, 128, 128, 0.5);
+  --background-color: transparent;
+  --background-color: rgba(128, 128, 128, 0.15);
+  --border-default: 1px solid var(--border-color);
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+  thead tr,
+  tbody tr {
+    border-bottom: var(--border-default);
+    border-top: var(--border-default);
+  }
+
+  tr:hover {
+    color: var(--color-1);
+
+    td {
+      background-color: rgba(128, 128, 128, 0.25);
+    }
+  }
+  
+  td {
+    padding: 0 calc(var(--padding) / 2);
+    border-left: var(--border-default);
+    border-right: var(--border-default);
+
+    button, summary {
+      padding: var(--padding);
+    }
+  }
+
+  th {
+    border-left: var(--border-default);
+    border-right: var(--border-default);
+    font-weight: normal;
+    padding: calc(var(--padding) / 2) 0;
+  }
+
+  svg {
+    --size: 18px;
+    stroke-width: 1.5;
+  }
+
+  tr:nth-child(even) {
+    background-color: var(--background-color);
+  }
 }
