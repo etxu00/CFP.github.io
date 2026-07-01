@@ -19,16 +19,22 @@
   --color-buttons: inherit;
   --shadow: 0 0px 5px 0px rgba(0, 0, 0, .75);
 
-  /*  ESPACIADO  */
+  /* ESPACIADO */
   --padding: .5lh;
   --padding-buttons: 8px;
   --position-status-indicator-x: 26px;
   --position-status-indicator-y: 8px;
   --size-icon: 18px;
+
+  /* TABLA */
+  --table-background-color: transparent;
+  --table-background-color-hover: rgba(128, 128, 128, 0.25);
+  --table-border-bottom-color: transparent;
+  --table-border-right-color: transparent;
 }
 
 body {
-  /* CONFIGURACIÓN DE TEMAS ☀️ / 🌙  */
+  /* CONFIGURACIÓN DE TEMAS ☀️ / 🌙 */
   --background-color-value: 255, 255, 255;
   --background-color: rgb(var(--background-color-value));
   --color-text-value: 23, 23, 23;
@@ -137,6 +143,20 @@ body {
     button[data-shortcut]::after {
       display: block;
     }
+  }
+
+  /* TABLA */
+
+  &:has(#table_alternate_colors:checked) {
+    --table-background-color: rgba(128, 128, 128, 0.15);
+  }
+
+  &:has(#table_borders_rows:checked) {
+    --table-border-bottom-color: rgba(128, 128, 128, 0.5);
+  }
+
+  &:has(#table_borders_columns:checked) {
+    --table-border-right-color: rgba(128, 128, 128, 0.5);
   }
 }
 
@@ -833,11 +853,12 @@ label:has(span) {
 
 :is(input, select, textarea) {
   background-color: rgba(var(--color-text-value), 0.05);
-  border: 1px solid transparent;
   border-radius: var(--radius-buttons, 0);
+  border: 1px solid transparent;
   color: var(--color-text);
   font-family: inherit;
   font-size: inherit;
+  margin: 0;
   outline: 1px solid transparent;
   padding: var(--padding-buttons, 0);
   width: 100%;
@@ -1051,52 +1072,28 @@ dialog {
 
 /* TABLE */
 table {
-  --border-color: transparent;
-  --border-color: rgba(128, 128, 128, 0.5);
-  --background-color: transparent;
-  --background-color: rgba(128, 128, 128, 0.15);
-  --border-default: 1px solid var(--border-color);
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
 
-  thead tr,
-  tbody tr {
-    border-bottom: var(--border-default);
-    border-top: var(--border-default);
-  }
-
-  tr:hover {
-    color: var(--color-1);
-
-    td {
-      background-color: rgba(128, 128, 128, 0.25);
-    }
+  td,
+  th {
+    font-weight: normal;
+    border: 1px solid transparent;
+    border-bottom-color: var(--table-border-bottom-color);
+    border-right-color: var(--table-border-right-color);
+    padding: 1px 4px;
   }
   
-  td {
-    padding: 0 calc(var(--padding) / 2);
-    border-left: var(--border-default);
-    border-right: var(--border-default);
-
-    button, summary {
-      padding: var(--padding);
+  tbody {
+    tr {
+      &:hover {
+        background-color: var(--table-background-color-hover) !important;
+      }
+      
+      &:nth-child(even) {
+        background-color: var(--table-background-color);
+      }
     }
-  }
-
-  th {
-    border-left: var(--border-default);
-    border-right: var(--border-default);
-    font-weight: normal;
-    padding: calc(var(--padding) / 2) 0;
-  }
-
-  svg {
-    --size: 18px;
-    stroke-width: 1.5;
-  }
-
-  tr:nth-child(even) {
-    background-color: var(--background-color);
   }
 }
