@@ -28,7 +28,7 @@
 
   /* TABLA */
   --table-background-color: transparent;
-  --table-background-color-hover: rgba(128, 128, 128, 0.25);
+  --table-background-color-hover: transparent;
   --table-border-bottom-color: transparent;
   --table-border-right-color: transparent;
 }
@@ -157,6 +157,10 @@ body {
 
   &:has(#table_borders_columns:checked) {
     --table-border-right-color: rgba(128, 128, 128, 0.5);
+  }
+
+  &:has(#table_hover_background:checked) {
+    --table-background-color-hover: rgba(128, 128, 128, 0.25);
   }
 }
 
@@ -1078,10 +1082,10 @@ table {
 
   td,
   th {
-    font-weight: normal;
-    border: 1px solid transparent;
     border-bottom-color: var(--table-border-bottom-color);
     border-right-color: var(--table-border-right-color);
+    border: 1px solid transparent;
+    font-weight: normal;
     padding: 1px 4px;
   }
   
@@ -1095,5 +1099,41 @@ table {
         background-color: var(--table-background-color);
       }
     }
+  }
+}
+
+table {
+  tbody {
+  
+    tr {
+      position: relative;
+  
+      td:last-child > div {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        z-index: 1;
+      }
+  
+      &:not(:hover) {
+        td:last-child > div {
+          display: none;
+        }
+      }
+    }
+  }
+
+  thead th:last-child {
+    display: none;
+  }
+
+  :is(
+    tbody td:last-child,
+    thead th:last-child
+  ) {
+    padding: 1px 0;
+    white-space: nowrap;
+    width: 0px;
   }
 }
