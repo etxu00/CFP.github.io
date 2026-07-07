@@ -3,6 +3,7 @@ const $ = selector => document.querySelector(selector)
   : null
 const _DATA = {}
 const itemSelected = []
+let previousSelectAllState = null // Guardar estado previo del checkbox
 
 function activeOrDeactivateItem(event) {
   if (event) {
@@ -18,12 +19,18 @@ function activeOrDeactivateItem(event) {
 
 function addItemSelected(event) {
   const $tr = event.target.closest('tr')
+  const $span = $('#selected_items_counter')
+  const $selectAllRows = $('#select_all_rows')
   const id = $tr.dataset.id
   if (event.target.checked) {
     itemSelected.push(Number(id))
   } else {
     itemSelected.splice(itemSelected.indexOf(Number(id)), 1)
   }
+  $span.textContent = itemSelected.length
+  // select_all_rows indeterminate o checked
+  $selectAllRows.indeterminate = itemSelected.length > 0 && itemSelected.length < _DATA[_CONCEPT].items.length
+  $selectAllRows.checked = itemSelected.length === _DATA[_CONCEPT].items.length
 }
 
 function deleteItems(event) {
@@ -151,10 +158,76 @@ function renderTable(data) {
   })
 }
 
+function selectAllItems(event) {
+  const $selectAllRows = event.target
+  const $inputs = document.querySelectorAll('tbody tr input')
+  const totalItems = $inputs.length
+  const totalSelected = itemSelected.length
+  
+  if (totalItems === 0) return
+  
+  // Usar el estado previo capturado en mousedown
+  const wasChecked = previousSelectAllState?.checked || false
+  const wasIndeterminate = previousSelectAllState?.indeterminate || false
+  
+  // Determinar la acción: true = seleccionar, false = deseleccionar
+  let shouldSelect = false
+  
+  if (!wasChecked && !wasIndeterminate) { // Si estaba unchecked, seleccionar todos
+    shouldSelect = true
+  } else if (wasChecked && !wasIndeterminate) { // Si estaba checked, deseleccionar todos
+    shouldSelect = false
+  } else if (wasIndeterminate) { // Si estaba indeterminado, verificar si es mayoría o minoría
+    shouldSelect = totalSelected >= (totalItems / 2) // Si se tiene la mayoría seleccionada o la mitad, seleccionar todo
+  }
+  
+  // Ejecutar la acción determinada
+  $inputs.forEach($input => {
+    const $tr = $input.closest('tr')
+    const id = $tr.dataset.id
+    if (shouldSelect) {
+      if (!$input.checked) {
+        $input.checked = true
+        if (!itemSelected.includes(Number(id))) {
+          itemSelected.push(Number(id))
+        }
+      }
+    } else {
+      $input.checked = false
+      const index = itemSelected.indexOf(Number(id))
+      if (index > -1) {
+        itemSelected.splice(index, 1)
+      }
+    }
+  })
+  $selectAllRows.checked = shouldSelect ? true : false
+  $selectAllRows.indeterminate = false
+  
+  // Actualizar contador
+  const $span = $('#selected_items_counter')
+  if ($span) {
+    $span.textContent = itemSelected.length
+  }
+  
+  // Limpiar estado previo
+  previousSelectAllState = null
+}
+
 function start() {
   const items = getData(_CONCEPT, 'items')
   if (items.length) {
     renderTable(items)
+  }
+  
+  // Agregar listener para capturar estado previo del checkbox select_all_rows
+  const $selectAllRows = $('#select_all_rows')
+  if ($selectAllRows) {
+    $selectAllRows.addEventListener('mousedown', () => {
+      previousSelectAllState = {
+        checked: $selectAllRows.checked,
+        indeterminate: $selectAllRows.indeterminate
+      }
+    })
   }
 }
 

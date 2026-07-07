@@ -117,7 +117,13 @@
     <table>
       <thead>
         <tr>
-          <th scope="col"><input type="checkbox" id="select_all_rows" name="select_all_rows"></th>
+          <th scope="col">
+            <input
+              id="select_all_rows"
+              type="checkbox"
+              onchange="selectAllItems(event)"
+            >
+          </th>
           <th scope="col">Icono</th>
           <th scope="col">Imagen</th>
           <th scope="col">Nombre</th>
