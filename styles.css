@@ -1075,6 +1075,29 @@ dialog {
 }
 
 /* TABLE */
+
+body:has(table input:checked) > header,
+body:not(:has(table input:checked)) main header {
+  display: none;
+}
+
+span[data-label-after] {
+  &::after {
+    content: attr(data-label-after);
+    margin-right: 1ch;
+  }
+}
+
+main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > span {
+    margin-right: auto;
+  }
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

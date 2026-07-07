@@ -73,6 +73,47 @@
     </details>
   </header>
   <main>
+    <header>
+      <span>
+        <span id="selected_items_counter">0</span>
+        <span>Elementos seleccionados</span>
+      </span>
+      <!-- ELIMINAR -->
+      <button type="button" onclick="deleteItems()">
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_trash">
+        </svg>
+        <span>Eliminar</span>
+      </button>
+      <!-- DUPLICAR -->
+      <button type="button" onclick="deleteItems()">
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_clone">
+        </svg>
+        <span>Duplicar</span>
+      </button>
+      <!-- DESACTIVAR -->
+      <button type="button" onclick="deleteItems()">
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_pause">
+        </svg>
+        <span>Desactivar</span>
+      </button>
+      <!-- ACTIVAR -->
+      <button type="button" onclick="deleteItems()">
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_play">
+        </svg>
+        <span>Activar</span>
+      </button>
+      <!-- ETIQUETAS -->
+      <button type="button" onclick="deleteItems()">
+        <svg viewBox="0 0 24 24">
+          <use href="#icon_tags">
+        </svg>
+        <span>Etiquetas</span>
+      </button>
+    </header>
     <table>
       <thead>
         <tr>
@@ -332,8 +373,8 @@
     </g>
     <g id="icon_clone">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
-      <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1">
+      <path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666" />
+      <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
     </g>
     <g id="icon_pencil">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -469,6 +510,11 @@
       <path d="M3 13h4" />
       <path d="M10 8v6a2 2 0 1 0 4 0v-1a2 2 0 1 0 -4 0v1" />
       <path d="M20.732 12a2 2 0 0 0 -3.732 1v1a2 2 0 0 0 3.726 1.01" />
+    </g>
+    <g id="icon_tags">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+	    <path d="M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+	    <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3" />
     </g>
     <g id="____"></g>
   </svg>
