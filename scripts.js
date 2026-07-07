@@ -5,14 +5,21 @@ const _DATA = {}
 const itemSelected = []
 let previousSelectAllState = null // Guardar estado previo del checkbox
 
-function activeOrDeactivateItem(event) {
+function activeOrDeactivateItem(status, event) {
   if (event) {
     const $tr = event.target.closest('tr')
     const id = $tr.dataset.id
-    const info = _DATA[_CONCEPT].items.find(item => item.id === Number(id))
-    info.activo = !info.activo
-    console.log(info)
+    itemSelected.push(Number(id))
+  }
+  if (itemSelected.length) {
+    const items = _DATA[_CONCEPT].items
+    items.forEach(item => {
+      if (itemSelected.includes(item.id)) {
+        item.activo = status === 'active'
+      }
+    })
     localStorage.setItem('DATA', JSON.stringify(_DATA))
+    itemSelected.length = 0
     renderTable(_DATA[_CONCEPT].items)
   }
 }
@@ -132,6 +139,7 @@ function redirectEdit(event) {
 function renderTable(data) {
   const $tbody = $('tbody')
   const $template = $('#template_tr')
+  const $selectAllRows = $('#select_all_rows')
   $tbody.innerHTML = ''
   data.forEach((item, index) => {
     const $tr = $template.content.cloneNode(true)
@@ -156,6 +164,7 @@ function renderTable(data) {
     }
     $tbody.appendChild($tr)
   })
+  $selectAllRows.checked = false
 }
 
 function selectAllItems(event) {

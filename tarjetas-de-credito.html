@@ -85,33 +85,19 @@
         </svg>
         <span>Eliminar</span>
       </button>
-      <!-- DUPLICAR -->
-      <button type="button" onclick="deleteItems()">
-        <svg viewBox="0 0 24 24">
-          <use href="#icon_clone">
-        </svg>
-        <span>Duplicar</span>
-      </button>
       <!-- DESACTIVAR -->
-      <button type="button" onclick="deleteItems()">
+      <button type="button" onclick="activeOrDeactivateItem('deactive')">
         <svg viewBox="0 0 24 24">
           <use href="#icon_pause">
         </svg>
         <span>Desactivar</span>
       </button>
       <!-- ACTIVAR -->
-      <button type="button" onclick="deleteItems()">
+      <button type="button" onclick="activeOrDeactivateItem('active')">
         <svg viewBox="0 0 24 24">
           <use href="#icon_play">
         </svg>
         <span>Activar</span>
-      </button>
-      <!-- ETIQUETAS -->
-      <button type="button" onclick="deleteItems()">
-        <svg viewBox="0 0 24 24">
-          <use href="#icon_tags">
-        </svg>
-        <span>Etiquetas</span>
       </button>
     </header>
     <table>
@@ -1081,7 +1067,7 @@
             </button>
             <button
               type="button"
-              onclick="activeOrDeactivateItem(event)"
+              onclick="activeOrDeactivateItem('deactive', event)"
             >
               <svg viewBox="0 0 24 24">
                 <use href="#icon_pause">
@@ -1113,7 +1099,7 @@
                 </button>
                 <button
                   type="button"
-                  onclick="activeOrDeactivateItem(event)"
+                  onclick="activeOrDeactivateItem('active', event)"
                 >
                   <svg viewBox="0 0 24 24">
                     <use href="#icon_play">
