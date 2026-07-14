@@ -61,47 +61,57 @@
   <main>
     <form id="form">
       <!-- LAYOUTS -->
-      <label>
-        <input
-          name="layout_form"
-          type="radio"
-          value="default"
-        >
-        <span>Predeterminado</span>
-      </label>
-      <label>
-        <input
-          checked
-          name="layout_form"
-          type="radio"
-          value="inline"
-        >
-        <span>En línea</span>
-      </label>
-      <label>
-        <input
-          name="layout_form"
-          type="radio"
-          value="block"
-        >
-        <span>En bloque</span>
-      </label>
-      <label>
-        <input
-          name="layout_form"
-          type="radio"
-          value="float"
-        >
-        <span>Flotante</span>
-      </label>
-      <label>
-        <input
-          name="layout_form"
-          type="radio"
-          value="simple"
-        >
-        <span>Simple</span>
-      </label>
+      <aside hidden>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="default"
+          >
+          <span>Predeterminado</span>
+        </label>
+        <label>
+          <input
+            checked
+            name="layout_form"
+            type="radio"
+            value="inline"
+          >
+          <span>En línea</span>
+        </label>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="block"
+          >
+          <span>En bloque</span>
+        </label>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="float"
+          >
+          <span>Flotante</span>
+        </label>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="simple"
+          >
+          <span>Simple</span>
+        </label>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="3d"
+          >
+          <span>Botones</span>
+        </label>
+      </aside>
       <input name="id" type="hidden">
       <input id="input_image" name="imagen" type="hidden">
       <input id="active" name="activo" type="hidden" value="true">
@@ -176,36 +186,53 @@
             </svg>
           </label>
           <!-- IMAGEN -->
-          <div class="input_image">
-            <label for="input_image_link">Imagen</label>
-            <img alt="Imagen del objetivo" id="preview_image"
-              src="https://img.icons8.com/forma-bold-filled/24/no-image.png">
-            <label>
-              <span>Subir imagen</span>
-              <input
-                autocomplete="off"
-                accept="image/*"
-                id="input_preview"
-                type="file"
+          <label>
+            <span>Imagen</span>
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_image"></use>
+            </svg>
+            <img
+              alt="Imagen del objetivo"
+              id="preview_image"
+            >
+            <input
+              accept="image/*"
+              autocomplete="off"
+              hidden
+              id="input_preview"
+              type="file"
+            >
+            <div>
+              <button
+                type="button"
+                onclick="input_preview.click()"
               >
-            </label>
+                <svg viewBox="0 0 24 24">
+                  <use href="#icon_file_upload">
+                </svg>
+                <span>Subir imagen</span>
+              </button>
+              <button
+                hidden
+                type="button"
+                onclick="clearImg()"
+              >
+                <svg viewBox="0 0 24 24">
+                  <use href="#icon_eraser">
+                </svg>
+                <span>Limpiar</span>
+              </button>
+            </div>
+          </label>
+          <!-- IMAGEN URL -->
+          <label hidden>
             <input
               autocomplete="off"
               id="input_image_link"
               placeholder="Imagen desde enlace"
               type="link"
-              onchange=""
             >
-            <button
-              type="button"
-              onclick="clearImg()"
-            >
-              <svg viewBox="0 0 24 24">
-                <use href="#icon_trash">
-              </svg>
-              <span>Limpiar</span>
-            </button>
-          </div>
+          </label>
         </section>
       </details>
       <details>
@@ -878,7 +905,7 @@
     </g>
     <g id="icon_loader">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-	    <path d="M12 3a9 9 0 1 0 9 9" />
+      <path d="M12 3a9 9 0 1 0 9 9" />
     </g>
     <g id="icon_calendar">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -889,10 +916,35 @@
     </g>
     <g id="hand_stop">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    	<path d="M8 13v-7.5a1.5 1.5 0 0 1 3 0v6.5" />
+      <path d="M8 13v-7.5a1.5 1.5 0 0 1 3 0v6.5" />
       <path d="M11 5.5v-2a1.5 1.5 0 1 1 3 0v8.5" />
       <path d="M14 5.5a1.5 1.5 0 0 1 3 0v6.5" />
       <path d="M17 7.5a1.5 1.5 0 0 1 3 0v8.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47" />
+    </g>
+    <g id="icon_image">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M15 8h.01" />
+      <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12" />
+      <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
+      <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
+    </g>
+    <g id="icon_eraser">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 20h-10.5l-4.21 -4.3a1 1 0 0 1 0 -1.41l10 -10a1 1 0 0 1 1.41 0l5 5a1 1 0 0 1 0 1.41l-9.2 9.3" />
+      <path d="M18 13.3l-6.3 -6.3" />
+    </g>
+    <g id="icon_file_upload">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+      <path d="M12 11v6" />
+      <path d="M9.5 13.5l2.5 -2.5l2.5 2.5" />
+    </g>
+    <g id="icon_link">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M9 15l6 -6" />
+      <path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
+      <path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
     </g>
   </svg>
   <script>
