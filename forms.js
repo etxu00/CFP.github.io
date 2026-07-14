@@ -424,8 +424,10 @@ function submitForm(event) {
   const formData = new FormData($form)
   if (!$form.checkValidity()) {
     focusFirstInputInvalid()
+    $form.classList.add('invalid')
     return
   }
+  $form.classList.remove('invalid')
   const info = generateInfo(formData)
   info?.id ? updateData(info) : createData(info)
 }

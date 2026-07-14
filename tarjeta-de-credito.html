@@ -60,6 +60,48 @@
   </header>
   <main>
     <form id="form">
+      <!-- LAYOUTS -->
+      <label>
+        <input
+          name="layout_form"
+          type="radio"
+          value="default"
+        >
+        <span>Predeterminado</span>
+      </label>
+      <label>
+        <input
+          checked
+          name="layout_form"
+          type="radio"
+          value="inline"
+        >
+        <span>En línea</span>
+      </label>
+      <label>
+        <input
+          name="layout_form"
+          type="radio"
+          value="block"
+        >
+        <span>En bloque</span>
+      </label>
+      <label>
+        <input
+          name="layout_form"
+          type="radio"
+          value="float"
+        >
+        <span>Flotante</span>
+      </label>
+      <label>
+        <input
+          name="layout_form"
+          type="radio"
+          value="simple"
+        >
+        <span>Simple</span>
+      </label>
       <input name="id" type="hidden">
       <input id="input_image" name="imagen" type="hidden">
       <input id="active" name="activo" type="hidden" value="true">
@@ -70,8 +112,68 @@
         <section>
           <!-- NOMBRE -->
           <label>
-            <span>Nombre</span>
-            <input autocomplete="off" autofocus name="nombre" placeholder="Nombre del objetivo" required>
+            <span>
+              <span>Nombre</span>
+              <small>Nombre de la tarjeta de crédito</small>
+            </span>
+            <input
+              autocomplete="off"
+              autofocus
+              name="nombre"
+              placeholder="Nombre del objetivo"
+              required
+            >
+            <span>
+              <span>Campo obligatorio</span>
+              <span>Ya existe una tarjeta con ese nombre</span>
+            </span>
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_credit_card"></use>
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <use class="rotate" href="#icon_loader"></use>
+            </svg>
+          </label>
+          <!-- LÍMITE DE CRÉDITO -->
+          <label>
+            <span>
+              <span>Límite de crédito</span>
+              <small>Conocido como tambien como "saldo máximo"</small>
+            </span>
+            <input
+              autocomplete="off"
+              name="limite_de_credito"
+              placeholder="$0.00"
+              required
+              step="1"
+              type="number"
+            >
+            <span>
+              <span>Campo obligatorio</span>
+            </span>
+            <svg viewBox="0 0 24 24">
+              <use href="#hand_stop"></use>
+            </svg>
+          </label>
+          <!-- DÍA DE Corte -->
+          <label>
+            <span>
+              <span>Día de corte</span>
+              <small>El día en que se cierra el periodo de facturación</small>
+            </span>
+            <input
+              autocomplete="off"
+              name="dia_corte"
+              required
+              type="number"
+            >
+            <i>De cada mes</i>
+            <span>
+              <span>Campo obligatorio</span>
+            </span>
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_calendar"></use>
+            </svg>
           </label>
           <!-- IMAGEN -->
           <div class="input_image">
@@ -104,33 +206,9 @@
               <span>Limpiar</span>
             </button>
           </div>
-          <!-- LÍMITE DE CRÉDITO -->
-          <label>
-            <span>Límite de crédito</span>
-            <input
-              autocomplete="off"
-              name="limite_de_credito"
-              placeholder="$0.00"
-              required
-              step="1"
-              type="number"
-            >
-            <small class="invalid">Campo obligatorio</small>
-          </label>
-          <!-- DÍA DE Corte -->
-          <label>
-            <span>Día de corte</span>
-            <input
-              autocomplete="off"
-              name="dia_corte"
-              required
-              type="number"
-            >
-            <small class="invalid">Campo obligatorio</small>
-          </label>
         </section>
       </details>
-      <details open>
+      <details>
         <summary>Variantes</summary>
         <section>
           <!-- PAYPAL -->
@@ -790,6 +868,31 @@
     <g id="icon_style_rounded">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
+    </g>
+    <g id="icon_credit_card">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M3 8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -8" />
+      <path d="M3 10l18 0" />
+      <path d="M7 15l.01 0" />
+      <path d="M11 15l2 0" />
+    </g>
+    <g id="icon_loader">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+	    <path d="M12 3a9 9 0 1 0 9 9" />
+    </g>
+    <g id="icon_calendar">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+      <path d="M16 3v4"></path>
+      <path d="M8 3v4"></path>
+      <path d="M4 11h16"></path>
+    </g>
+    <g id="hand_stop">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    	<path d="M8 13v-7.5a1.5 1.5 0 0 1 3 0v6.5" />
+      <path d="M11 5.5v-2a1.5 1.5 0 1 1 3 0v8.5" />
+      <path d="M14 5.5a1.5 1.5 0 0 1 3 0v6.5" />
+      <path d="M17 7.5a1.5 1.5 0 0 1 3 0v8.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47" />
     </g>
   </svg>
   <script>
