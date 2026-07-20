@@ -8,192 +8,6 @@
   <title>Control de finanzas personales</title>
   
   <link rel="stylesheet" href="styles.css">
-  <style>
-    @property --rotation {
-      syntax: "<angle>";
-      inherits: false;
-      initial-value: 315deg;
-    }
-    
-    details {
-      position: relative;
-      padding: 1lh;
-
-      &:hover {
-        div {
-          i:nth-child(2) {
-            filter: blur(20px);
-          }
-        }
-      }
-
-      div {
-        
-        i:nth-child(1) {
-          animation: rotate 10s linear infinite;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(var(--rotation),
-                      rgba(243, 27, 247, 1) 0%,
-                      rgba(105, 53, 250, 1) 25%,
-                      rgba(62, 61, 251, 1) 50%,
-                      rgba(68, 141, 252, 1) 75%,
-                      rgba(76, 234, 254, 1) 100%);
-          border-radius: 1lh;
-          z-index: -1;
-
-          &:before {
-            --size: calc(100% - 2px);
-            
-            content: "";
-            position: absolute;
-            top: 1px;
-            left: 1px;
-            width: var(--size);
-            height: var(--size);
-            background: rgb(33, 33, 33, .95);
-            border-radius: 1lh;
-            z-index: 1;
-          }
-        }
-
-        i:nth-child(2) {
-          animation: rotate 10s linear infinite;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          filter: blur(5px);
-          background: linear-gradient(var(--rotation),
-                      rgba(243, 27, 247, 1) 0%,
-                      rgba(105, 53, 250, 1) 25%,
-                      rgba(62, 61, 251, 1) 50%,
-                      rgba(68, 141, 252, 1) 75%,
-                      rgba(76, 234, 254, 1) 100%);
-          border-radius: 1lh;
-          transition: .25s ease-in-out;
-          z-index: -2;
-        }
-
-        i:nth-child(3) {
-          display: block;
-          position: absolute;
-          transition: 1s ease-in-out;
-          top: -0.5rem;
-          left: -0.5rem;
-
-          &:after {
-            animation: scale 10s ease-in-out infinite;
-            background: blue;
-            display: block;
-            filter: blur(2.5rem);
-            height: 4rem;
-            left: -1rem;
-            top: -1rem;
-            width: 4rem;
-            border-radius: 50%;
-            content: '';
-            position: absolute;
-            transition: .5s ease-in-out;
-            z-index: -2;
-          }
-
-          &:before {
-            animation: scale 10s ease-in-out infinite;
-            background: rgba(76, 234, 254, .5);
-            border-radius: 50%;
-            content: '';
-            display: block;
-            position: absolute;
-            transition: .5s ease-in-out;
-            filter: blur(1.5rem);
-            height: 2rem;
-            width: 2rem;
-            z-index: 1;
-          }
-        }
-
-        i:nth-child(5) {
-          display: block;
-          position: absolute;
-          transition: 1s ease-in-out;
-          right: 1.5rem;
-          bottom: 1.5rem;
-
-          &:after {
-            animation: scale 10s ease-in-out infinite;
-            background: purple;
-            display: block;
-            filter: blur(2.5rem);
-            height: 4rem;
-            left: -1rem;
-            top: -1rem;
-            width: 4rem;
-            border-radius: 50%;
-            content: '';
-            position: absolute;
-            transition: .5s ease-in-out;
-            z-index: -2;
-          }
-
-          &:before {
-            animation: scale 10s ease-in-out infinite;
-            background: rgba(243, 27, 247, .5);
-            border-radius: 50%;
-            content: '';
-            display: block;
-            position: absolute;
-            transition: .5s ease-in-out;
-            filter: blur(1.5rem);
-            height: 2rem;
-            width: 2rem;
-            z-index: 1;
-          }
-        }
-      }
-    }
-
-    form {
-      display: grid;
-      gap: 1lh;
-    }
-
-    main {
-      padding: 1lh 3lh;
-    }
-
-    @keyframes rotate {
-      from {
-        --rotation: 135deg;
-      }
-      50% {
-        --rotation: 315deg;
-      }
-      to {
-        --rotation: 495deg;
-      }
-    }
-
-    @keyframes scale {
-      0% {
-        transform: scale(0);
-        opacity: 0;
-      }
-      50% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(0);
-        opacity: 0;
-      }
-    }
-
-  </style>
   <!--link rel="manifest" href="./manifest.json">
 
   <script>
@@ -234,6 +48,57 @@
   </header>
   <main>
     <form id="form">
+      <aside hidden>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="default"
+          >
+          <span>Predeterminado</span>
+        </label>
+        <label>
+          <input
+            checked
+            name="layout_form"
+            type="radio"
+            value="inline"
+          >
+          <span>En línea</span>
+        </label>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="block"
+          >
+          <span>En bloque</span>
+        </label>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="float"
+          >
+          <span>Flotante</span>
+        </label>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="simple"
+          >
+          <span>Simple</span>
+        </label>
+        <label>
+          <input
+            name="layout_form"
+            type="radio"
+            value="3d"
+          >
+          <span>Botones</span>
+        </label>
+      </aside>
       <input name="id" type="hidden">
       <input id="input_image" name="imagen" type="hidden">
       <input id="active" name="activo" type="hidden" value="true">
@@ -242,8 +107,12 @@
       <details open>
         <summary>General</summary>
         <section>
+          <!-- NOMBRE -->
           <label>
-            <span>Nombre</span>
+            <span>
+              <span>Objetivo</span>
+              <small>Nombra tu objetivo</small>
+            </span>
             <input
               autocomplete="off"
               autofocus
@@ -251,7 +120,14 @@
               placeholder="Nombre del objetivo"
               required
             >
+            <span>
+              <span>Campo obligatorio</span>
+            </span>
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_goal"></use>
+            </svg>
           </label>
+          <!-- ALIAS -->
           <label>
             <span>Alias</span>
             <input
@@ -259,7 +135,11 @@
               name="alias"
               placeholder="Nombre corto"
             >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_label">
+            </svg>
           </label>
+          <!-- MONTO -->
           <label>
             <span>Monto</span>
             <input
@@ -267,50 +147,56 @@
               name="monto"
               placeholder="Monto del objetivo"
             >
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_receipt"></use>
+            </svg>
           </label>
-          <div class="input_image">
-            <label for="input_image_link">Imagen</label>
+          <!-- IMAGEN -->
+          <label>
+            <span>Imagen</span>
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_image"></use>
+            </svg>
             <img
               alt="Imagen del objetivo"
               id="preview_image"
-              src="https://img.icons8.com/forma-bold-filled/24/no-image.png"
             >
-            <label>
-              <span>Subir imagen</span>
-              <input
-                accept="image/*"
-                autocomplete="off"
-                id="input_preview"
-                type="file"
-              >
-            </label>
             <input
+              accept="image/*"
               autocomplete="off"
-              id="input_image_link"
-              placeholder="Imagen desde enlace"
-              type="link"
+              hidden
+              id="input_preview"
+              type="file"
             >
-            <button type="button">
-              <svg viewBox="0 0 24 24">
-                <use href="#icon_trash">
-              </svg>
-              <span>Limpiar</span>
-            </button>
-          </div>
+            <div>
+              <button
+                type="button"
+                onclick="input_preview.click()"
+              >
+                <svg viewBox="0 0 24 24">
+                  <use href="#icon_file_upload">
+                </svg>
+                <span>Subir imagen</span>
+              </button>
+              <button
+                hidden
+                type="button"
+                onclick="clearImg()"
+              >
+                <svg viewBox="0 0 24 24">
+                  <use href="#icon_eraser">
+                </svg>
+                <span>Limpiar</span>
+              </button>
+            </div>
+          </label>
         </section>
-        <div>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
       </details>
       <!-- REFERENCIA -->
       <details open>
         <summary>Referencia</summary>
         <section>
+          <!-- REFERENCIA -->
           <label>
             <span>Enlace de referencia</span>
             <input
@@ -320,21 +206,17 @@
               type="link"
             >
             <small class="invalid">Formato invalido</small>
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_link">
+            </svg>
           </label>
         </section>
-        <div>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
       </details>
       <!-- ORGANIZACIÓN -->
       <details>
         <summary>Organización</summary>
         <section>
+          <!-- CATEGORÍA -->
           <label>
             <span>Categoría</span>
             <select autocomplete="off" name="categoria">
@@ -342,12 +224,29 @@
               <option>Setup</option>
               <option>Nuevo...</option>
             </select>
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_category">
+            </svg>
           </label>
+          <!-- PADRE -->
           <label>
             <span>Padre</span>
-            <select autocomplete="off" name="parent">
+            <select
+              autocomplete="off"
+              data-data-monto="nombre"
+              data-input="concepto_nombre"
+              data-label="alias|nombre"
+              data-new="Nuevo..."
+              data-order="asc"
+              data-origin="OBJETIVOS.items"
+              data-value="id"
+              name="parent"
+            >
               <option value="">Seleccione una opción...</option>
             </select>
+            <svg viewBox="0 0 24 24">
+              <use href="#icon_binary_tree">
+            </svg>
           </label>
         </section>
       </details>
@@ -769,26 +668,21 @@
     <g id="icon_pig">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M15 11v.01"></path>
-      <path d="M16 3l0 3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342a6.008 6.008 0 0 1 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3z"></path>
+      <path
+        d="M16 3l0 3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342a6.008 6.008 0 0 1 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3z">
+      </path>
     </g>
     <g id="icon_investments">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M4 19l16 0"></path>
       <path d="M4 15l4 -6l4 2l4 -5l4 4"></path>
     </g>
-    <g id="icon_calendar_money">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M13 21h-7a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3"></path>
-      <path d="M16 3v4"></path>
-      <path d="M8 3v4"></path>
-      <path d="M4 11h12.5"></path>
-      <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
-      <path d="M19 21v1m0 -8v1"></path>
-    </g>
     <g id="icon_no-cash">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M9.88 9.878a3 3 0 1 0 4.242 4.243m.58 -3.425a3.012 3.012 0 0 0 -1.412 -1.405"></path>
-      <path d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1"></path>
+      <path
+        d="M10 6h9a2 2 0 0 1 2 2v8c0 .294 -.064 .574 -.178 .825m-2.822 1.175h-13a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h1">
+      </path>
       <path d="M18 12l.01 0"></path>
       <path d="M6 12l.01 0"></path>
       <path d="M3 3l18 18"></path>
@@ -841,8 +735,11 @@
     </g>
     <g id="icon_clone">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z"></path>
-      <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"></path>
+      <path
+        d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
+      </path>
+      <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1">
+      </path>
     </g>
     <g id="icon_pencil">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -860,7 +757,9 @@
     </g>
     <g id="icon_start">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
+      <path
+        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+      </path>
     </g>
     <g id="icon_trash">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -869,6 +768,17 @@
       <path d="M14 11l0 6" />
       <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
       <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+    </g>
+    <g id="icon_import">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+      <path d="M5 13v-8a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5.5m-9.5 -2h7m-3 -3l3 3l-3 3" />
+    </g>
+    <g id="icon_export">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+      <path d="M7 11l5 -6l5 6" />
+      <path d="M12 4l0 12" />
     </g>
     <g id="icon_config">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -880,9 +790,9 @@
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
     </g>
     <g id="icon_sun">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-      <path d="M3 12h1m8 -9v1m8 8h1m0 8h-1m-8 -8v1m0 8v1m0 -10v-1m8 0h-1"></path>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+      <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
     </g>
     <g id="icon_line_compact">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -940,6 +850,108 @@
     <g id="icon_style_rounded">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
       <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
+    </g>
+    <g id="icon_style_background_even">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M13.905 2.923l.098 .135l4.92 7.306a7.566 7.566 0 0 1 1.043 3.167l.024 .326c.007 .047 .01 .094 .01 .143l-.002 .06c.056 2.3 -.944 4.582 -2.87 6.14c-2.969 2.402 -7.286 2.402 -10.255 0c-1.904 -1.54 -2.904 -3.787 -2.865 -6.071a1.052 1.052 0 0 1 .013 -.333a7.66 7.66 0 0 1 .913 -3.176l.172 -.302l4.893 -7.26c.185 -.275 .426 -.509 .709 -.686c1.055 -.66 2.446 -.413 3.197 .55zm-2.06 1.107l-.077 .038l-.041 .03l-.037 .036l-.033 .042l-4.863 7.214a5.607 5.607 0 0 0 -.651 1.61h11.723a5.444 5.444 0 0 0 -.49 -1.313l-.141 -.251l-4.891 -7.261a.428 .428 0 0 0 -.5 -.145z"></path>
+    </g>
+    <g id="icon_style_border_column">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M3 4a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v16a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-16" />
+      <path d="M12 3v18" />
+    </g>
+    <g id="icon_style_border_row">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" />
+      <path d="M4 12l16 0" />
+    </g>
+    <g id="icon_style_hover_background">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M20 3a1 1 0 0 1 0 2h-16a1 1 0 1 1 0 -2z" />
+      <path d="M20 19a1 1 0 0 1 0 2h-16a1 1 0 0 1 0 -2z" />
+      <path d="M16 8a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-8a3 3 0 0 1 -3 -3v-2a3 3 0 0 1 3 -3z" />
+    </g>
+    <g id="icon_style_hover_color">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M3 16v-6a2 2 0 1 1 4 0v6" />
+      <path d="M3 13h4" />
+      <path d="M10 8v6a2 2 0 1 0 4 0v-1a2 2 0 1 0 -4 0v1" />
+      <path d="M20.732 12a2 2 0 0 0 -3.732 1v1a2 2 0 0 0 3.726 1.01" />
+    </g>
+    <g id="icon_tags">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+	    <path d="M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+	    <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3" />
+    </g>
+    <g id="icon_loader">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3a9 9 0 1 0 9 9" />
+    </g>
+    <g id="icon_calendar">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+      <path d="M16 3v4"></path>
+      <path d="M8 3v4"></path>
+      <path d="M4 11h16"></path>
+    </g>
+    <g id="hand_stop">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M8 13v-7.5a1.5 1.5 0 0 1 3 0v6.5" />
+      <path d="M11 5.5v-2a1.5 1.5 0 1 1 3 0v8.5" />
+      <path d="M14 5.5a1.5 1.5 0 0 1 3 0v6.5" />
+      <path d="M17 7.5a1.5 1.5 0 0 1 3 0v8.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47" />
+    </g>
+    <g id="icon_image">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M15 8h.01" />
+      <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12" />
+      <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
+      <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
+    </g>
+    <g id="icon_eraser">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M19 20h-10.5l-4.21 -4.3a1 1 0 0 1 0 -1.41l10 -10a1 1 0 0 1 1.41 0l5 5a1 1 0 0 1 0 1.41l-9.2 9.3" />
+      <path d="M18 13.3l-6.3 -6.3" />
+    </g>
+    <g id="icon_file_upload">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+      <path d="M12 11v6" />
+      <path d="M9.5 13.5l2.5 -2.5l2.5 2.5" />
+    </g>
+    <g id="icon_goal">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+      <path d="M12 7a5 5 0 1 0 5 5" />
+      <path d="M13 3.055a9 9 0 1 0 7.941 7.945" />
+      <path d="M15 6v3h3l3 -3h-3v-3l-3 3" />
+    </g>
+    <g id="icon_receipt">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
+      <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5" />
+    </g>
+    <g id="icon_category">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M4 4h6v6h-6l0 -6" />
+      <path d="M14 4h6v6h-6l0 -6" />
+      <path d="M4 14h6v6h-6l0 -6" />
+      <path d="M14 17a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+    </g>
+    <g id="icon_binary_tree">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M14 6a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" />
+      <path d="M7 14a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" />
+      <path d="M21 14a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" />
+      <path d="M14 18a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" />
+      <path d="M12 8v8" />
+      <path d="M6.316 12.496l4.368 -4.992" />
+      <path d="M17.684 12.496l-4.366 -4.99" />
+    </g>
+    <g id="icon_label">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M16.52 7h-10.52a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h10.52a1 1 0 0 0 .78 -.375l3.7 -4.625l-3.7 -4.625a1 1 0 0 0 -.78 -.375" />
     </g>
   </svg>
   <script>

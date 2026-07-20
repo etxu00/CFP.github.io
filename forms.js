@@ -75,7 +75,7 @@ function generateInfo(formData) {
   // Primero, recolectar todos los campos tmp_
   for (const [key, value] of formData.entries()) {
     if (key.startsWith('tmp_')) {
-      tmpFields[key] = parseValue(value)
+      tmpFields[key] = parseValue(value, key)
     }
   }
   
@@ -83,7 +83,7 @@ function generateInfo(formData) {
   for (const [key, value] of formData.entries()) {
     if (key.startsWith('tmp_')) continue
     
-    const _value = parseValue(value)
+    const _value = parseValue(value, key)
     const tmpKey = `tmp_${key}`
     
     // Si existe un campo tmp_ correspondiente, usar su valor
@@ -283,18 +283,24 @@ function generateOptions($optgroup, data, label, value, $select) {
   })
 }
 
-function parseValue(value) {
-  const newValue = isNaN(value) ? value : Number(value)
-  if (newValue === 'true') {
-    return true
+function parseValue(value, key) {
+  if (value === 'true') return true
+  if (value === 'false') return false
+  if (value === 'on') return true
+
+  const $field = key ? $form.querySelector(`[name="${CSS.escape(key)}"]`) : null
+  const isNumberInput = $field && ($field.type === 'number' || $field.type === 'range')
+
+  // Inputs de texto (u otros no numéricos) deben conservar "" en vez de convertirlo a 0
+  if (value === '' && !isNumberInput) {
+    return ''
   }
-  if (newValue === 'false') {
-    return false
+
+  if (isNumberInput) {
+    return value === '' ? '' : Number(value)
   }
-  if (newValue === 'on') {
-    return true
-  }
-  return newValue
+
+  return isNaN(value) ? value : Number(value)
 }
 
 function previewImage(event) {
