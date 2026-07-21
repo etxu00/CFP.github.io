@@ -180,7 +180,6 @@ a:not(.min), button:not(.min), summary:not(.min), .btn:not(.min), .button:not(.m
   gap: var(--gap-buttons, .25lh);
 }
 
-
 :is(button, summary, .btn, .button):not(:has(svg)):not(:has(.ico)):not(:has(i)):not(:has(img)) {
   min-width: 35px;
 }
@@ -300,6 +299,31 @@ button, summary, .btn, .button, a {
   /* DATA-SHORTCUT */
   &[data-shortcut]:after {
     content: attr(data-shortcut);
+  }
+
+}
+
+.btn-switch {
+  display: flex;
+  gap: var(--padding);
+
+  &:has(input:checked) span {
+    font-size: 0;
+
+    &:after {
+      content: attr(data-checked-label);
+      font-size: initial !important;
+      line-height: 1;
+    }
+  }
+
+  &:has(input:not(:checked)) > *.show-checked:not(span),
+  &:has(input:checked) > *:not(.show-checked):not(span) {
+    display: none;
+  }
+
+  input {
+    display: none;
   }
 }
 
@@ -1076,6 +1100,19 @@ form {
         padding: 0 calc(var(--padding) * 3) 0 0;
       }
     }
+  }
+}
+
+select {
+  accent-color: var(--color-blue);
+  color-scheme: dark;
+
+  &:focus {
+    background-color: black;
+  }
+
+  option {
+    background-color: var(--color-blue);
   }
 }
 
