@@ -979,6 +979,129 @@ table {
 
 /* FORMULARIOS */
 
+/* GENERALES */
+:is(input, select, textarea) {
+  background-color: rgba(var(--color-text-value), 0.05); /* 🎨 */
+  border-radius: var(--radius-buttons, 0); /* 🎨 */
+  border: 1px solid transparent; 
+  color: var(--color-text); /* 🎨 */
+  font-family: inherit; 
+  font-size: inherit;
+  margin: 0;
+  outline: 1px solid transparent; /* 🎨 */
+  padding: var(--padding-buttons, 0); /* 🎨 */
+  width: 100%;
+
+  &:is(:focus, :hover) {
+    border-color: var(--color-1)
+  }
+}
+
+label {
+  display: grid;
+  gap: 0 var(--padding); /* 🎨 */
+
+  /* Visualización de campos obligatorios */
+  &:has([required]) span:nth-of-type(1) span::after {
+    color: var(--color-danger); /* 🎨 */
+    content: "*";
+    margin-left: 3px;
+  }
+
+  div {
+    display: flex;
+  }
+
+  i {
+    align-items: center;
+    display: flex;
+    font-style: normal;
+    padding: 0 calc(var(--padding) * 3) 0 0;
+  }
+
+  span {
+    /* Si tiene descripción del nombre del label */
+    :is(&:has(small), &:has(span)) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Contenedor <span> del <span> */
+    &:nth-of-type(2) {
+      font-size: small;
+      grid-column: 3 / -1;
+      grid-row: 2 / -1;
+    }
+  }
+}
+
+/* Contenedor directo de los labels */
+*:has(> label) {
+  display: grid;
+  gap: calc(var(--padding) * 2);
+}
+
+/* LAYOUTS EN LINEA */
+form {
+
+  /* LAYOUTS: PREDETERMINADO (sin marcar nada o sin clase) */
+
+  
+  /* LAYOUTS: EN LINEA */
+  :is(
+    &:has([name="layout_form"][value="inline"]:checked),
+    .layout_inline
+  ) {
+
+    /* CONTROLES */
+    :is(input, select, textarea) {
+      grid-column: 3 / -1;
+      grid-row: 1 / 2;
+    }
+
+    label {
+      grid-template-columns: minmax(24px, auto) calc(100dvw / 4) 1fr auto;
+      grid-template-rows: auto auto auto;
+
+      div {
+        grid-column: 3 / -1;
+        grid-row: 3 / -1;
+      }
+
+      i {
+        grid-column: -2 / -1;
+        grid-row: 1 / 2;
+      }
+
+      small {
+        grid-column: 2 / 3;
+        grid-row: 2 / -1;
+        opacity: 0.5;
+      }
+
+      span {
+        grid-column: 2 / 3;
+        grid-row: 1 / -1;
+      }
+
+      svg {
+        /* ICONO DEL LABEL */
+        &:nth-of-type(1) {
+          grid-column: 1 / 2;
+          grid-row: 1 / -1;
+        }
+        
+        /* SPINNER */
+        &:nth-of-type(2) {
+          grid-column: -2 / -1;
+          grid-row: 1 / -1;
+        }
+      }
+    }
+  }
+}
+
+/* LAYOUT PARA CARGA DE IMAGEN */
 label {
   img:not([src]) {
     display: none;
@@ -991,28 +1114,6 @@ label {
       line-height: 0;
     }
   }
-}
-
-:is(input, select, textarea) {
-  background-color: rgba(var(--color-text-value), 0.05);
-  border-radius: var(--radius-buttons, 0);
-  border: 1px solid transparent;
-  color: var(--color-text);
-  font-family: inherit;
-  font-size: inherit;
-  margin: 0;
-  outline: 1px solid transparent;
-  padding: var(--padding-buttons, 0);
-  width: 100%;
-
-  &:is(:focus, :hover) {
-    border-color: var(--color-1)
-  }
-}
-
-*:has(> label) {
-  display: grid;
-  gap: calc(var(--padding) * 2);
 }
 
 form {
@@ -1031,76 +1132,6 @@ form {
       display: none;
     }
   }
-  
-  :is(&:has([name="layout_form"][value="inline"]:checked)) {
-    
-    label {
-      display: grid;
-      gap: 0 var(--padding);
-      grid-template-columns: minmax(24px, auto) 400px 1fr auto;
-      grid-template-rows: auto auto auto;
-
-      &:has([required]) span:nth-of-type(1) span::after {
-        content: "*";
-        margin-left: 3px;
-        color: var(--color-danger);
-      }
-      
-      :is(input, select, textarea) {
-        grid-column: 3 / -1;
-        grid-row: 1 / 2;
-      }
-
-      div {
-        display: flex;
-        grid-column: 3 / -1;
-        grid-row: 3 / -1;
-      }
-
-      small {
-        grid-column: 2 / 3;
-        grid-row: 2 / -1;
-        opacity: 0.5;
-      }
-      
-      span {
-        grid-column: 2 / 3;
-        grid-row: 1 / -1;
-        
-        :is(&:has(small), &:has(span)) {
-          display: flex;
-          flex-direction: column;
-        }
-        
-        &:nth-of-type(2) {
-          font-size: small;
-          grid-column: 3 / -1;
-          grid-row: 2 / -1;
-        }
-      }
-      
-      svg {
-        &:nth-of-type(1) {
-          grid-column: 1 / 2;
-          grid-row: 1 / -1;
-        }
-        
-        &:nth-of-type(2) {
-          grid-column: -2 / -1;
-          grid-row: 1 / -1;
-        }
-      }
-
-      i {
-        align-items: center;
-        display: flex;
-        font-style: normal;
-        grid-column: -2 / -1;
-        grid-row: 1 / 2;
-        padding: 0 calc(var(--padding) * 3) 0 0;
-      }
-    }
-  }
 }
 
 select {
@@ -1115,6 +1146,8 @@ select {
     background-color: var(--color-blue);
   }
 }
+
+/* ANIMACIONES */
 
 .rotate {
   animation: rotate 1s linear infinite;
